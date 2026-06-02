@@ -54,12 +54,20 @@ export function Navbar() {
           ))}
         </ul>
 
-        <a
-          href="#demo"
-          className="hidden lg:inline-flex items-center px-4 py-2 rounded-full bg-neon text-primary-foreground text-sm font-semibold hover:glow-neon transition-shadow"
-        >
-          Try Demo
-        </a>
+        <div className="hidden lg:flex items-center gap-3">
+          <Link
+            to="/login"
+            className="px-4 py-2 rounded-full border border-white/15 text-foreground text-sm font-medium hover:border-neon/40 hover:text-neon transition-all"
+          >
+            Login
+          </Link>
+          <Link
+            to="/register"
+            className="px-4 py-2 rounded-full bg-neon text-primary-foreground text-sm font-semibold hover:glow-neon transition-shadow"
+          >
+            Register
+          </Link>
+        </div>
 
         <button
           onClick={() => setOpen(!open)}
