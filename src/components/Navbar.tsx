@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Menu, X, Mountain } from "lucide-react";
+import { Link } from "@tanstack/react-router";
 
 const links = [
   { href: "#home", label: "Home" },
@@ -53,12 +54,20 @@ export function Navbar() {
           ))}
         </ul>
 
-        <a
-          href="#demo"
-          className="hidden lg:inline-flex items-center px-4 py-2 rounded-full bg-neon text-primary-foreground text-sm font-semibold hover:glow-neon transition-shadow"
-        >
-          Try Demo
-        </a>
+        <div className="hidden lg:flex items-center gap-3">
+          <Link
+            to="/login"
+            className="px-4 py-2 rounded-full border border-white/15 text-foreground text-sm font-medium hover:border-neon/40 hover:text-neon transition-all"
+          >
+            Login
+          </Link>
+          <Link
+            to="/register"
+            className="px-4 py-2 rounded-full bg-neon text-primary-foreground text-sm font-semibold hover:glow-neon transition-shadow"
+          >
+            Register
+          </Link>
+        </div>
 
         <button
           onClick={() => setOpen(!open)}
@@ -84,6 +93,22 @@ export function Navbar() {
               </li>
             ))}
           </ul>
+          <div className="mt-3 pt-3 border-t border-white/10 flex flex-col gap-2">
+            <Link
+              to="/login"
+              onClick={() => setOpen(false)}
+              className="block px-3 py-2.5 text-sm text-foreground hover:text-neon hover:bg-white/5 rounded-lg text-center"
+            >
+              Login
+            </Link>
+            <Link
+              to="/register"
+              onClick={() => setOpen(false)}
+              className="block px-3 py-2.5 text-sm font-semibold text-primary-foreground bg-neon rounded-lg text-center hover:bg-neon/90 transition-colors"
+            >
+              Register
+            </Link>
+          </div>
         </div>
       )}
     </header>
