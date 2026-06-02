@@ -93,6 +93,22 @@ export function Navbar() {
               </li>
             ))}
           </ul>
+          <div className="mt-3 pt-3 border-t border-white/10 flex flex-col gap-2">
+            <Link
+              to="/login"
+              onClick={() => setOpen(false)}
+              className="block px-3 py-2.5 text-sm text-foreground hover:text-neon hover:bg-white/5 rounded-lg text-center"
+            >
+              Login
+            </Link>
+            <Link
+              to="/register"
+              onClick={() => setOpen(false)}
+              className="block px-3 py-2.5 text-sm font-semibold text-primary-foreground bg-neon rounded-lg text-center hover:bg-neon/90 transition-colors"
+            >
+              Register
+            </Link>
+          </div>
         </div>
       )}
     </header>
