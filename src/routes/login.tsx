@@ -212,6 +212,7 @@ function LoginPage() {
                 {/* Google Button */}
                 <button
                   type="button"
+                  onClick={handleGoogle}
                   className="w-full py-3 rounded-xl bg-white/5 border border-white/10 text-foreground font-medium text-sm hover:bg-white/10 hover:border-neon/20 transition-all flex items-center justify-center gap-3"
                 >
                   <svg className="h-5 w-5" viewBox="0 0 24 24">
