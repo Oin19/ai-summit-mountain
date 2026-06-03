@@ -2,6 +2,9 @@ import { useState, useCallback } from "react";
 import { Link, createFileRoute } from "@tanstack/react-router";
 import { AuthBackground } from "@/components/AuthBackground";
 import { Mountain, Eye, EyeOff, Mail, Lock, User, ArrowRight } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
+import { lovable } from "@/integrations/lovable/index";
+import { toast } from "sonner";
 
 export const Route = createFileRoute("/register")({
   head: () => ({
@@ -38,14 +41,37 @@ function RegisterPage() {
     return Object.keys(newErrors).length === 0;
   }, [fullName, email, password, confirmPassword]);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!validate()) return;
     setIsSubmitting(true);
-    setTimeout(() => {
-      setIsSubmitting(false);
-      window.location.href = "/dashboard";
-    }, 800);
+    const { error } = await supabase.auth.signUp({
+      email,
+      password,
+      options: {
+        emailRedirectTo: `${window.location.origin}/dashboard`,
+        data: { full_name: fullName },
+      },
+    });
+    setIsSubmitting(false);
+    if (error) {
+      toast.error(error.message);
+      return;
+    }
+    toast.success("Account created! Check your email to confirm.");
+    window.location.href = "/dashboard";
+  };
+
+  const handleGoogle = async () => {
+    const result = await lovable.auth.signInWithOAuth("google", {
+      redirect_uri: window.location.origin + "/dashboard",
+    });
+    if (result.error) {
+      toast.error(result.error.message ?? "Google sign-in failed");
+      return;
+    }
+    if (result.redirected) return;
+    window.location.href = "/dashboard";
   };
 
   return (
@@ -216,6 +242,7 @@ function RegisterPage() {
                 {/* Google Button */}
                 <button
                   type="button"
+                  onClick={handleGoogle}
                   className="w-full py-3 rounded-xl bg-white/5 border border-white/10 text-foreground font-medium text-sm hover:bg-white/10 hover:border-neon/20 transition-all flex items-center justify-center gap-3"
                 >
                   <svg className="h-5 w-5" viewBox="0 0 24 24">
