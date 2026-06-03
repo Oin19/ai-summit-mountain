@@ -3,14 +3,16 @@ import { Menu, X, Mountain } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 
 const links = [
-  { href: "#home", label: "Home" },
-  { href: "#features", label: "Features" },
-  { href: "#how", label: "How It Works" },
-  { href: "#tech", label: "Technology" },
-  { href: "#emergency", label: "Emergency" },
-  { href: "#future", label: "Future Scope" },
-  { href: "#contact", label: "Contact" },
+  { href: "/#home", label: "Home" },
+  { href: "/#features", label: "Features" },
+  { href: "/#how", label: "How It Works" },
+  { href: "/#tech", label: "Technology" },
+  { href: "/triage", label: "Triage" },
+  { href: "/#emergency", label: "Emergency" },
+  { href: "/#future", label: "Future Scope" },
+  { href: "/#contact", label: "Contact" },
 ];
+
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
