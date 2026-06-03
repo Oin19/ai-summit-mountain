@@ -123,7 +123,7 @@ function RootComponent() {
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
       <Outlet />
       <ClientOnly fallback={null}>
-        {() => <Toaster theme="dark" position="top-center" richColors />}
+        <Toaster theme="dark" position="top-center" richColors />
       </ClientOnly>
     </QueryClientProvider>
   );
