@@ -2,6 +2,9 @@ import { useState, useCallback } from "react";
 import { Link, createFileRoute } from "@tanstack/react-router";
 import { AuthBackground } from "@/components/AuthBackground";
 import { Mountain, Eye, EyeOff, Mail, Lock, ArrowRight } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
+import { lovable } from "@/integrations/lovable/index";
+import { toast } from "sonner";
 
 export const Route = createFileRoute("/login")({
   head: () => ({
@@ -33,15 +36,29 @@ function LoginPage() {
     return Object.keys(newErrors).length === 0;
   }, [email, password]);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!validate()) return;
     setIsSubmitting(true);
-    // Simulate login then redirect
-    setTimeout(() => {
-      setIsSubmitting(false);
-      window.location.href = "/dashboard";
-    }, 800);
+    const { error } = await supabase.auth.signInWithPassword({ email, password });
+    setIsSubmitting(false);
+    if (error) {
+      toast.error(error.message);
+      return;
+    }
+    window.location.href = "/dashboard";
+  };
+
+  const handleGoogle = async () => {
+    const result = await lovable.auth.signInWithOAuth("google", {
+      redirect_uri: window.location.origin + "/dashboard",
+    });
+    if (result.error) {
+      toast.error(result.error.message ?? "Google sign-in failed");
+      return;
+    }
+    if (result.redirected) return;
+    window.location.href = "/dashboard";
   };
 
   return (
