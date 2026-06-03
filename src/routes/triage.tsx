@@ -17,7 +17,7 @@ import {
 } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
-import { AuthBackground } from "@/components/AuthBackground";
+
 import { toast } from "sonner";
 
 export const Route = createFileRoute("/triage")({
@@ -290,8 +290,10 @@ function TriagePage() {
   const firstAidList = answers.injury ? FIRST_AID[answers.injury] ?? FIRST_AID.Other : [];
 
   return (
-    <div className="relative min-h-screen overflow-hidden">
-      <AuthBackground />
+    <div className="relative min-h-screen overflow-hidden bg-background">
+      <div className="absolute inset-0 grid-bg opacity-20 pointer-events-none" />
+      <div className="absolute inset-0 topo-bg pointer-events-none" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] rounded-full bg-neon/10 blur-3xl pointer-events-none" />
       <Navbar />
 
       <main className="relative z-10 pt-32 pb-20">
