@@ -1544,8 +1544,94 @@ function TriagePage() {
                       v={sosSent ? t.ui.sosSentShort : t.ui.awaitingDispatch}
                       valueClass={sosSent ? "text-emerald-300" : "text-yellow-300"}
                     />
-                  </div>
                 </div>
+              </div>
+
+              <div className="glass-strong rounded-3xl p-6 border border-white/10">
+                <div className="flex items-center justify-between mb-4">
+                  <div className="flex items-center gap-2">
+                    <Cloud className="h-4 w-4 text-neon" />
+                    <span className="text-xs uppercase tracking-wider text-muted-foreground font-semibold">
+                      Live Weather & Hazards
+                    </span>
+                    {weatherStatus === "ok" && (
+                      <span className="flex items-center gap-1 text-[10px] text-emerald-300 ml-1">
+                        <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                        LIVE
+                      </span>
+                    )}
+                  </div>
+                  {weatherStatus === "loading" && (
+                    <Loader2 className="h-3.5 w-3.5 text-neon animate-spin" />
+                  )}
+                </div>
+
+                {!weather && weatherStatus !== "error" && (
+                  <p className="text-xs text-muted-foreground">
+                    {geoStatus === "ok" ? "Fetching current conditions…" : "Waiting for GPS lock to fetch weather…"}
+                  </p>
+                )}
+                {weatherStatus === "error" && (
+                  <p className="text-xs text-yellow-300">Weather service unreachable. Retry from GPS card.</p>
+                )}
+
+                {weather && (
+                  <>
+                    <div className="grid grid-cols-2 gap-2 mb-4">
+                      <div className="rounded-2xl border border-white/10 bg-white/5 p-3">
+                        <div className="flex items-center gap-1.5 text-[10px] uppercase tracking-wider text-muted-foreground">
+                          <Thermometer className="h-3 w-3" /> Temp
+                        </div>
+                        <p className="text-lg font-semibold mt-0.5">{Math.round(weather.tempC)}°C</p>
+                        <p className="text-[10px] text-muted-foreground">feels {Math.round(weather.feelsC)}°C</p>
+                      </div>
+                      <div className="rounded-2xl border border-white/10 bg-white/5 p-3">
+                        <div className="flex items-center gap-1.5 text-[10px] uppercase tracking-wider text-muted-foreground">
+                          <Wind className="h-3 w-3" /> Wind
+                        </div>
+                        <p className="text-lg font-semibold mt-0.5">{Math.round(weather.windKmh)} <span className="text-xs font-normal">km/h</span></p>
+                        <p className="text-[10px] text-muted-foreground">{weather.windDir}°</p>
+                      </div>
+                      <div className="rounded-2xl border border-white/10 bg-white/5 p-3">
+                        <div className="flex items-center gap-1.5 text-[10px] uppercase tracking-wider text-muted-foreground">
+                          <Cloud className="h-3 w-3" /> Sky
+                        </div>
+                        <p className="text-sm font-semibold mt-0.5 leading-tight">{weather.description}</p>
+                        <p className="text-[10px] text-muted-foreground">{weather.isDay ? "Daytime" : "Night"}</p>
+                      </div>
+                      <div className="rounded-2xl border border-white/10 bg-white/5 p-3">
+                        <div className="flex items-center gap-1.5 text-[10px] uppercase tracking-wider text-muted-foreground">
+                          <Eye className="h-3 w-3" /> Precip
+                        </div>
+                        <p className="text-lg font-semibold mt-0.5">{weather.precipMm} <span className="text-xs font-normal">mm</span></p>
+                        <p className="text-[10px] text-muted-foreground">humidity {weather.humidity}%</p>
+                      </div>
+                    </div>
+
+                    <div className="space-y-2">
+                      <div className="text-[10px] uppercase tracking-wider text-muted-foreground font-semibold flex items-center gap-1.5">
+                        <AlertTriangle className="h-3 w-3 text-neon" /> Hazard alerts
+                      </div>
+                      {hazards.map((h, i) => {
+                        const tone =
+                          h.level === "danger"
+                            ? "border-red-500/30 bg-red-500/10 text-red-200"
+                            : h.level === "warning"
+                              ? "border-yellow-500/30 bg-yellow-500/10 text-yellow-200"
+                              : "border-emerald-500/30 bg-emerald-500/10 text-emerald-200";
+                        return (
+                          <div key={i} className={`rounded-xl border ${tone} p-2.5`}>
+                            <p className="text-xs font-semibold">{h.title}</p>
+                            <p className="text-[11px] opacity-90 mt-0.5">{h.detail}</p>
+                          </div>
+                        );
+                      })}
+                      <p className="text-[10px] text-muted-foreground pt-1">
+                        Updated {weather.updatedAt} • Source: Open-Meteo
+                      </p>
+                    </div>
+                  </>
+                )}
               )}
 
               {!isDone && (
