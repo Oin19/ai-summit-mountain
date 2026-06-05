@@ -1399,12 +1399,36 @@ function TriagePage() {
               </div>
 
               <div className="glass-strong rounded-3xl p-6 border border-white/10">
-                <div className="flex items-center gap-2 mb-4">
-                  <MapPin className="h-4 w-4 text-neon" />
-                  <span className="text-xs uppercase tracking-wider text-muted-foreground font-semibold">
-                    {t.ui.liveGps}
-                  </span>
+                <div className="flex items-center justify-between mb-4">
+                  <div className="flex items-center gap-2">
+                    <MapPin className="h-4 w-4 text-neon" />
+                    <span className="text-xs uppercase tracking-wider text-muted-foreground font-semibold">
+                      {t.ui.liveGps}
+                    </span>
+                    {geoStatus === "ok" && (
+                      <span className="flex items-center gap-1 text-[10px] text-emerald-300 ml-1">
+                        <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                        LIVE
+                      </span>
+                    )}
+                  </div>
+                  <button
+                    onClick={fetchLocation}
+                    className="text-[10px] uppercase tracking-wider text-neon hover:text-neon/80"
+                  >
+                    {geoStatus === "loading" ? "…" : "Refresh"}
+                  </button>
                 </div>
+                {geoStatus === "denied" && (
+                  <div className="mb-3 text-[11px] text-yellow-300 bg-yellow-500/10 border border-yellow-500/20 rounded-lg p-2">
+                    Location permission denied. Enable GPS access in your browser to share real coordinates with rescue.
+                  </div>
+                )}
+                {geoStatus === "unavailable" && (
+                  <div className="mb-3 text-[11px] text-yellow-300 bg-yellow-500/10 border border-yellow-500/20 rounded-lg p-2">
+                    GPS unavailable on this device.
+                  </div>
+                )}
                 <div className="aspect-video rounded-2xl mb-4 relative overflow-hidden border border-white/10 bg-gradient-to-br from-primary/20 to-background">
                   <div className="absolute inset-0 opacity-30 bg-[radial-gradient(circle_at_50%_50%,hsl(var(--neon))_0%,transparent_60%)]" />
                   <Mountain className="absolute bottom-3 right-3 h-10 w-10 text-neon/60" />
