@@ -1,4 +1,4 @@
-import { Mountain } from "lucide-react";
+import logoAsset from "@/assets/ai-summit-logo.png.asset.json";
 
 const links = [
   { href: "#features", label: "Features" },
