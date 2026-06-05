@@ -1635,7 +1635,8 @@ function TriagePage() {
                     </div>
                   </>
                 )}
-              )}
+              </div>
+
 
               {!isDone && (
                 <div className="glass rounded-2xl p-4 border border-white/10 flex items-center gap-3 text-xs text-muted-foreground">
