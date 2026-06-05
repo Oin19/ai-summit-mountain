@@ -714,12 +714,24 @@ const SEVERITY_STYLES: Record<SeverityKey, { bg: string; text: string; ring: str
   Critical: { bg: "bg-red-500/15", text: "text-red-300", ring: "ring-red-400/40", dot: "bg-red-400" },
 };
 
-const LOCATION = {
-  lat: "28.5983° N",
-  lng: "83.8200° E",
-  elevation: "4,130 m",
-  shelter: "Machapuchare Base Camp (1.8 km)",
-  route: "Mountain Route A — Annapurna Trail",
+type LiveLocation = {
+  lat: string;
+  lng: string;
+  elevation: string;
+  shelter: string;
+  route: string;
+  accuracy: string;
+  updatedAt: string;
+};
+
+const DEFAULT_LOCATION: LiveLocation = {
+  lat: "Acquiring…",
+  lng: "Acquiring…",
+  elevation: "Acquiring…",
+  shelter: "Resolving nearest place…",
+  route: "Awaiting GPS lock",
+  accuracy: "—",
+  updatedAt: "—",
 };
 
 const INJURY_KEYS: InjuryKey[] = [
@@ -800,6 +812,74 @@ function TriagePage() {
   const [listening, setListening] = useState(false);
   const recogRef = useRef<SpeechRec | null>(null);
   const lastSpokenStepRef = useRef<string>("");
+
+  const [location, setLocation] = useState<LiveLocation>(DEFAULT_LOCATION);
+  const [geoStatus, setGeoStatus] = useState<"idle" | "loading" | "ok" | "denied" | "unavailable">("idle");
+
+  const fetchLocation = useCallback(() => {
+    if (typeof window === "undefined" || !("geolocation" in navigator)) {
+      setGeoStatus("unavailable");
+      return;
+    }
+    setGeoStatus("loading");
+    navigator.geolocation.getCurrentPosition(
+      async (pos) => {
+        const { latitude, longitude, accuracy } = pos.coords;
+        const latStr = `${Math.abs(latitude).toFixed(4)}° ${latitude >= 0 ? "N" : "S"}`;
+        const lngStr = `${Math.abs(longitude).toFixed(4)}° ${longitude >= 0 ? "E" : "W"}`;
+        setLocation((prev) => ({
+          ...prev,
+          lat: latStr,
+          lng: lngStr,
+          accuracy: `±${Math.round(accuracy)} m`,
+          updatedAt: new Date().toLocaleTimeString(),
+        }));
+        setGeoStatus("ok");
+
+        // Reverse geocode (OpenStreetMap Nominatim — no API key required)
+        try {
+          const r = await fetch(
+            `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${latitude}&lon=${longitude}&zoom=14`,
+            { headers: { "Accept-Language": "en" } },
+          );
+          if (r.ok) {
+            const d: { display_name?: string; address?: Record<string, string> } = await r.json();
+            const a = d.address ?? {};
+            const place =
+              a.village || a.town || a.city || a.hamlet || a.suburb || a.county || a.state || d.display_name || "Unknown area";
+            const region = [a.state, a.country].filter(Boolean).join(", ");
+            setLocation((prev) => ({
+              ...prev,
+              shelter: place,
+              route: region ? `${place} — ${region}` : place,
+            }));
+          }
+        } catch { /* ignore */ }
+
+        // Elevation via Open-Elevation (free, no key)
+        try {
+          const r = await fetch(
+            `https://api.open-elevation.com/api/v1/lookup?locations=${latitude},${longitude}`,
+          );
+          if (r.ok) {
+            const d: { results?: { elevation: number }[] } = await r.json();
+            const el = d.results?.[0]?.elevation;
+            if (typeof el === "number") {
+              setLocation((prev) => ({ ...prev, elevation: `${Math.round(el).toLocaleString()} m` }));
+            }
+          }
+        } catch { /* ignore */ }
+      },
+      (err) => {
+        setGeoStatus(err.code === err.PERMISSION_DENIED ? "denied" : "unavailable");
+      },
+      { enableHighAccuracy: true, timeout: 15000, maximumAge: 30000 },
+    );
+  }, []);
+
+  useEffect(() => {
+    fetchLocation();
+  }, [fetchLocation]);
 
   const step = STEPS[stepIndex];
   const progress = (stepIndex / (STEPS.length - 1)) * 100;
@@ -1311,7 +1391,7 @@ function TriagePage() {
                         <Row k={t.ui.emergencyId} v={sosSent.id} />
                         <Row k={t.ui.timeReported} v={sosSent.time} />
                         <Row k={t.ui.status} v={t.ui.rescueNotified} valueClass="text-emerald-300" />
-                        <Row k={t.ui.location} v={LOCATION.route} />
+                        <Row k={t.ui.location} v={location.route} />
                       </div>
                     </div>
                   )}
@@ -1319,12 +1399,36 @@ function TriagePage() {
               </div>
 
               <div className="glass-strong rounded-3xl p-6 border border-white/10">
-                <div className="flex items-center gap-2 mb-4">
-                  <MapPin className="h-4 w-4 text-neon" />
-                  <span className="text-xs uppercase tracking-wider text-muted-foreground font-semibold">
-                    {t.ui.liveGps}
-                  </span>
+                <div className="flex items-center justify-between mb-4">
+                  <div className="flex items-center gap-2">
+                    <MapPin className="h-4 w-4 text-neon" />
+                    <span className="text-xs uppercase tracking-wider text-muted-foreground font-semibold">
+                      {t.ui.liveGps}
+                    </span>
+                    {geoStatus === "ok" && (
+                      <span className="flex items-center gap-1 text-[10px] text-emerald-300 ml-1">
+                        <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                        LIVE
+                      </span>
+                    )}
+                  </div>
+                  <button
+                    onClick={fetchLocation}
+                    className="text-[10px] uppercase tracking-wider text-neon hover:text-neon/80"
+                  >
+                    {geoStatus === "loading" ? "…" : "Refresh"}
+                  </button>
                 </div>
+                {geoStatus === "denied" && (
+                  <div className="mb-3 text-[11px] text-yellow-300 bg-yellow-500/10 border border-yellow-500/20 rounded-lg p-2">
+                    Location permission denied. Enable GPS access in your browser to share real coordinates with rescue.
+                  </div>
+                )}
+                {geoStatus === "unavailable" && (
+                  <div className="mb-3 text-[11px] text-yellow-300 bg-yellow-500/10 border border-yellow-500/20 rounded-lg p-2">
+                    GPS unavailable on this device.
+                  </div>
+                )}
                 <div className="aspect-video rounded-2xl mb-4 relative overflow-hidden border border-white/10 bg-gradient-to-br from-primary/20 to-background">
                   <div className="absolute inset-0 opacity-30 bg-[radial-gradient(circle_at_50%_50%,hsl(var(--neon))_0%,transparent_60%)]" />
                   <Mountain className="absolute bottom-3 right-3 h-10 w-10 text-neon/60" />
@@ -1334,10 +1438,12 @@ function TriagePage() {
                   </div>
                 </div>
                 <div className="space-y-2 text-xs">
-                  <Row k={t.ui.latitude} v={LOCATION.lat} />
-                  <Row k={t.ui.longitude} v={LOCATION.lng} />
-                  <Row k={t.ui.elevation} v={LOCATION.elevation} />
-                  <Row k={t.ui.nearestShelter} v={LOCATION.shelter} />
+                  <Row k={t.ui.latitude} v={location.lat} />
+                  <Row k={t.ui.longitude} v={location.lng} />
+                  <Row k={t.ui.elevation} v={location.elevation} />
+                  <Row k={t.ui.nearestShelter} v={location.shelter} />
+                  <Row k="Accuracy" v={location.accuracy} />
+                  <Row k="Updated" v={location.updatedAt} />
                 </div>
               </div>
 
@@ -1355,7 +1461,7 @@ function TriagePage() {
                     <Row k={t.ui.painLevel} v={`${answers.pain ?? 0}/10`} />
                     <Row k={t.ui.canWalk} v={answers.mobility ? t.mobility[answers.mobility] : "—"} />
                     <Row k={t.ui.severity} v={t.severities[severity]} valueClass={styles.text} />
-                    <Row k={t.ui.location} v={LOCATION.route} />
+                    <Row k={t.ui.location} v={location.route} />
                     <Row
                       k={t.ui.status}
                       v={sosSent ? t.ui.sosSentShort : t.ui.awaitingDispatch}
