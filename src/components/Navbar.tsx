@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-import { Menu, X, Mountain } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { Link } from "@tanstack/react-router";
+import logoAsset from "@/assets/ai-summit-logo.png.asset.json";
 
 const links = [
   { href: "/#home", label: "Home" },
@@ -28,14 +29,18 @@ export function Navbar() {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? "glass-strong py-3" : "py-5"
+        scrolled ? "bg-background/95 backdrop-blur-xl border-b border-white/10 py-3" : "py-5"
       }`}
     >
       <nav className="container mx-auto flex items-center justify-between px-6">
         <a href="#home" className="flex items-center gap-2 group">
           <div className="relative">
-            <Mountain className="h-7 w-7 text-neon transition-transform group-hover:scale-110" />
-            <div className="absolute inset-0 blur-md bg-neon/40 rounded-full" />
+            <img
+              src={logoAsset.url}
+              alt="AI to the Summit logo"
+              className="h-9 w-9 rounded-full object-cover transition-transform group-hover:scale-110"
+            />
+            <div className="absolute inset-0 blur-md bg-neon/30 rounded-full -z-10" />
           </div>
           <span className="font-display text-lg font-bold tracking-tight">
             AI to the <span className="text-gradient">Summit</span>
@@ -81,7 +86,7 @@ export function Navbar() {
       </nav>
 
       {open && (
-        <div className="lg:hidden glass-strong mt-3 mx-4 rounded-2xl p-4 animate-[fade-up_0.3s_ease-out]">
+        <div className="lg:hidden bg-background border border-white/15 shadow-2xl mt-3 mx-4 rounded-2xl p-4 animate-[fade-up_0.3s_ease-out]">
           <ul className="flex flex-col gap-1">
             {links.map((l) => (
               <li key={l.href}>

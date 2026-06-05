@@ -1,7 +1,8 @@
 import { useState, useCallback } from "react";
 import { Link, createFileRoute } from "@tanstack/react-router";
 import { AuthBackground } from "@/components/AuthBackground";
-import { Mountain, Eye, EyeOff, Mail, Lock, User, ArrowRight } from "lucide-react";
+import { Eye, EyeOff, Mail, Lock, User, ArrowRight } from "lucide-react";
+import logoAsset from "@/assets/ai-summit-logo.png.asset.json";
 import { supabase } from "@/integrations/supabase/client";
 import { lovable } from "@/integrations/lovable/index";
 import { toast } from "sonner";
@@ -85,9 +86,11 @@ function RegisterPage() {
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 bg-neon/10 rounded-full blur-3xl pointer-events-none" />
 
               <div className="relative">
-                <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-neon/20 to-neon/5 border border-neon/20 flex items-center justify-center mb-6 mx-auto">
-                  <Mountain className="h-10 w-10 text-neon" />
-                </div>
+                <img
+                  src={logoAsset.url}
+                  alt="AI to the Summit logo"
+                  className="w-24 h-24 rounded-2xl object-cover mb-6 mx-auto border border-neon/30 shadow-[0_0_40px_rgba(34,211,238,0.25)]"
+                />
                 <h1 className="font-display text-2xl lg:text-3xl font-bold text-foreground mb-2">
                   AI to the <span className="text-gradient">Summit</span>
                 </h1>
