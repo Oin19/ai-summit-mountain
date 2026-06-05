@@ -813,6 +813,74 @@ function TriagePage() {
   const recogRef = useRef<SpeechRec | null>(null);
   const lastSpokenStepRef = useRef<string>("");
 
+  const [location, setLocation] = useState<LiveLocation>(DEFAULT_LOCATION);
+  const [geoStatus, setGeoStatus] = useState<"idle" | "loading" | "ok" | "denied" | "unavailable">("idle");
+
+  const fetchLocation = useCallback(() => {
+    if (typeof window === "undefined" || !("geolocation" in navigator)) {
+      setGeoStatus("unavailable");
+      return;
+    }
+    setGeoStatus("loading");
+    navigator.geolocation.getCurrentPosition(
+      async (pos) => {
+        const { latitude, longitude, accuracy } = pos.coords;
+        const latStr = `${Math.abs(latitude).toFixed(4)}° ${latitude >= 0 ? "N" : "S"}`;
+        const lngStr = `${Math.abs(longitude).toFixed(4)}° ${longitude >= 0 ? "E" : "W"}`;
+        setLocation((prev) => ({
+          ...prev,
+          lat: latStr,
+          lng: lngStr,
+          accuracy: `±${Math.round(accuracy)} m`,
+          updatedAt: new Date().toLocaleTimeString(),
+        }));
+        setGeoStatus("ok");
+
+        // Reverse geocode (OpenStreetMap Nominatim — no API key required)
+        try {
+          const r = await fetch(
+            `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${latitude}&lon=${longitude}&zoom=14`,
+            { headers: { "Accept-Language": "en" } },
+          );
+          if (r.ok) {
+            const d: { display_name?: string; address?: Record<string, string> } = await r.json();
+            const a = d.address ?? {};
+            const place =
+              a.village || a.town || a.city || a.hamlet || a.suburb || a.county || a.state || d.display_name || "Unknown area";
+            const region = [a.state, a.country].filter(Boolean).join(", ");
+            setLocation((prev) => ({
+              ...prev,
+              shelter: place,
+              route: region ? `${place} — ${region}` : place,
+            }));
+          }
+        } catch { /* ignore */ }
+
+        // Elevation via Open-Elevation (free, no key)
+        try {
+          const r = await fetch(
+            `https://api.open-elevation.com/api/v1/lookup?locations=${latitude},${longitude}`,
+          );
+          if (r.ok) {
+            const d: { results?: { elevation: number }[] } = await r.json();
+            const el = d.results?.[0]?.elevation;
+            if (typeof el === "number") {
+              setLocation((prev) => ({ ...prev, elevation: `${Math.round(el).toLocaleString()} m` }));
+            }
+          }
+        } catch { /* ignore */ }
+      },
+      (err) => {
+        setGeoStatus(err.code === err.PERMISSION_DENIED ? "denied" : "unavailable");
+      },
+      { enableHighAccuracy: true, timeout: 15000, maximumAge: 30000 },
+    );
+  }, []);
+
+  useEffect(() => {
+    fetchLocation();
+  }, [fetchLocation]);
+
   const step = STEPS[stepIndex];
   const progress = (stepIndex / (STEPS.length - 1)) * 100;
   const severity = useMemo(() => computeSeverity(answers), [answers]);
