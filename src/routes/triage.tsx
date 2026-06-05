@@ -1544,8 +1544,11 @@ function TriagePage() {
                       v={sosSent ? t.ui.sosSentShort : t.ui.awaitingDispatch}
                       valueClass={sosSent ? "text-emerald-300" : "text-yellow-300"}
                     />
+                  </div>
                 </div>
-              </div>
+              )}
+
+
 
               <div className="glass-strong rounded-3xl p-6 border border-white/10">
                 <div className="flex items-center justify-between mb-4">
