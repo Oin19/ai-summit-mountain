@@ -23,6 +23,10 @@ import {
   MessageSquare,
   ShieldAlert,
   Stethoscope,
+  Cloud,
+  Wind,
+  Thermometer,
+  Eye,
 } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
