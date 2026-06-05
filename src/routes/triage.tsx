@@ -820,6 +820,58 @@ function TriagePage() {
   const [location, setLocation] = useState<LiveLocation>(DEFAULT_LOCATION);
   const [geoStatus, setGeoStatus] = useState<"idle" | "loading" | "ok" | "denied" | "unavailable">("idle");
 
+  type Weather = {
+    tempC: number;
+    feelsC: number;
+    windKmh: number;
+    windDir: number;
+    humidity: number;
+    precipMm: number;
+    code: number;
+    description: string;
+    isDay: boolean;
+    updatedAt: string;
+  };
+  const [weather, setWeather] = useState<Weather | null>(null);
+  const [weatherStatus, setWeatherStatus] = useState<"idle" | "loading" | "ok" | "error">("idle");
+
+  const fetchWeather = useCallback(async (lat: number, lon: number) => {
+    setWeatherStatus("loading");
+    try {
+      const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,apparent_temperature,relative_humidity_2m,precipitation,weather_code,wind_speed_10m,wind_direction_10m,is_day&wind_speed_unit=kmh&timezone=auto`;
+      const r = await fetch(url);
+      if (!r.ok) throw new Error("weather fetch failed");
+      const d = await r.json();
+      const c = d.current;
+      const codeMap: Record<number, string> = {
+        0: "Clear sky", 1: "Mainly clear", 2: "Partly cloudy", 3: "Overcast",
+        45: "Fog", 48: "Rime fog",
+        51: "Light drizzle", 53: "Drizzle", 55: "Heavy drizzle",
+        61: "Light rain", 63: "Rain", 65: "Heavy rain",
+        66: "Freezing rain", 67: "Heavy freezing rain",
+        71: "Light snow", 73: "Snow", 75: "Heavy snow", 77: "Snow grains",
+        80: "Rain showers", 81: "Heavy showers", 82: "Violent showers",
+        85: "Snow showers", 86: "Heavy snow showers",
+        95: "Thunderstorm", 96: "Thunderstorm w/ hail", 99: "Severe thunderstorm",
+      };
+      setWeather({
+        tempC: c.temperature_2m,
+        feelsC: c.apparent_temperature,
+        windKmh: c.wind_speed_10m,
+        windDir: c.wind_direction_10m,
+        humidity: c.relative_humidity_2m,
+        precipMm: c.precipitation,
+        code: c.weather_code,
+        description: codeMap[c.weather_code] ?? "Unknown",
+        isDay: c.is_day === 1,
+        updatedAt: new Date().toLocaleTimeString(),
+      });
+      setWeatherStatus("ok");
+    } catch {
+      setWeatherStatus("error");
+    }
+  }, []);
+
   const fetchLocation = useCallback(() => {
     if (typeof window === "undefined" || !("geolocation" in navigator)) {
       setGeoStatus("unavailable");
@@ -839,6 +891,8 @@ function TriagePage() {
           updatedAt: new Date().toLocaleTimeString(),
         }));
         setGeoStatus("ok");
+
+        void fetchWeather(latitude, longitude);
 
         // Reverse geocode (OpenStreetMap Nominatim — no API key required)
         try {
@@ -879,11 +933,30 @@ function TriagePage() {
       },
       { enableHighAccuracy: true, timeout: 15000, maximumAge: 30000 },
     );
-  }, []);
+  }, [fetchWeather]);
 
   useEffect(() => {
     fetchLocation();
   }, [fetchLocation]);
+
+  // Derive hazard alerts from live weather + elevation
+  const hazards = useMemo(() => {
+    const list: { level: "info" | "warning" | "danger"; title: string; detail: string }[] = [];
+    if (!weather) return list;
+    const elNum = parseInt(location.elevation.replace(/[^\d-]/g, ""), 10);
+    if (weather.feelsC <= -10) list.push({ level: "danger", title: "Severe cold — hypothermia risk", detail: `Feels like ${Math.round(weather.feelsC)}°C. Shelter and insulate immediately.` });
+    else if (weather.feelsC <= 0) list.push({ level: "warning", title: "Freezing conditions", detail: `Feels like ${Math.round(weather.feelsC)}°C. Watch for frostbite on exposed skin.` });
+    if (weather.windKmh >= 60) list.push({ level: "danger", title: "Dangerous winds", detail: `${Math.round(weather.windKmh)} km/h winds. Avalanche & exposure risk — descend or shelter.` });
+    else if (weather.windKmh >= 35) list.push({ level: "warning", title: "Strong winds", detail: `${Math.round(weather.windKmh)} km/h winds — wind chill and balance hazard.` });
+    if ([95, 96, 99].includes(weather.code)) list.push({ level: "danger", title: "Thunderstorm active", detail: "Descend ridges and peaks immediately. Avoid exposed terrain." });
+    if ([71, 73, 75, 77, 85, 86].includes(weather.code)) list.push({ level: "warning", title: "Snowfall in progress", detail: "Reduced visibility and elevated avalanche risk on slopes." });
+    if ([45, 48].includes(weather.code)) list.push({ level: "warning", title: "Fog — low visibility", detail: "Stay on marked trails. Navigation difficulty." });
+    if (weather.precipMm >= 5) list.push({ level: "warning", title: "Heavy precipitation", detail: `${weather.precipMm} mm/h — hypothermia and rockfall risk.` });
+    if (!Number.isNaN(elNum) && elNum >= 3500) list.push({ level: "warning", title: "High altitude zone", detail: `${elNum.toLocaleString()} m — monitor for AMS, HAPE, HACE symptoms.` });
+    if (!Number.isNaN(elNum) && elNum >= 5000) list.push({ level: "danger", title: "Extreme altitude", detail: "Acute mountain sickness highly likely. Descend if symptomatic." });
+    if (list.length === 0) list.push({ level: "info", title: "Conditions nominal", detail: "No active hazards detected for your location." });
+    return list;
+  }, [weather, location.elevation]);
 
   const step = STEPS[stepIndex];
   const progress = (stepIndex / (STEPS.length - 1)) * 100;
