@@ -1,4 +1,4 @@
-import { Mountain } from "lucide-react";
+import logoAsset from "@/assets/ai-summit-logo.png.asset.json";
 
 export function AuthBackground({ children }: { children: React.ReactNode }) {
   return (
