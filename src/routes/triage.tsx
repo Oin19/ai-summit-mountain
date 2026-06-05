@@ -714,12 +714,24 @@ const SEVERITY_STYLES: Record<SeverityKey, { bg: string; text: string; ring: str
   Critical: { bg: "bg-red-500/15", text: "text-red-300", ring: "ring-red-400/40", dot: "bg-red-400" },
 };
 
-const LOCATION = {
-  lat: "28.5983° N",
-  lng: "83.8200° E",
-  elevation: "4,130 m",
-  shelter: "Machapuchare Base Camp (1.8 km)",
-  route: "Mountain Route A — Annapurna Trail",
+type LiveLocation = {
+  lat: string;
+  lng: string;
+  elevation: string;
+  shelter: string;
+  route: string;
+  accuracy: string;
+  updatedAt: string;
+};
+
+const DEFAULT_LOCATION: LiveLocation = {
+  lat: "Acquiring…",
+  lng: "Acquiring…",
+  elevation: "Acquiring…",
+  shelter: "Resolving nearest place…",
+  route: "Awaiting GPS lock",
+  accuracy: "—",
+  updatedAt: "—",
 };
 
 const INJURY_KEYS: InjuryKey[] = [
