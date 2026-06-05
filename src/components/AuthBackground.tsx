@@ -1,4 +1,4 @@
-import { Mountain } from "lucide-react";
+import logoAsset from "@/assets/ai-summit-logo.png.asset.json";
 
 export function AuthBackground({ children }: { children: React.ReactNode }) {
   return (
@@ -38,7 +38,7 @@ export function AuthBackground({ children }: { children: React.ReactNode }) {
         href="/"
         className="fixed top-6 left-6 z-50 flex items-center gap-2 group glass px-4 py-2 rounded-full hover:glow-soft transition-all"
       >
-        <Mountain className="h-5 w-5 text-neon transition-transform group-hover:scale-110" />
+        <img src={logoAsset.url} alt="AI to the Summit logo" className="h-5 w-5 rounded-full object-cover transition-transform group-hover:scale-110" />
         <span className="font-display text-sm font-semibold text-foreground">
           AI to the <span className="text-gradient">Summit</span>
         </span>

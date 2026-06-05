@@ -23,6 +23,10 @@ import {
   MessageSquare,
   ShieldAlert,
   Stethoscope,
+  Cloud,
+  Wind,
+  Thermometer,
+  Eye,
 } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
@@ -816,6 +820,58 @@ function TriagePage() {
   const [location, setLocation] = useState<LiveLocation>(DEFAULT_LOCATION);
   const [geoStatus, setGeoStatus] = useState<"idle" | "loading" | "ok" | "denied" | "unavailable">("idle");
 
+  type Weather = {
+    tempC: number;
+    feelsC: number;
+    windKmh: number;
+    windDir: number;
+    humidity: number;
+    precipMm: number;
+    code: number;
+    description: string;
+    isDay: boolean;
+    updatedAt: string;
+  };
+  const [weather, setWeather] = useState<Weather | null>(null);
+  const [weatherStatus, setWeatherStatus] = useState<"idle" | "loading" | "ok" | "error">("idle");
+
+  const fetchWeather = useCallback(async (lat: number, lon: number) => {
+    setWeatherStatus("loading");
+    try {
+      const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,apparent_temperature,relative_humidity_2m,precipitation,weather_code,wind_speed_10m,wind_direction_10m,is_day&wind_speed_unit=kmh&timezone=auto`;
+      const r = await fetch(url);
+      if (!r.ok) throw new Error("weather fetch failed");
+      const d = await r.json();
+      const c = d.current;
+      const codeMap: Record<number, string> = {
+        0: "Clear sky", 1: "Mainly clear", 2: "Partly cloudy", 3: "Overcast",
+        45: "Fog", 48: "Rime fog",
+        51: "Light drizzle", 53: "Drizzle", 55: "Heavy drizzle",
+        61: "Light rain", 63: "Rain", 65: "Heavy rain",
+        66: "Freezing rain", 67: "Heavy freezing rain",
+        71: "Light snow", 73: "Snow", 75: "Heavy snow", 77: "Snow grains",
+        80: "Rain showers", 81: "Heavy showers", 82: "Violent showers",
+        85: "Snow showers", 86: "Heavy snow showers",
+        95: "Thunderstorm", 96: "Thunderstorm w/ hail", 99: "Severe thunderstorm",
+      };
+      setWeather({
+        tempC: c.temperature_2m,
+        feelsC: c.apparent_temperature,
+        windKmh: c.wind_speed_10m,
+        windDir: c.wind_direction_10m,
+        humidity: c.relative_humidity_2m,
+        precipMm: c.precipitation,
+        code: c.weather_code,
+        description: codeMap[c.weather_code] ?? "Unknown",
+        isDay: c.is_day === 1,
+        updatedAt: new Date().toLocaleTimeString(),
+      });
+      setWeatherStatus("ok");
+    } catch {
+      setWeatherStatus("error");
+    }
+  }, []);
+
   const fetchLocation = useCallback(() => {
     if (typeof window === "undefined" || !("geolocation" in navigator)) {
       setGeoStatus("unavailable");
@@ -835,6 +891,8 @@ function TriagePage() {
           updatedAt: new Date().toLocaleTimeString(),
         }));
         setGeoStatus("ok");
+
+        void fetchWeather(latitude, longitude);
 
         // Reverse geocode (OpenStreetMap Nominatim — no API key required)
         try {
@@ -875,11 +933,30 @@ function TriagePage() {
       },
       { enableHighAccuracy: true, timeout: 15000, maximumAge: 30000 },
     );
-  }, []);
+  }, [fetchWeather]);
 
   useEffect(() => {
     fetchLocation();
   }, [fetchLocation]);
+
+  // Derive hazard alerts from live weather + elevation
+  const hazards = useMemo(() => {
+    const list: { level: "info" | "warning" | "danger"; title: string; detail: string }[] = [];
+    if (!weather) return list;
+    const elNum = parseInt(location.elevation.replace(/[^\d-]/g, ""), 10);
+    if (weather.feelsC <= -10) list.push({ level: "danger", title: "Severe cold — hypothermia risk", detail: `Feels like ${Math.round(weather.feelsC)}°C. Shelter and insulate immediately.` });
+    else if (weather.feelsC <= 0) list.push({ level: "warning", title: "Freezing conditions", detail: `Feels like ${Math.round(weather.feelsC)}°C. Watch for frostbite on exposed skin.` });
+    if (weather.windKmh >= 60) list.push({ level: "danger", title: "Dangerous winds", detail: `${Math.round(weather.windKmh)} km/h winds. Avalanche & exposure risk — descend or shelter.` });
+    else if (weather.windKmh >= 35) list.push({ level: "warning", title: "Strong winds", detail: `${Math.round(weather.windKmh)} km/h winds — wind chill and balance hazard.` });
+    if ([95, 96, 99].includes(weather.code)) list.push({ level: "danger", title: "Thunderstorm active", detail: "Descend ridges and peaks immediately. Avoid exposed terrain." });
+    if ([71, 73, 75, 77, 85, 86].includes(weather.code)) list.push({ level: "warning", title: "Snowfall in progress", detail: "Reduced visibility and elevated avalanche risk on slopes." });
+    if ([45, 48].includes(weather.code)) list.push({ level: "warning", title: "Fog — low visibility", detail: "Stay on marked trails. Navigation difficulty." });
+    if (weather.precipMm >= 5) list.push({ level: "warning", title: "Heavy precipitation", detail: `${weather.precipMm} mm/h — hypothermia and rockfall risk.` });
+    if (!Number.isNaN(elNum) && elNum >= 3500) list.push({ level: "warning", title: "High altitude zone", detail: `${elNum.toLocaleString()} m — monitor for AMS, HAPE, HACE symptoms.` });
+    if (!Number.isNaN(elNum) && elNum >= 5000) list.push({ level: "danger", title: "Extreme altitude", detail: "Acute mountain sickness highly likely. Descend if symptomatic." });
+    if (list.length === 0) list.push({ level: "info", title: "Conditions nominal", detail: "No active hazards detected for your location." });
+    return list;
+  }, [weather, location.elevation]);
 
   const step = STEPS[stepIndex];
   const progress = (stepIndex / (STEPS.length - 1)) * 100;
@@ -1470,6 +1547,96 @@ function TriagePage() {
                   </div>
                 </div>
               )}
+
+
+
+              <div className="glass-strong rounded-3xl p-6 border border-white/10">
+                <div className="flex items-center justify-between mb-4">
+                  <div className="flex items-center gap-2">
+                    <Cloud className="h-4 w-4 text-neon" />
+                    <span className="text-xs uppercase tracking-wider text-muted-foreground font-semibold">
+                      Live Weather & Hazards
+                    </span>
+                    {weatherStatus === "ok" && (
+                      <span className="flex items-center gap-1 text-[10px] text-emerald-300 ml-1">
+                        <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                        LIVE
+                      </span>
+                    )}
+                  </div>
+                  {weatherStatus === "loading" && (
+                    <Loader2 className="h-3.5 w-3.5 text-neon animate-spin" />
+                  )}
+                </div>
+
+                {!weather && weatherStatus !== "error" && (
+                  <p className="text-xs text-muted-foreground">
+                    {geoStatus === "ok" ? "Fetching current conditions…" : "Waiting for GPS lock to fetch weather…"}
+                  </p>
+                )}
+                {weatherStatus === "error" && (
+                  <p className="text-xs text-yellow-300">Weather service unreachable. Retry from GPS card.</p>
+                )}
+
+                {weather && (
+                  <>
+                    <div className="grid grid-cols-2 gap-2 mb-4">
+                      <div className="rounded-2xl border border-white/10 bg-white/5 p-3">
+                        <div className="flex items-center gap-1.5 text-[10px] uppercase tracking-wider text-muted-foreground">
+                          <Thermometer className="h-3 w-3" /> Temp
+                        </div>
+                        <p className="text-lg font-semibold mt-0.5">{Math.round(weather.tempC)}°C</p>
+                        <p className="text-[10px] text-muted-foreground">feels {Math.round(weather.feelsC)}°C</p>
+                      </div>
+                      <div className="rounded-2xl border border-white/10 bg-white/5 p-3">
+                        <div className="flex items-center gap-1.5 text-[10px] uppercase tracking-wider text-muted-foreground">
+                          <Wind className="h-3 w-3" /> Wind
+                        </div>
+                        <p className="text-lg font-semibold mt-0.5">{Math.round(weather.windKmh)} <span className="text-xs font-normal">km/h</span></p>
+                        <p className="text-[10px] text-muted-foreground">{weather.windDir}°</p>
+                      </div>
+                      <div className="rounded-2xl border border-white/10 bg-white/5 p-3">
+                        <div className="flex items-center gap-1.5 text-[10px] uppercase tracking-wider text-muted-foreground">
+                          <Cloud className="h-3 w-3" /> Sky
+                        </div>
+                        <p className="text-sm font-semibold mt-0.5 leading-tight">{weather.description}</p>
+                        <p className="text-[10px] text-muted-foreground">{weather.isDay ? "Daytime" : "Night"}</p>
+                      </div>
+                      <div className="rounded-2xl border border-white/10 bg-white/5 p-3">
+                        <div className="flex items-center gap-1.5 text-[10px] uppercase tracking-wider text-muted-foreground">
+                          <Eye className="h-3 w-3" /> Precip
+                        </div>
+                        <p className="text-lg font-semibold mt-0.5">{weather.precipMm} <span className="text-xs font-normal">mm</span></p>
+                        <p className="text-[10px] text-muted-foreground">humidity {weather.humidity}%</p>
+                      </div>
+                    </div>
+
+                    <div className="space-y-2">
+                      <div className="text-[10px] uppercase tracking-wider text-muted-foreground font-semibold flex items-center gap-1.5">
+                        <AlertTriangle className="h-3 w-3 text-neon" /> Hazard alerts
+                      </div>
+                      {hazards.map((h, i) => {
+                        const tone =
+                          h.level === "danger"
+                            ? "border-red-500/30 bg-red-500/10 text-red-200"
+                            : h.level === "warning"
+                              ? "border-yellow-500/30 bg-yellow-500/10 text-yellow-200"
+                              : "border-emerald-500/30 bg-emerald-500/10 text-emerald-200";
+                        return (
+                          <div key={i} className={`rounded-xl border ${tone} p-2.5`}>
+                            <p className="text-xs font-semibold">{h.title}</p>
+                            <p className="text-[11px] opacity-90 mt-0.5">{h.detail}</p>
+                          </div>
+                        );
+                      })}
+                      <p className="text-[10px] text-muted-foreground pt-1">
+                        Updated {weather.updatedAt} • Source: Open-Meteo
+                      </p>
+                    </div>
+                  </>
+                )}
+              </div>
+
 
               {!isDone && (
                 <div className="glass rounded-2xl p-4 border border-white/10 flex items-center gap-3 text-xs text-muted-foreground">
