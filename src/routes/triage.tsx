@@ -1391,7 +1391,7 @@ function TriagePage() {
                         <Row k={t.ui.emergencyId} v={sosSent.id} />
                         <Row k={t.ui.timeReported} v={sosSent.time} />
                         <Row k={t.ui.status} v={t.ui.rescueNotified} valueClass="text-emerald-300" />
-                        <Row k={t.ui.location} v={LOCATION.route} />
+                        <Row k={t.ui.location} v={location.route} />
                       </div>
                     </div>
                   )}
@@ -1414,10 +1414,10 @@ function TriagePage() {
                   </div>
                 </div>
                 <div className="space-y-2 text-xs">
-                  <Row k={t.ui.latitude} v={LOCATION.lat} />
-                  <Row k={t.ui.longitude} v={LOCATION.lng} />
-                  <Row k={t.ui.elevation} v={LOCATION.elevation} />
-                  <Row k={t.ui.nearestShelter} v={LOCATION.shelter} />
+                  <Row k={t.ui.latitude} v={location.lat} />
+                  <Row k={t.ui.longitude} v={location.lng} />
+                  <Row k={t.ui.elevation} v={location.elevation} />
+                  <Row k={t.ui.nearestShelter} v={location.shelter} />
                 </div>
               </div>
 
@@ -1435,7 +1435,7 @@ function TriagePage() {
                     <Row k={t.ui.painLevel} v={`${answers.pain ?? 0}/10`} />
                     <Row k={t.ui.canWalk} v={answers.mobility ? t.mobility[answers.mobility] : "—"} />
                     <Row k={t.ui.severity} v={t.severities[severity]} valueClass={styles.text} />
-                    <Row k={t.ui.location} v={LOCATION.route} />
+                    <Row k={t.ui.location} v={location.route} />
                     <Row
                       k={t.ui.status}
                       v={sosSent ? t.ui.sosSentShort : t.ui.awaitingDispatch}
