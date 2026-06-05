@@ -1442,6 +1442,8 @@ function TriagePage() {
                   <Row k={t.ui.longitude} v={location.lng} />
                   <Row k={t.ui.elevation} v={location.elevation} />
                   <Row k={t.ui.nearestShelter} v={location.shelter} />
+                  <Row k="Accuracy" v={location.accuracy} />
+                  <Row k="Updated" v={location.updatedAt} />
                 </div>
               </div>
 
