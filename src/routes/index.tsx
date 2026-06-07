@@ -49,7 +49,7 @@ function Index() {
         <Hero />
         <Features />
         <HowItWorks />
-        <Technology />
+        
         <Emergency />
         <ChatDemo />
         <Stats />
