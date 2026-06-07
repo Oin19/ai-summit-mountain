@@ -9,6 +9,7 @@ const links = [
   { href: "/#how", label: "How It Works" },
   { href: "/#tech", label: "Technology" },
   { href: "/triage", label: "Triage" },
+  { href: "/offline-resources", label: "Offline Kit" },
   { href: "/#emergency", label: "Emergency" },
   { href: "/#future", label: "Future Scope" },
   { href: "/#contact", label: "Contact" },
