@@ -1613,29 +1613,8 @@ function TriagePage() {
                 </div>
               </div>
 
-              {isDone && (
-                <div className="glass-strong rounded-3xl p-6 border border-white/10 animate-[fade-up_0.6s_ease-out]">
-                  <div className="flex items-center gap-2 mb-4">
-                    <Clock className="h-4 w-4 text-neon" />
-                    <span className="text-xs uppercase tracking-wider text-muted-foreground font-semibold">
-                      {t.ui.emergencySummary}
-                    </span>
-                  </div>
-                  <div className="space-y-2 text-xs">
-                    <Row k={t.ui.emergencyId} v={sosSent?.id ?? "—"} />
-                    <Row k={t.ui.injuryType} v={answers.injury ? t.injuries[answers.injury] : "—"} />
-                    <Row k={t.ui.painLevel} v={`${answers.pain ?? 0}/10`} />
-                    <Row k={t.ui.canWalk} v={answers.mobility ? t.mobility[answers.mobility] : "—"} />
-                    <Row k={t.ui.severity} v={t.severities[severity]} valueClass={styles.text} />
-                    <Row k={t.ui.location} v={location.route} />
-                    <Row
-                      k={t.ui.status}
-                      v={sosSent ? t.ui.sosSentShort : t.ui.awaitingDispatch}
-                      valueClass={sosSent ? "text-emerald-300" : "text-yellow-300"}
-                    />
-                  </div>
-                </div>
-              )}
+
+
 
 
 
