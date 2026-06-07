@@ -6,6 +6,7 @@ const links = [
   { href: "#emergency", label: "Emergency" },
   { href: "#future", label: "Future Scope" },
   { href: "#contact", label: "Contact" },
+  { href: "#technology", label: "Technology" },
 ];
 
 export function Footer() {
