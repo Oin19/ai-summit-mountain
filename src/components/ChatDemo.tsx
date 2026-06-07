@@ -53,9 +53,18 @@ export function ChatDemo() {
     setLoading(true);
 
     try {
+      const { supabase } = await import("@/integrations/supabase/client");
+      const { data: sessionData } = await supabase.auth.getSession();
+      const token = sessionData.session?.access_token;
+      if (!token) {
+        throw new Error("Please log in to chat with Summit AI.");
+      }
       const resp = await fetch("/api/chat", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
         body: JSON.stringify({ messages: next }),
       });
 
