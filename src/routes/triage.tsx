@@ -1562,41 +1562,7 @@ function TriagePage() {
 
             {/* Sidebar */}
             <div className="space-y-6">
-              <div className="glass-strong rounded-3xl p-6 border border-red-500/20 relative overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-br from-red-500/10 to-transparent pointer-events-none" />
-                <div className="relative">
-                  <div className="flex items-center gap-2 mb-3">
-                    <Radio className="h-4 w-4 text-red-400 animate-pulse" />
-                    <span className="text-xs uppercase tracking-wider text-red-300 font-semibold">
-                      {t.ui.sosBeacon}
-                    </span>
-                  </div>
-                  <h3 className="font-display text-lg font-bold mb-4">{t.ui.sosTitle}</h3>
 
-                  {!sosSent ? (
-                    <button
-                      onClick={sendSos}
-                      className="w-full py-4 rounded-2xl bg-gradient-to-r from-red-600 to-red-500 text-white font-bold text-sm hover:shadow-[0_0_30px_rgba(239,68,68,0.5)] transition-all flex items-center justify-center gap-2 animate-pulse"
-                    >
-                      <Send className="h-4 w-4" />
-                      {t.ui.sendSos}
-                    </button>
-                  ) : (
-                    <div className="space-y-3 animate-[fade-up_0.4s_ease-out]">
-                      <div className="flex items-center gap-2 text-emerald-300 text-sm">
-                        <CheckCircle2 className="h-4 w-4" />
-                        {t.ui.sosSent}
-                      </div>
-                      <div className="space-y-2 text-xs">
-                        <Row k={t.ui.emergencyId} v={sosSent.id} />
-                        <Row k={t.ui.timeReported} v={sosSent.time} />
-                        <Row k={t.ui.status} v={t.ui.rescueNotified} valueClass="text-emerald-300" />
-                        <Row k={t.ui.location} v={location.route} />
-                      </div>
-                    </div>
-                  )}
-                </div>
-              </div>
 
               <div className="glass-strong rounded-3xl p-6 border border-white/10">
                 <div className="flex items-center justify-between mb-4">
