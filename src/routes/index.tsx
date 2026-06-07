@@ -3,7 +3,7 @@ import { Navbar } from "@/components/Navbar";
 import { Hero } from "@/components/Hero";
 import { Features } from "@/components/Features";
 import { HowItWorks } from "@/components/HowItWorks";
-import { Technology } from "@/components/Technology";
+
 import { Emergency } from "@/components/Emergency";
 import { ChatDemo } from "@/components/ChatDemo";
 import { FutureScope } from "@/components/FutureScope";
