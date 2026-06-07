@@ -1386,9 +1386,11 @@ function TriagePage() {
 
                   <div className="grid sm:grid-cols-2 gap-4">
                     <Stat label={t.ui.injuryType} value={answers.injury ? t.injuries[answers.injury] : "—"} />
-                    <Stat label={t.ui.painScore} value={`${answers.pain ?? 0}/10`} />
-                    <Stat label={t.ui.mobilityStatus} value={answers.mobility ? t.mobility[answers.mobility] : "—"} />
+                    <Stat label="Breathing" value={answers.breathing ? t.yesno[answers.breathing] : "—"} />
                     <Stat label={t.ui.conscious} value={answers.conscious ? t.yesno[answers.conscious] : "—"} />
+                    <Stat label={t.ui.mobilityStatus} value={answers.mobility ? t.mobility[answers.mobility] : "—"} />
+                    <Stat label={t.ui.painScore} value={`${answers.pain ?? 0}/10`} />
+                    <Stat label={t.ui.severity} value={t.severities[severity]} />
                   </div>
 
                   <div className={`mt-6 p-4 rounded-2xl ${styles.bg} border border-white/5`}>
@@ -1400,6 +1402,127 @@ function TriagePage() {
                     </p>
                   </div>
                 </div>
+              )}
+
+              {/* SOS Action + Generated Report (in-flow, same page) */}
+              {isDone && !sosSent && (
+                <div className="glass-strong rounded-3xl p-6 md:p-8 border border-red-500/30 relative overflow-hidden animate-[fade-up_0.5s_ease-out]">
+                  <div className="absolute inset-0 bg-gradient-to-br from-red-500/15 via-transparent to-transparent pointer-events-none" />
+                  <div className="relative text-center">
+                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-500/15 border border-red-500/30 text-red-300 text-[10px] uppercase tracking-wider font-semibold mb-3">
+                      <Radio className="h-3 w-3 animate-pulse" /> {t.ui.sosBeacon}
+                    </div>
+                    <h3 className="font-display text-xl md:text-2xl font-bold mb-2">{t.ui.sosTitle}</h3>
+                    <p className="text-xs text-muted-foreground mb-5 max-w-md mx-auto">
+                      Review the assessment above, then dispatch a one-tap SOS bundled with your live GPS, elevation, and severity report.
+                    </p>
+                    <button
+                      onClick={sendSos}
+                      className="w-full md:w-auto px-10 py-5 rounded-2xl bg-gradient-to-r from-red-600 to-red-500 text-white font-bold text-base hover:shadow-[0_0_50px_rgba(239,68,68,0.7)] transition-all inline-flex items-center justify-center gap-3 animate-pulse"
+                    >
+                      <Send className="h-5 w-5" />
+                      {t.ui.sendSos}
+                    </button>
+                  </div>
+                </div>
+              )}
+
+              {isDone && sosSent && (
+                <>
+                  <div className="glass-strong rounded-3xl p-6 md:p-8 border border-emerald-500/30 animate-[fade-up_0.5s_ease-out]">
+                    <div className="flex items-start gap-3">
+                      <div className="h-10 w-10 rounded-xl bg-emerald-500/20 flex items-center justify-center flex-shrink-0">
+                        <CheckCircle2 className="h-5 w-5 text-emerald-300" />
+                      </div>
+                      <div>
+                        <h3 className="font-display text-lg font-bold text-emerald-200">Emergency Alert Sent Successfully</h3>
+                        <p className="text-sm text-muted-foreground mt-1">
+                          Your emergency report has been generated and shared with rescue services.
+                        </p>
+                        <p className="text-xs mt-2">
+                          <span className="text-muted-foreground">{t.ui.emergencyId}: </span>
+                          <span className="font-semibold text-emerald-300">{sosSent.id}</span>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="glass-strong rounded-3xl p-6 md:p-8 border border-white/10 animate-[fade-up_0.6s_ease-out]">
+                    <div className="flex items-center justify-between flex-wrap gap-3 mb-5">
+                      <div className="flex items-center gap-3">
+                        <div className="h-10 w-10 rounded-xl bg-red-500/15 flex items-center justify-center">
+                          <ShieldAlert className="h-5 w-5 text-red-300" />
+                        </div>
+                        <div>
+                          <p className="text-[10px] uppercase tracking-wider text-muted-foreground">SOS Rescue Report</p>
+                          <h3 className="font-display text-lg font-bold">Emergency Dispatch Document</h3>
+                        </div>
+                      </div>
+                      <span className={`px-3 py-1.5 rounded-full ${styles.bg} ${styles.text} text-xs font-semibold flex items-center gap-2`}>
+                        <span className={`h-1.5 w-1.5 rounded-full ${styles.dot} animate-pulse`} />
+                        {t.severities[severity]}
+                      </span>
+                    </div>
+                    <div className="grid sm:grid-cols-2 gap-x-6">
+                      <div className="space-y-1">
+                        <Row k={t.ui.emergencyId} v={sosSent.id} valueClass="text-emerald-300" />
+                        <Row k="Date & Time" v={sosSent.time} />
+                        <Row k={t.ui.location} v={location.route} />
+                        <Row k={t.ui.latitude} v={location.lat} />
+                        <Row k={t.ui.longitude} v={location.lng} />
+                        <Row k={t.ui.elevation} v={location.elevation} />
+                        <Row k={t.ui.nearestShelter} v={location.shelter} />
+                      </div>
+                      <div className="space-y-1">
+                        <Row k={t.ui.injuryType} v={answers.injury ? t.injuries[answers.injury] : "—"} />
+                        <Row k={t.ui.conscious} v={answers.conscious ? t.yesno[answers.conscious] : "—"} />
+                        <Row k="Breathing" v={answers.breathing ? t.yesno[answers.breathing] : "—"} />
+                        <Row k={t.ui.canWalk} v={answers.mobility ? t.mobility[answers.mobility] : "—"} />
+                        <Row k={t.ui.painScore} v={`${answers.pain ?? 0}/10`} />
+                        <Row k={t.ui.severity} v={t.severities[severity]} valueClass={styles.text} />
+                        <Row k="Rescue Status" v={t.ui.rescueNotified} valueClass="text-emerald-300" />
+                      </div>
+                    </div>
+                    <div className={`mt-5 p-4 rounded-2xl ${styles.bg} border border-white/5`}>
+                      <p className="text-[10px] uppercase tracking-wider text-muted-foreground mb-1">AI Recommendation</p>
+                      <p className={`text-sm font-medium ${styles.text}`}>{t.actions[severity]}</p>
+                    </div>
+                  </div>
+
+                  <div className="glass-strong rounded-3xl p-6 md:p-8 border border-white/10 animate-[fade-up_0.7s_ease-out]">
+                    <div className="flex items-center gap-2 mb-5">
+                      <Clock className="h-4 w-4 text-neon" />
+                      <h3 className="font-display text-base font-bold uppercase tracking-wider">Rescue Status Timeline</h3>
+                    </div>
+                    <ol className="relative border-l border-white/10 ml-2 space-y-4">
+                      {[
+                        { label: "Assessment Complete", done: true },
+                        { label: "SOS Generated", done: true },
+                        { label: "Location Shared", done: true },
+                        { label: "Rescue Team Notified", done: true },
+                        { label: "Team Assignment Pending", done: false },
+                        { label: "Rescue En Route", done: false },
+                      ].map((s) => (
+                        <li key={s.label} className="ml-5">
+                          <span
+                            className={`absolute -left-[9px] flex h-4 w-4 items-center justify-center rounded-full ${
+                              s.done ? "bg-emerald-500/30 border border-emerald-400" : "bg-yellow-500/20 border border-yellow-400/50"
+                            }`}
+                          >
+                            {s.done ? (
+                              <CheckCircle2 className="h-3 w-3 text-emerald-300" />
+                            ) : (
+                              <Loader2 className="h-2.5 w-2.5 text-yellow-300 animate-spin" />
+                            )}
+                          </span>
+                          <p className={`text-sm ${s.done ? "text-foreground" : "text-muted-foreground"}`}>
+                            {s.done ? "✓" : "⏳"} {s.label}
+                          </p>
+                        </li>
+                      ))}
+                    </ol>
+                  </div>
+                </>
               )}
 
               {isDone && (
@@ -1439,41 +1562,7 @@ function TriagePage() {
 
             {/* Sidebar */}
             <div className="space-y-6">
-              <div className="glass-strong rounded-3xl p-6 border border-red-500/20 relative overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-br from-red-500/10 to-transparent pointer-events-none" />
-                <div className="relative">
-                  <div className="flex items-center gap-2 mb-3">
-                    <Radio className="h-4 w-4 text-red-400 animate-pulse" />
-                    <span className="text-xs uppercase tracking-wider text-red-300 font-semibold">
-                      {t.ui.sosBeacon}
-                    </span>
-                  </div>
-                  <h3 className="font-display text-lg font-bold mb-4">{t.ui.sosTitle}</h3>
 
-                  {!sosSent ? (
-                    <button
-                      onClick={sendSos}
-                      className="w-full py-4 rounded-2xl bg-gradient-to-r from-red-600 to-red-500 text-white font-bold text-sm hover:shadow-[0_0_30px_rgba(239,68,68,0.5)] transition-all flex items-center justify-center gap-2 animate-pulse"
-                    >
-                      <Send className="h-4 w-4" />
-                      {t.ui.sendSos}
-                    </button>
-                  ) : (
-                    <div className="space-y-3 animate-[fade-up_0.4s_ease-out]">
-                      <div className="flex items-center gap-2 text-emerald-300 text-sm">
-                        <CheckCircle2 className="h-4 w-4" />
-                        {t.ui.sosSent}
-                      </div>
-                      <div className="space-y-2 text-xs">
-                        <Row k={t.ui.emergencyId} v={sosSent.id} />
-                        <Row k={t.ui.timeReported} v={sosSent.time} />
-                        <Row k={t.ui.status} v={t.ui.rescueNotified} valueClass="text-emerald-300" />
-                        <Row k={t.ui.location} v={location.route} />
-                      </div>
-                    </div>
-                  )}
-                </div>
-              </div>
 
               <div className="glass-strong rounded-3xl p-6 border border-white/10">
                 <div className="flex items-center justify-between mb-4">
@@ -1524,29 +1613,8 @@ function TriagePage() {
                 </div>
               </div>
 
-              {isDone && (
-                <div className="glass-strong rounded-3xl p-6 border border-white/10 animate-[fade-up_0.6s_ease-out]">
-                  <div className="flex items-center gap-2 mb-4">
-                    <Clock className="h-4 w-4 text-neon" />
-                    <span className="text-xs uppercase tracking-wider text-muted-foreground font-semibold">
-                      {t.ui.emergencySummary}
-                    </span>
-                  </div>
-                  <div className="space-y-2 text-xs">
-                    <Row k={t.ui.emergencyId} v={sosSent?.id ?? "—"} />
-                    <Row k={t.ui.injuryType} v={answers.injury ? t.injuries[answers.injury] : "—"} />
-                    <Row k={t.ui.painLevel} v={`${answers.pain ?? 0}/10`} />
-                    <Row k={t.ui.canWalk} v={answers.mobility ? t.mobility[answers.mobility] : "—"} />
-                    <Row k={t.ui.severity} v={t.severities[severity]} valueClass={styles.text} />
-                    <Row k={t.ui.location} v={location.route} />
-                    <Row
-                      k={t.ui.status}
-                      v={sosSent ? t.ui.sosSentShort : t.ui.awaitingDispatch}
-                      valueClass={sosSent ? "text-emerald-300" : "text-yellow-300"}
-                    />
-                  </div>
-                </div>
-              )}
+
+
 
 
 
