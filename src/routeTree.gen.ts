@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as TriageRouteImport } from './routes/triage'
 import { Route as RegisterRouteImport } from './routes/register'
+import { Route as OfflineResourcesRouteImport } from './routes/offline-resources'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as IndexRouteImport } from './routes/index'
@@ -24,6 +25,11 @@ const TriageRoute = TriageRouteImport.update({
 const RegisterRoute = RegisterRouteImport.update({
   id: '/register',
   path: '/register',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OfflineResourcesRoute = OfflineResourcesRouteImport.update({
+  id: '/offline-resources',
+  path: '/offline-resources',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LoginRoute = LoginRouteImport.update({
@@ -51,6 +57,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/dashboard': typeof DashboardRoute
   '/login': typeof LoginRoute
+  '/offline-resources': typeof OfflineResourcesRoute
   '/register': typeof RegisterRoute
   '/triage': typeof TriageRoute
   '/api/chat': typeof ApiChatRoute
@@ -59,6 +66,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/dashboard': typeof DashboardRoute
   '/login': typeof LoginRoute
+  '/offline-resources': typeof OfflineResourcesRoute
   '/register': typeof RegisterRoute
   '/triage': typeof TriageRoute
   '/api/chat': typeof ApiChatRoute
@@ -68,6 +76,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/dashboard': typeof DashboardRoute
   '/login': typeof LoginRoute
+  '/offline-resources': typeof OfflineResourcesRoute
   '/register': typeof RegisterRoute
   '/triage': typeof TriageRoute
   '/api/chat': typeof ApiChatRoute
@@ -78,16 +87,25 @@ export interface FileRouteTypes {
     | '/'
     | '/dashboard'
     | '/login'
+    | '/offline-resources'
     | '/register'
     | '/triage'
     | '/api/chat'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/dashboard' | '/login' | '/register' | '/triage' | '/api/chat'
+  to:
+    | '/'
+    | '/dashboard'
+    | '/login'
+    | '/offline-resources'
+    | '/register'
+    | '/triage'
+    | '/api/chat'
   id:
     | '__root__'
     | '/'
     | '/dashboard'
     | '/login'
+    | '/offline-resources'
     | '/register'
     | '/triage'
     | '/api/chat'
@@ -97,6 +115,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   DashboardRoute: typeof DashboardRoute
   LoginRoute: typeof LoginRoute
+  OfflineResourcesRoute: typeof OfflineResourcesRoute
   RegisterRoute: typeof RegisterRoute
   TriageRoute: typeof TriageRoute
   ApiChatRoute: typeof ApiChatRoute
@@ -116,6 +135,13 @@ declare module '@tanstack/react-router' {
       path: '/register'
       fullPath: '/register'
       preLoaderRoute: typeof RegisterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/offline-resources': {
+      id: '/offline-resources'
+      path: '/offline-resources'
+      fullPath: '/offline-resources'
+      preLoaderRoute: typeof OfflineResourcesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/login': {
@@ -153,6 +179,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   DashboardRoute: DashboardRoute,
   LoginRoute: LoginRoute,
+  OfflineResourcesRoute: OfflineResourcesRoute,
   RegisterRoute: RegisterRoute,
   TriageRoute: TriageRoute,
   ApiChatRoute: ApiChatRoute,
