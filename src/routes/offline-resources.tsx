@@ -43,11 +43,16 @@ export const Route = createFileRoute("/offline-resources")({
         content:
           "Critical first-aid guides, emergency contacts, survival checklist and offline SOS draft for trekkers without connectivity.",
       },
-      { property: "og:title", content: "Offline Emergency Resources" },
+      { property: "og:title", content: "Offline Emergency Resources — AI to the Summit" },
       {
         property: "og:description",
-        content: "Critical information available even when connectivity is limited.",
+        content:
+          "Practical emergency toolkit for trekkers — first aid, contacts, checklist and offline SOS draft that works without internet.",
       },
+      { property: "og:url", content: "https://ai-summit-mountain.lovable.app/offline-resources" },
+    ],
+    links: [
+      { rel: "canonical", href: "https://ai-summit-mountain.lovable.app/offline-resources" },
     ],
   }),
   component: OfflineResources,

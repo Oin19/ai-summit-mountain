@@ -40,15 +40,17 @@ export const Route = createFileRoute("/triage")({
       {
         name: "description",
         content:
-          "AI-powered triage that assesses injured trekkers and prioritizes rescue in remote mountainous regions.",
+          "AI-powered triage that assesses injured trekkers, generates SOS reports and prioritizes rescue operations in remote mountainous regions.",
       },
-      { property: "og:title", content: "AI Emergency Triage System" },
+      { property: "og:title", content: "AI Emergency Triage System — AI to the Summit" },
       {
         property: "og:description",
         content:
-          "Quickly assess injuries and prioritize rescue operations in remote mountainous regions.",
+          "Quickly assess injuries and prioritize rescue operations in remote mountainous regions with live GPS and weather.",
       },
+      { property: "og:url", content: "https://ai-summit-mountain.lovable.app/triage" },
     ],
+    links: [{ rel: "canonical", href: "https://ai-summit-mountain.lovable.app/triage" }],
   }),
   component: TriagePage,
 });

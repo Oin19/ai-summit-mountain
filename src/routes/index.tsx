@@ -20,15 +20,18 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "An AI chatbot platform supporting trekkers, tourists and rescue teams in remote mountainous regions with trail guidance, weather, SOS and offline navigation.",
+          "AI chatbot platform for trekkers, tourists and rescue teams in remote mountainous regions — trail guidance, live weather, GPS SOS and offline safety tools.",
       },
       { property: "og:title", content: "AI to the Summit — Your Intelligent Mountain Companion" },
       {
         property: "og:description",
-        content: "AI assistance for the world's toughest terrains.",
+        content:
+          "Multilingual AI assistant for mountain safety: trail guidance, live weather alerts, GPS SOS and offline emergency resources.",
       },
+      { property: "og:url", content: "https://ai-summit-mountain.lovable.app/" },
     ],
     links: [
+      { rel: "canonical", href: "https://ai-summit-mountain.lovable.app/" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "" },
       {
