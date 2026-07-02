@@ -17,7 +17,7 @@ export function Footer() {
         <div className="grid md:grid-cols-3 gap-10 mb-10">
           <div>
             <div className="flex items-center gap-2 mb-3">
-              <img src={logoAsset.url} alt="AI to the Summit logo" className="h-7 w-7 rounded-full object-cover" />
+              <img src={logoAsset.url} alt="AI to the Summit" className="h-7 w-7 rounded-full object-cover" />
               <span className="font-display font-bold">
                 AI to the <span className="text-gradient">Summit</span>
               </span>

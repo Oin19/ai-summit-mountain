@@ -10,11 +10,20 @@ import { toast } from "sonner";
 export const Route = createFileRoute("/register")({
   head: () => ({
     meta: [
-      { title: "Register — AI to the Summit" },
-      { name: "description", content: "Create an account on AI to the Summit — Your Intelligent Mountain Companion" },
-      { property: "og:title", content: "Register — AI to the Summit" },
-      { property: "og:description", content: "Create an account on AI to the Summit — Your Intelligent Mountain Companion" },
+      { title: "Create Account — AI to the Summit" },
+      {
+        name: "description",
+        content:
+          "Create your AI to the Summit account to unlock trail guidance, live weather alerts and emergency SOS built for trekkers in remote mountain regions.",
+      },
+      { property: "og:title", content: "Create Account — AI to the Summit" },
+      {
+        property: "og:description",
+        content:
+          "Join AI to the Summit — the multilingual AI mountain companion for trekkers and rescue teams.",
+      },
     ],
+    links: [{ rel: "canonical", href: "https://ai-summit-mountain.lovable.app/register" }],
   }),
   component: RegisterPage,
 });
@@ -88,11 +97,11 @@ function RegisterPage() {
               <div className="relative">
                 <img
                   src={logoAsset.url}
-                  alt="AI to the Summit logo"
+                  alt="AI to the Summit brandmark"
                   className="w-24 h-24 rounded-2xl object-cover mb-6 mx-auto border border-neon/30 shadow-[0_0_40px_rgba(34,211,238,0.25)]"
                 />
                 <h1 className="font-display text-2xl lg:text-3xl font-bold text-foreground mb-2">
-                  AI to the <span className="text-gradient">Summit</span>
+                  Create Account — AI to the <span className="text-gradient">Summit</span>
                 </h1>
                 <p className="text-sm text-muted-foreground max-w-[240px]">
                   Your Intelligent Mountain Companion

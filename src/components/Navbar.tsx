@@ -38,7 +38,7 @@ export function Navbar() {
           <div className="relative">
             <img
               src={logoAsset.url}
-              alt="AI to the Summit logo"
+              alt="AI to the Summit"
               className="h-9 w-9 rounded-full object-cover transition-transform group-hover:scale-110"
             />
             <div className="absolute inset-0 blur-md bg-neon/30 rounded-full -z-10" />

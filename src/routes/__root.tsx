@@ -80,22 +80,58 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "AI to the Summit — Intelligent Mountain Companion" },
+      {
+        name: "description",
+        content:
+          "AI to the Summit is a multilingual AI companion for trekkers, tourists and rescue teams — trail guidance, live weather, GPS SOS and offline safety tools for remote mountain regions.",
+      },
+      { name: "author", content: "AI to the Summit" },
+      { property: "og:site_name", content: "AI to the Summit" },
+      { property: "og:title", content: "AI to the Summit — Intelligent Mountain Companion" },
+      {
+        property: "og:description",
+        content:
+          "Multilingual AI assistant for mountain safety: trail guidance, live weather alerts, GPS-based SOS and offline emergency resources.",
+      },
       { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "AI to the Summit — Intelligent Mountain Companion" },
+      {
+        name: "twitter:description",
+        content:
+          "Multilingual AI assistant for mountain safety: trail guidance, live weather alerts, GPS SOS and offline emergency resources.",
+      },
     ],
     links: [
-      {
-        rel: "stylesheet",
-        href: appCss,
-      },
+      { rel: "stylesheet", href: appCss },
       { rel: "icon", type: "image/png", href: logoAsset.url },
       { rel: "apple-touch-icon", href: logoAsset.url },
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "Organization",
+              name: "AI to the Summit",
+              url: "https://ai-summit-mountain.lovable.app",
+              logo: "https://ai-summit-mountain.lovable.app/favicon.png",
+              description:
+                "AI-powered mountain safety companion providing trail guidance, weather alerts and emergency SOS for trekkers and rescue teams.",
+            },
+            {
+              "@type": "WebSite",
+              name: "AI to the Summit",
+              url: "https://ai-summit-mountain.lovable.app",
+              description:
+                "Multilingual AI assistant for mountainous and remote regions — trail guidance, weather, SOS and offline safety.",
+            },
+          ],
+        }),
+      },
     ],
   }),
   shellComponent: RootShell,

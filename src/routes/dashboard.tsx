@@ -14,10 +14,20 @@ export const Route = createFileRoute("/dashboard")({
   head: () => ({
     meta: [
       { title: "Dashboard — AI to the Summit" },
-      { name: "description", content: "Your AI to the Summit Dashboard" },
+      {
+        name: "description",
+        content:
+          "Your AI to the Summit dashboard — access the trail finder, live weather, emergency SOS and mountain companion tools from one place.",
+      },
       { property: "og:title", content: "Dashboard — AI to the Summit" },
-      { property: "og:description", content: "Your AI to the Summit Dashboard" },
+      {
+        property: "og:description",
+        content:
+          "Personal dashboard for AI to the Summit — trail finder, live weather and emergency SOS at a glance.",
+      },
+      { name: "robots", content: "noindex, nofollow" },
     ],
+    links: [{ rel: "canonical", href: "https://ai-summit-mountain.lovable.app/dashboard" }],
   }),
   component: DashboardPage,
 });

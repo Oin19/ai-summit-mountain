@@ -11,10 +11,19 @@ export const Route = createFileRoute("/login")({
   head: () => ({
     meta: [
       { title: "Login — AI to the Summit" },
-      { name: "description", content: "Login to AI to the Summit — Your Intelligent Mountain Companion" },
+      {
+        name: "description",
+        content:
+          "Log in to AI to the Summit to access your intelligent mountain companion — trail guidance, live weather and emergency SOS.",
+      },
       { property: "og:title", content: "Login — AI to the Summit" },
-      { property: "og:description", content: "Login to AI to the Summit — Your Intelligent Mountain Companion" },
+      {
+        property: "og:description",
+        content:
+          "Log in to AI to the Summit — your multilingual AI mountain companion for trail guidance, weather and SOS.",
+      },
     ],
+    links: [{ rel: "canonical", href: "https://ai-summit-mountain.lovable.app/login" }],
   }),
   component: LoginPage,
 });
@@ -76,11 +85,11 @@ function LoginPage() {
               <div className="relative">
                 <img
                   src={logoAsset.url}
-                  alt="AI to the Summit logo"
+                  alt="AI to the Summit brandmark"
                   className="w-24 h-24 rounded-2xl object-cover mb-6 mx-auto border border-neon/30 shadow-[0_0_40px_rgba(34,211,238,0.25)]"
                 />
                 <h1 className="font-display text-2xl lg:text-3xl font-bold text-foreground mb-2">
-                  AI to the <span className="text-gradient">Summit</span>
+                  Login — AI to the <span className="text-gradient">Summit</span>
                 </h1>
                 <p className="text-sm text-muted-foreground max-w-[240px]">
                   Your Intelligent Mountain Companion
