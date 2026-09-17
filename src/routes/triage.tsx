@@ -36,13 +36,13 @@ import { toast } from "sonner";
 export const Route = createFileRoute("/triage")({
   head: () => ({
     meta: [
-      { title: "AI Emergency Triage System — AI to the Summit" },
+      { title: "AI Emergency Triage System: AI to the Summit" },
       {
         name: "description",
         content:
           "AI-powered triage that assesses injured trekkers, generates SOS reports and prioritizes rescue operations in remote mountainous regions.",
       },
-      { property: "og:title", content: "AI Emergency Triage System — AI to the Summit" },
+      { property: "og:title", content: "AI Emergency Triage System: AI to the Summit" },
       {
         property: "og:description",
         content:
@@ -170,7 +170,7 @@ const EN: Dict = {
   how: {
     title: "What is the AI Triage System?",
     intro:
-      "When something goes wrong on the mountain, every second counts. The AI Triage System is a guided emergency assistant that helps trekkers, guides, and rescue teams figure out how serious an injury is — even when there's no doctor nearby and the signal is weak.",
+      "When something goes wrong on the mountain, every second counts. The AI Triage System is a guided emergency assistant that helps trekkers, guides, and rescue teams figure out how serious an injury is: even when there's no doctor nearby and the signal is weak.",
     steps: [
       {
         title: "1. Quick guided assessment",
@@ -185,7 +185,7 @@ const EN: Dict = {
       {
         title: "3. First-aid guidance",
         body:
-          "Tailored first-aid steps appear for the specific injury — fracture, hypothermia, altitude sickness, avalanche, head injury and more.",
+          "Tailored first-aid steps appear for the specific injury: fracture, hypothermia, altitude sickness, avalanche, head injury and more.",
       },
       {
         title: "4. SOS with GPS",
@@ -212,11 +212,11 @@ const EN: Dict = {
     sosBeacon: "SOS Beacon",
     sosTitle: "Emergency Rescue Signal",
     sendSos: "🚨 SEND SOS ALERT",
-    sosSent: "Alert sent successfully",
+    sosSent: "Emergency report generated",
     emergencyId: "Emergency ID",
     timeReported: "Time Reported",
     status: "Status",
-    rescueNotified: "Rescue Team Notified",
+    rescueNotified: "Report ready to share",
     location: "Location",
     liveGps: "Live GPS",
     latitude: "Latitude",
@@ -228,7 +228,7 @@ const EN: Dict = {
     canWalk: "Can Walk",
     severity: "Severity",
     awaitingDispatch: "Awaiting Dispatch",
-    sosSentShort: "SOS Sent",
+    sosSentShort: "Report Generated",
     completeTriage: "Complete triage to generate full emergency report.",
     language: "Language",
     voiceMode: "Voice Mode",
@@ -239,11 +239,11 @@ const EN: Dict = {
     voiceUnsupported:
       "Voice mode isn't supported in this browser. Try Chrome on desktop or Android.",
     submit: "Submit Assessment",
-    minimal: "1 — Minimal",
-    severePain: "10 — Severe",
+    minimal: "1: Minimal",
+    severePain: "10: Severe",
     forInjury: (i) => `For ${i}`,
-    sosToastTitle: "Emergency alert sent successfully.",
-    sosToastDesc: (id) => `Rescue Team Notified — ${id}`,
+    sosToastTitle: "Emergency report generated.",
+    sosToastDesc: (id) => `Report ready to share: ${id}`,
   },
   questions: {
     conscious: "Are you or the injured person conscious?",
@@ -337,7 +337,7 @@ const HI: Dict = {
   how: {
     title: "एआई ट्राइएज सिस्टम क्या है?",
     intro:
-      "पहाड़ पर हर सेकंड कीमती है। यह सिस्टम ट्रेकर्स, गाइड और बचाव दलों को बताता है कि चोट कितनी गंभीर है — जब डॉक्टर पास न हो और सिग्नल कमज़ोर हो।",
+      "पहाड़ पर हर सेकंड कीमती है। यह सिस्टम ट्रेकर्स, गाइड और बचाव दलों को बताता है कि चोट कितनी गंभीर है: जब डॉक्टर पास न हो और सिग्नल कमज़ोर हो।",
     steps: [
       { title: "1. त्वरित मार्गदर्शित आकलन", body: "होश, साँस, खून, चोट का प्रकार, चलने की क्षमता और दर्द पर 6 सरल प्रश्न। बटन दबाएँ, भाषा बदलें या केवल हाँ/नहीं बोलें।" },
       { title: "2. एआई गंभीरता निर्णय", body: "सिस्टम तुरंत मामले को कम जोखिम, मध्यम, उच्च प्राथमिकता या गंभीर के रूप में वर्गीकृत करता है।" },
@@ -371,10 +371,10 @@ const HI: Dict = {
     listening: "सुन रहा हूँ… हाँ या नहीं बोलें",
     sayYesNo: "अपना उत्तर बोलें",
     voiceUnsupported: "इस ब्राउज़र में वॉइस मोड समर्थित नहीं है।",
-    submit: "आकलन जमा करें", minimal: "1 — न्यूनतम", severePain: "10 — गंभीर",
+    submit: "आकलन जमा करें", minimal: "1: न्यूनतम", severePain: "10: गंभीर",
     forInjury: (i) => `${i} के लिए`,
     sosToastTitle: "आपातकालीन अलर्ट भेजा गया।",
-    sosToastDesc: (id) => `बचाव दल को सूचित — ${id}`,
+    sosToastDesc: (id) => `बचाव दल को सूचित: ${id}`,
   },
   questions: {
     conscious: "क्या आप या घायल व्यक्ति होश में हैं?",
@@ -463,10 +463,10 @@ const NE: Dict = {
     listening: "सुन्दैछ… हो वा होइन भन्नुहोस्",
     sayYesNo: "जवाफ बोल्नुहोस्",
     voiceUnsupported: "यो ब्राउजरमा भ्वाइस मोड समर्थित छैन।",
-    submit: "मूल्यांकन पेश गर्नुहोस्", minimal: "१ — न्यून", severePain: "१० — गम्भीर",
+    submit: "मूल्यांकन पेश गर्नुहोस्", minimal: "१: न्यून", severePain: "१०: गम्भीर",
     forInjury: (i) => `${i} का लागि`,
     sosToastTitle: "आपतकालीन अलर्ट पठाइयो।",
-    sosToastDesc: (id) => `उद्धार टोलीलाई सूचित — ${id}`,
+    sosToastDesc: (id) => `उद्धार टोलीलाई सूचित: ${id}`,
   },
   questions: {
     conscious: "के तपाईं वा घाइते होसमा हुनुहुन्छ?",
@@ -547,10 +547,10 @@ const BN: Dict = {
     listening: "শুনছি… হ্যাঁ বা না বলুন",
     sayYesNo: "আপনার উত্তর বলুন",
     voiceUnsupported: "এই ব্রাউজারে ভয়েস মোড সমর্থিত নয়।",
-    submit: "মূল্যায়ন জমা দিন", minimal: "১ — সামান্য", severePain: "১০ — তীব্র",
+    submit: "মূল্যায়ন জমা দিন", minimal: "১: সামান্য", severePain: "১০: তীব্র",
     forInjury: (i) => `${i}-এর জন্য`,
     sosToastTitle: "জরুরি সতর্কতা পাঠানো হয়েছে।",
-    sosToastDesc: (id) => `উদ্ধার দলকে অবহিত — ${id}`,
+    sosToastDesc: (id) => `উদ্ধার দলকে অবহিত: ${id}`,
   },
   questions: {
     conscious: "আপনি বা আহত ব্যক্তি কি সচেতন?",
@@ -633,10 +633,10 @@ const ES: Dict = {
     listening: "Escuchando… di Sí o No",
     sayYesNo: "Di tu respuesta",
     voiceUnsupported: "El modo voz no es compatible con este navegador.",
-    submit: "Enviar evaluación", minimal: "1 — Mínimo", severePain: "10 — Severo",
+    submit: "Enviar evaluación", minimal: "1: Mínimo", severePain: "10: Severo",
     forInjury: (i) => `Para ${i}`,
     sosToastTitle: "Alerta de emergencia enviada.",
-    sosToastDesc: (id) => `Equipo de rescate notificado — ${id}`,
+    sosToastDesc: (id) => `Equipo de rescate notificado: ${id}`,
   },
   questions: {
     conscious: "¿Está usted o el herido consciente?",
@@ -736,8 +736,8 @@ const DEFAULT_LOCATION: LiveLocation = {
   elevation: "Acquiring…",
   shelter: "Resolving nearest place…",
   route: "Awaiting GPS lock",
-  accuracy: "—",
-  updatedAt: "—",
+  accuracy: ":",
+  updatedAt: ":",
 };
 
 const INJURY_KEYS: InjuryKey[] = [
@@ -896,7 +896,7 @@ function TriagePage() {
 
         void fetchWeather(latitude, longitude);
 
-        // Reverse geocode (OpenStreetMap Nominatim — no API key required)
+        // Reverse geocode (OpenStreetMap Nominatim: no API key required)
         try {
           const r = await fetch(
             `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${latitude}&lon=${longitude}&zoom=14`,
@@ -911,7 +911,7 @@ function TriagePage() {
             setLocation((prev) => ({
               ...prev,
               shelter: place,
-              route: region ? `${place} — ${region}` : place,
+              route: region ? `${place}: ${region}` : place,
             }));
           }
         } catch { /* ignore */ }
@@ -946,15 +946,15 @@ function TriagePage() {
     const list: { level: "info" | "warning" | "danger"; title: string; detail: string }[] = [];
     if (!weather) return list;
     const elNum = parseInt(location.elevation.replace(/[^\d-]/g, ""), 10);
-    if (weather.feelsC <= -10) list.push({ level: "danger", title: "Severe cold — hypothermia risk", detail: `Feels like ${Math.round(weather.feelsC)}°C. Shelter and insulate immediately.` });
+    if (weather.feelsC <= -10) list.push({ level: "danger", title: "Severe cold: hypothermia risk", detail: `Feels like ${Math.round(weather.feelsC)}°C. Shelter and insulate immediately.` });
     else if (weather.feelsC <= 0) list.push({ level: "warning", title: "Freezing conditions", detail: `Feels like ${Math.round(weather.feelsC)}°C. Watch for frostbite on exposed skin.` });
-    if (weather.windKmh >= 60) list.push({ level: "danger", title: "Dangerous winds", detail: `${Math.round(weather.windKmh)} km/h winds. Avalanche & exposure risk — descend or shelter.` });
-    else if (weather.windKmh >= 35) list.push({ level: "warning", title: "Strong winds", detail: `${Math.round(weather.windKmh)} km/h winds — wind chill and balance hazard.` });
+    if (weather.windKmh >= 60) list.push({ level: "danger", title: "Dangerous winds", detail: `${Math.round(weather.windKmh)} km/h winds. Avalanche & exposure risk: descend or shelter.` });
+    else if (weather.windKmh >= 35) list.push({ level: "warning", title: "Strong winds", detail: `${Math.round(weather.windKmh)} km/h winds: wind chill and balance hazard.` });
     if ([95, 96, 99].includes(weather.code)) list.push({ level: "danger", title: "Thunderstorm active", detail: "Descend ridges and peaks immediately. Avoid exposed terrain." });
     if ([71, 73, 75, 77, 85, 86].includes(weather.code)) list.push({ level: "warning", title: "Snowfall in progress", detail: "Reduced visibility and elevated avalanche risk on slopes." });
-    if ([45, 48].includes(weather.code)) list.push({ level: "warning", title: "Fog — low visibility", detail: "Stay on marked trails. Navigation difficulty." });
-    if (weather.precipMm >= 5) list.push({ level: "warning", title: "Heavy precipitation", detail: `${weather.precipMm} mm/h — hypothermia and rockfall risk.` });
-    if (!Number.isNaN(elNum) && elNum >= 3500) list.push({ level: "warning", title: "High altitude zone", detail: `${elNum.toLocaleString()} m — monitor for AMS, HAPE, HACE symptoms.` });
+    if ([45, 48].includes(weather.code)) list.push({ level: "warning", title: "Fog: low visibility", detail: "Stay on marked trails. Navigation difficulty." });
+    if (weather.precipMm >= 5) list.push({ level: "warning", title: "Heavy precipitation", detail: `${weather.precipMm} mm/h: hypothermia and rockfall risk.` });
+    if (!Number.isNaN(elNum) && elNum >= 3500) list.push({ level: "warning", title: "High altitude zone", detail: `${elNum.toLocaleString()} m: monitor for AMS, HAPE, HACE symptoms.` });
     if (!Number.isNaN(elNum) && elNum >= 5000) list.push({ level: "danger", title: "Extreme altitude", detail: "Acute mountain sickness highly likely. Descend if symptomatic." });
     if (list.length === 0) list.push({ level: "info", title: "Conditions nominal", detail: "No active hazards detected for your location." });
     return list;
@@ -1020,7 +1020,7 @@ function TriagePage() {
           else if (currentStep === "breathing") answer({ breathing: yn });
           else if (currentStep === "bleeding") answer({ bleeding: yn });
         } else {
-          toast.message(transcript || "—", { description: t.ui.sayYesNo });
+          toast.message(transcript || ":", { description: t.ui.sayYesNo });
         }
         setListening(false);
       };
@@ -1104,7 +1104,7 @@ function TriagePage() {
               >
                 {listening ? (
                   <span className="inline-flex items-center gap-2">
-                    <span className="h-2 w-2 rounded-full bg-neon animate-pulse" />
+                    <span className="h-2 w-2 rounded-full bg-neon " />
                     {t.ui.listening}
                   </span>
                 ) : (
@@ -1241,7 +1241,7 @@ function TriagePage() {
                     setLang(l.code);
                     lastSpokenStepRef.current = "";
                   }}
-                  className={`text-xs px-3 py-1.5 rounded-full transition-all ${
+                  className={`text-xs px-3 py-1.5 rounded-md transition-all ${
                     lang === l.code
                       ? "bg-neon text-primary-foreground"
                       : "glass text-muted-foreground hover:text-neon"
@@ -1257,7 +1257,7 @@ function TriagePage() {
               </span>
               <button
                 onClick={toggleVoice}
-                className={`text-xs px-3 py-1.5 rounded-full flex items-center gap-2 transition-all ${
+                className={`text-xs px-3 py-1.5 rounded-md flex items-center gap-2 transition-all ${
                   voiceEnabled
                     ? "bg-neon text-primary-foreground glow-soft"
                     : "glass text-muted-foreground hover:text-neon"
@@ -1268,7 +1268,7 @@ function TriagePage() {
               </button>
               {voiceEnabled && listening && (
                 <span className="text-xs text-neon inline-flex items-center gap-1.5">
-                  <Mic className="h-3.5 w-3.5 animate-pulse" /> {t.ui.listening}
+                  <Mic className="h-3.5 w-3.5 " /> {t.ui.listening}
                 </span>
               )}
               {voiceEnabled && !speechSupported && (
@@ -1379,18 +1379,18 @@ function TriagePage() {
                       </h2>
                     </div>
                     <div
-                      className={`px-4 py-2 rounded-full ${styles.bg} ${styles.text} text-sm font-semibold flex items-center gap-2`}
+                      className={`px-4 py-2 rounded-md ${styles.bg} ${styles.text} text-sm font-semibold flex items-center gap-2`}
                     >
-                      <span className={`h-2 w-2 rounded-full ${styles.dot} animate-pulse`} />
+                      <span className={`h-2 w-2 rounded-full ${styles.dot} `} />
                       {t.severities[severity]}
                     </div>
                   </div>
 
                   <div className="grid sm:grid-cols-2 gap-4">
-                    <Stat label={t.ui.injuryType} value={answers.injury ? t.injuries[answers.injury] : "—"} />
-                    <Stat label="Breathing" value={answers.breathing ? t.yesno[answers.breathing] : "—"} />
-                    <Stat label={t.ui.conscious} value={answers.conscious ? t.yesno[answers.conscious] : "—"} />
-                    <Stat label={t.ui.mobilityStatus} value={answers.mobility ? t.mobility[answers.mobility] : "—"} />
+                    <Stat label={t.ui.injuryType} value={answers.injury ? t.injuries[answers.injury] : ":"} />
+                    <Stat label="Breathing" value={answers.breathing ? t.yesno[answers.breathing] : ":"} />
+                    <Stat label={t.ui.conscious} value={answers.conscious ? t.yesno[answers.conscious] : ":"} />
+                    <Stat label={t.ui.mobilityStatus} value={answers.mobility ? t.mobility[answers.mobility] : ":"} />
                     <Stat label={t.ui.painScore} value={`${answers.pain ?? 0}/10`} />
                     <Stat label={t.ui.severity} value={t.severities[severity]} />
                   </div>
@@ -1411,16 +1411,16 @@ function TriagePage() {
                 <div className="glass-strong rounded-3xl p-6 md:p-8 border border-red-500/30 relative overflow-hidden animate-[fade-up_0.5s_ease-out]">
                   <div className="absolute inset-0 bg-gradient-to-br from-red-500/15 via-transparent to-transparent pointer-events-none" />
                   <div className="relative text-center">
-                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-500/15 border border-red-500/30 text-red-300 text-[10px] uppercase tracking-wider font-semibold mb-3">
-                      <Radio className="h-3 w-3 animate-pulse" /> {t.ui.sosBeacon}
+                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-red-500/15 border border-red-500/30 text-red-300 text-[10px] uppercase tracking-wider font-semibold mb-3">
+                      <Radio className="h-3 w-3 " /> {t.ui.sosBeacon}
                     </div>
                     <h3 className="font-display text-xl md:text-2xl font-bold mb-2">{t.ui.sosTitle}</h3>
                     <p className="text-xs text-muted-foreground mb-5 max-w-md mx-auto">
-                      Review the assessment above, then dispatch a one-tap SOS bundled with your live GPS, elevation, and severity report.
+                      Review the assessment above, then dispatch a a local emergency report containing the available GPS, elevation, and assessment details.
                     </p>
                     <button
                       onClick={sendSos}
-                      className="w-full md:w-auto px-10 py-5 rounded-2xl bg-gradient-to-r from-red-600 to-red-500 text-white font-bold text-base hover:shadow-[0_0_50px_rgba(239,68,68,0.7)] transition-all inline-flex items-center justify-center gap-3 animate-pulse"
+                      className="w-full md:w-auto px-10 py-5 rounded-2xl bg-red-600 text-white font-bold text-base hover:shadow-[0_0_50px_rgba(239,68,68,0.7)] transition-all inline-flex items-center justify-center gap-3 "
                     >
                       <Send className="h-5 w-5" />
                       {t.ui.sendSos}
@@ -1439,7 +1439,7 @@ function TriagePage() {
                       <div>
                         <h3 className="font-display text-lg font-bold text-emerald-200">Emergency Alert Sent Successfully</h3>
                         <p className="text-sm text-muted-foreground mt-1">
-                          Your emergency report has been generated and shared with rescue services.
+                          Your emergency report has been generated on this device. Contact emergency services to share it.
                         </p>
                         <p className="text-xs mt-2">
                           <span className="text-muted-foreground">{t.ui.emergencyId}: </span>
@@ -1460,8 +1460,8 @@ function TriagePage() {
                           <h3 className="font-display text-lg font-bold">Emergency Dispatch Document</h3>
                         </div>
                       </div>
-                      <span className={`px-3 py-1.5 rounded-full ${styles.bg} ${styles.text} text-xs font-semibold flex items-center gap-2`}>
-                        <span className={`h-1.5 w-1.5 rounded-full ${styles.dot} animate-pulse`} />
+                      <span className={`px-3 py-1.5 rounded-md ${styles.bg} ${styles.text} text-xs font-semibold flex items-center gap-2`}>
+                        <span className={`h-1.5 w-1.5 rounded-full ${styles.dot} `} />
                         {t.severities[severity]}
                       </span>
                     </div>
@@ -1476,17 +1476,17 @@ function TriagePage() {
                         <Row k={t.ui.nearestShelter} v={location.shelter} />
                       </div>
                       <div className="space-y-1">
-                        <Row k={t.ui.injuryType} v={answers.injury ? t.injuries[answers.injury] : "—"} />
-                        <Row k={t.ui.conscious} v={answers.conscious ? t.yesno[answers.conscious] : "—"} />
-                        <Row k="Breathing" v={answers.breathing ? t.yesno[answers.breathing] : "—"} />
-                        <Row k={t.ui.canWalk} v={answers.mobility ? t.mobility[answers.mobility] : "—"} />
+                        <Row k={t.ui.injuryType} v={answers.injury ? t.injuries[answers.injury] : ":"} />
+                        <Row k={t.ui.conscious} v={answers.conscious ? t.yesno[answers.conscious] : ":"} />
+                        <Row k="Breathing" v={answers.breathing ? t.yesno[answers.breathing] : ":"} />
+                        <Row k={t.ui.canWalk} v={answers.mobility ? t.mobility[answers.mobility] : ":"} />
                         <Row k={t.ui.painScore} v={`${answers.pain ?? 0}/10`} />
                         <Row k={t.ui.severity} v={t.severities[severity]} valueClass={styles.text} />
-                        <Row k="Rescue Status" v={t.ui.rescueNotified} valueClass="text-emerald-300" />
+                        <Row k="Report Status" v={t.ui.rescueNotified} valueClass="text-emerald-300" />
                       </div>
                     </div>
                     <div className={`mt-5 p-4 rounded-2xl ${styles.bg} border border-white/5`}>
-                      <p className="text-[10px] uppercase tracking-wider text-muted-foreground mb-1">AI Recommendation</p>
+                      <p className="text-[10px] uppercase tracking-wider text-muted-foreground mb-1">Recommended Next Step</p>
                       <p className={`text-sm font-medium ${styles.text}`}>{t.actions[severity]}</p>
                     </div>
                   </div>
@@ -1494,16 +1494,16 @@ function TriagePage() {
                   <div className="glass-strong rounded-3xl p-6 md:p-8 border border-white/10 animate-[fade-up_0.7s_ease-out]">
                     <div className="flex items-center gap-2 mb-5">
                       <Clock className="h-4 w-4 text-neon" />
-                      <h3 className="font-display text-base font-bold uppercase tracking-wider">Rescue Status Timeline</h3>
+                      <h3 className="font-display text-base font-bold uppercase tracking-wider">Emergency Report Checklist</h3>
                     </div>
                     <ol className="relative border-l border-white/10 ml-2 space-y-4">
                       {[
                         { label: "Assessment Complete", done: true },
-                        { label: "SOS Generated", done: true },
-                        { label: "Location Shared", done: true },
-                        { label: "Rescue Team Notified", done: true },
-                        { label: "Team Assignment Pending", done: false },
-                        { label: "Rescue En Route", done: false },
+                        { label: "Report Generated", done: true },
+                        { label: "Location Added", done: true },
+                        { label: "Report ready to share", done: true },
+                        { label: "Contact Emergency Services", done: false },
+                        { label: "Await Official Confirmation", done: false },
                       ].map((s) => (
                         <li key={s.label} className="ml-5">
                           <span
@@ -1540,7 +1540,7 @@ function TriagePage() {
                   </div>
 
                   <AidBlock
-                    title={t.ui.forInjury(answers.injury ? t.injuries[answers.injury] : "—")}
+                    title={t.ui.forInjury(answers.injury ? t.injuries[answers.injury] : ":")}
                     items={firstAidList}
                     icon={<Heart className="h-4 w-4 text-neon" />}
                   />
@@ -1575,7 +1575,7 @@ function TriagePage() {
                     </span>
                     {geoStatus === "ok" && (
                       <span className="flex items-center gap-1 text-[10px] text-emerald-300 ml-1">
-                        <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                        <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 " />
                         LIVE
                       </span>
                     )}
@@ -1602,7 +1602,7 @@ function TriagePage() {
                   <Mountain className="absolute bottom-3 right-3 h-10 w-10 text-neon/60" />
                   <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
                     <div className="h-3 w-3 rounded-full bg-neon glow-neon" />
-                    <div className="absolute inset-0 h-3 w-3 rounded-full bg-neon animate-ping" />
+                    <div className="absolute inset-0 h-3 w-3 rounded-full bg-neon " />
                   </div>
                 </div>
                 <div className="space-y-2 text-xs">
@@ -1629,7 +1629,7 @@ function TriagePage() {
                     </span>
                     {weatherStatus === "ok" && (
                       <span className="flex items-center gap-1 text-[10px] text-emerald-300 ml-1">
-                        <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                        <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 " />
                         LIVE
                       </span>
                     )}

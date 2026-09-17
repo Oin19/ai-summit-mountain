@@ -22,7 +22,7 @@ const suggestions = [
 const initialAssistant: Msg = {
   role: "assistant",
   content:
-    "Hi, I'm Summit AI 🏔️ — ask me about trails, weather, safety or emergencies.",
+    "Hi, I'm Summit AI. Ask me about trails, weather, safety, or emergencies.",
 };
 
 export function ChatDemo() {
@@ -137,9 +137,9 @@ export function ChatDemo() {
     <section id="demo" className="relative py-28">
       <div className="container mx-auto px-6">
         <SectionHeader
-          eyebrow="Live Demo"
+          eyebrow="AI Chat"
           title="Talk to Summit AI"
-          subtitle="A real AI assistant — voice-ready, multilingual, and trained for the mountains."
+          subtitle="Ask for general trail, weather, and mountain safety guidance. Verify critical advice with official sources."
         />
 
         <motion.div
@@ -157,19 +157,19 @@ export function ChatDemo() {
               <div className="min-w-0">
                 <div className="text-sm font-semibold">Summit AI Assistant</div>
                 <div className="text-[10px] text-muted-foreground flex items-center gap-1">
-                  <span className="w-1.5 h-1.5 rounded-full bg-neon animate-pulse" />
-                  live · powered by Lovable AI
+                  <span className="w-1.5 h-1.5 rounded-md bg-neon animate-pulse" />
+                  connected to Lovable AI
                 </div>
               </div>
             </div>
             <div className="flex items-center gap-2">
-              <div className="hidden sm:flex items-center gap-1 glass rounded-full p-1">
+              <div className="hidden sm:flex items-center gap-1 glass rounded-md p-1">
                 <Globe className="h-3 w-3 text-muted-foreground ml-2" />
                 {langs.map((l) => (
                   <button
                     key={l.code}
                     onClick={() => setLang(l.code)}
-                    className={`text-[10px] px-2 py-1 rounded-full transition-colors ${
+                    className={`text-[10px] px-2 py-1 rounded-md transition-colors ${
                       lang === l.code
                         ? "bg-neon text-primary-foreground"
                         : "text-muted-foreground hover:text-foreground"
@@ -181,7 +181,7 @@ export function ChatDemo() {
               </div>
               <button
                 onClick={reset}
-                className="p-2 rounded-full glass hover:text-neon transition-colors"
+                className="p-2 rounded-md glass hover:text-neon transition-colors"
                 title="Reset conversation"
               >
                 <RotateCcw className="h-3.5 w-3.5" />
@@ -209,13 +209,13 @@ export function ChatDemo() {
                 >
                   {m.content || (
                     <span className="inline-flex gap-1 py-1">
-                      <span className="w-1.5 h-1.5 rounded-full bg-neon animate-bounce" />
+                      <span className="w-1.5 h-1.5 rounded-md bg-neon " />
                       <span
-                        className="w-1.5 h-1.5 rounded-full bg-neon animate-bounce"
+                        className="w-1.5 h-1.5 rounded-md bg-neon "
                         style={{ animationDelay: "150ms" }}
                       />
                       <span
-                        className="w-1.5 h-1.5 rounded-full bg-neon animate-bounce"
+                        className="w-1.5 h-1.5 rounded-md bg-neon "
                         style={{ animationDelay: "300ms" }}
                       />
                     </span>
@@ -230,7 +230,7 @@ export function ChatDemo() {
                   <button
                     key={s}
                     onClick={() => send(s)}
-                    className="text-[11px] glass rounded-full px-3 py-1.5 hover:text-neon hover:border-neon/40 transition-colors"
+                    className="text-[11px] glass rounded-md px-3 py-1.5 hover:text-neon hover:border-neon/40 transition-colors"
                   >
                     {s}
                   </button>
@@ -257,19 +257,19 @@ export function ChatDemo() {
               onChange={(e) => setInput(e.target.value)}
               disabled={loading}
               placeholder="Ask Summit AI anything…"
-              className="flex-1 glass rounded-full px-4 py-2.5 text-sm bg-transparent outline-none placeholder:text-muted-foreground disabled:opacity-50"
+              className="flex-1 glass rounded-md px-4 py-2.5 text-sm bg-transparent outline-none placeholder:text-muted-foreground disabled:opacity-50"
             />
             <button
               type="button"
-              className="p-2.5 rounded-full glass hover:text-neon transition-colors"
-              title="Voice (coming soon)"
+              className="p-2.5 rounded-md glass hover:text-neon transition-colors"
+              title="Voice input is not available"
             >
               <Mic className="h-4 w-4" />
             </button>
             <button
               type="submit"
               disabled={loading || !input.trim()}
-              className="p-2.5 rounded-full bg-neon text-primary-foreground hover:glow-neon transition-shadow disabled:opacity-50 disabled:cursor-not-allowed"
+              className="p-2.5 rounded-md bg-neon text-primary-foreground hover:glow-neon transition-shadow disabled:opacity-50 disabled:cursor-not-allowed"
             >
               <Send className="h-4 w-4" />
             </button>

@@ -4,11 +4,11 @@ import { SectionHeader } from "./Features";
 
 const steps = [
   { icon: MessageSquare, title: "User Request", desc: "Trekker types or speaks to the assistant." },
-  { icon: Bot, title: "AI Chatbot", desc: "Conversational layer captures intent & context." },
-  { icon: Cpu, title: "NLP Processing", desc: "Language model parses query in real time." },
-  { icon: Cloud, title: "Weather + GPS APIs", desc: "Live data merged with local route maps." },
-  { icon: Sparkles, title: "Smart Response", desc: "Tailored guidance returned instantly." },
-  { icon: Siren, title: "Emergency Escalation", desc: "Auto-route to rescue if risk detected." },
+  { icon: Bot, title: "AI Chatbot", desc: "The assistant interprets the question and recent conversation." },
+  { icon: Cpu, title: "NLP Processing", desc: "A language model prepares a relevant response." },
+  { icon: Cloud, title: "Weather + GPS APIs", desc: "Available location and weather information provide context." },
+  { icon: Sparkles, title: "Smart Response", desc: "The app returns guidance for the user to verify." },
+  { icon: Siren, title: "Emergency Escalation", desc: "The triage flow prepares details for an emergency call." },
 ];
 
 export function HowItWorks() {
@@ -17,8 +17,8 @@ export function HowItWorks() {
       <div className="container mx-auto px-6">
         <SectionHeader
           eyebrow="How it works"
-          title="From whisper to rescue, in seconds"
-          subtitle="A six-stage pipeline that turns natural language into life-saving action."
+          title="From a question to a practical next step"
+          subtitle="The app combines a question, available context, and clear safety guidance."
         />
 
         <div className="relative grid md:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -34,13 +34,13 @@ export function HowItWorks() {
               <div className="absolute top-4 right-4 text-5xl font-display font-bold text-neon/15">
                 0{i + 1}
               </div>
-              <div className="inline-flex p-3 rounded-xl bg-gradient-to-br from-neon/20 to-transparent text-neon mb-4">
+              <div className="inline-flex p-3 rounded-xl bg-neon/10 text-neon mb-4">
                 <s.icon className="h-6 w-6" />
               </div>
               <h3 className="font-semibold text-lg mb-2">{s.title}</h3>
               <p className="text-sm text-muted-foreground">{s.desc}</p>
               {i < steps.length - 1 && (
-                <div className="hidden lg:block absolute top-1/2 -right-3 w-6 h-px bg-gradient-to-r from-neon/60 to-transparent" />
+                <div className="hidden lg:block absolute top-1/2 -right-3 w-6 h-px bg-neon/40" />
               )}
             </motion.div>
           ))}

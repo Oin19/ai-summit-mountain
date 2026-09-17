@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { createClient } from "@supabase/supabase-js";
 import { z } from "zod";
 
-const SYSTEM_PROMPT = `You are Summit AI, an intelligent mountain companion chatbot for "AI to the Summit" — a platform that supports trekkers, tourists, and rescue teams in remote mountainous regions.
+const SYSTEM_PROMPT = `You are Summit AI, an intelligent mountain companion chatbot for "AI to the Summit": a platform that supports trekkers, tourists, and rescue teams in remote mountainous regions.
 
 You help with:
 - Trail guidance and navigation

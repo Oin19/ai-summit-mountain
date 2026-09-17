@@ -39,9 +39,9 @@ export function Navbar() {
             <img
               src={logoAsset.url}
               alt="AI to the Summit"
-              className="h-9 w-9 rounded-full object-cover transition-transform group-hover:scale-110"
+              className="h-9 w-9 rounded-md object-cover transition-transform group-hover:scale-110"
             />
-            <div className="absolute inset-0 blur-md bg-neon/30 rounded-full -z-10" />
+            <div className="absolute inset-0 blur-md bg-neon/30 rounded-md -z-10" />
           </div>
           <span className="font-display text-lg font-bold tracking-tight">
             AI to the <span className="text-gradient">Summit</span>
@@ -65,13 +65,13 @@ export function Navbar() {
         <div className="hidden lg:flex items-center gap-3">
           <Link
             to="/login"
-            className="px-4 py-2 rounded-full border border-white/15 text-foreground text-sm font-medium hover:border-neon/40 hover:text-neon transition-all"
+            className="px-4 py-2 rounded-md border border-white/15 text-foreground text-sm font-medium hover:border-neon/40 hover:text-neon transition-all"
           >
             Login
           </Link>
           <Link
             to="/register"
-            className="px-4 py-2 rounded-full bg-neon text-primary-foreground text-sm font-semibold hover:glow-neon transition-shadow"
+            className="px-4 py-2 rounded-md bg-neon text-primary-foreground text-sm font-semibold hover:glow-neon transition-shadow"
           >
             Register
           </Link>

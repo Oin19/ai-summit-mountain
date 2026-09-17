@@ -1,6 +1,6 @@
 # AI to the Summit
 
-> Multilingual AI companion for trekkers, tourists and rescue teams in remote mountainous regions — trail guidance, live weather alerts, GPS-based SOS and offline emergency resources.
+> Multilingual AI companion for trekkers, tourists and rescue teams in remote mountainous regions: trail guidance, live weather alerts, GPS-based SOS and offline emergency resources.
 
 AI to the Summit is an AI-powered mountain safety platform combining a conversational assistant, real-time GPS + weather awareness, and an offline emergency toolkit designed for high-altitude and low-connectivity environments.
 

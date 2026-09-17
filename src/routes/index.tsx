@@ -7,22 +7,20 @@ import { HowItWorks } from "@/components/HowItWorks";
 import { Emergency } from "@/components/Emergency";
 import { ChatDemo } from "@/components/ChatDemo";
 import { FutureScope } from "@/components/FutureScope";
-import { Stats } from "@/components/Stats";
 import { About } from "@/components/About";
 import { Contact } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
-import { Snowfall } from "@/components/Snowfall";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "AI to the Summit — Your Intelligent Mountain Companion" },
+      { title: "AI to the Summit: Your Intelligent Mountain Companion" },
       {
         name: "description",
         content:
-          "AI chatbot platform for trekkers, tourists and rescue teams in remote mountainous regions — trail guidance, live weather, GPS SOS and offline safety tools.",
+          "AI chatbot platform for trekkers, tourists and rescue teams in remote mountainous regions: trail guidance, live weather, GPS SOS and offline safety tools.",
       },
-      { property: "og:title", content: "AI to the Summit — Your Intelligent Mountain Companion" },
+      { property: "og:title", content: "AI to the Summit: Your Intelligent Mountain Companion" },
       {
         property: "og:description",
         content:
@@ -46,7 +44,6 @@ export const Route = createFileRoute("/")({
 function Index() {
   return (
     <div className="relative min-h-screen overflow-x-hidden">
-      <Snowfall count={35} />
       <Navbar />
       <main className="relative z-10">
         <Hero />
@@ -55,7 +52,6 @@ function Index() {
         
         <Emergency />
         <ChatDemo />
-        <Stats />
         <FutureScope />
         <About />
         <Contact />

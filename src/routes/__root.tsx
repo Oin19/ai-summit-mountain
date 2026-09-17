@@ -80,15 +80,15 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "AI to the Summit — Intelligent Mountain Companion" },
+      { title: "AI to the Summit: Intelligent Mountain Companion" },
       {
         name: "description",
         content:
-          "AI to the Summit is a multilingual AI companion for trekkers, tourists and rescue teams — trail guidance, live weather, GPS SOS and offline safety tools for remote mountain regions.",
+          "AI to the Summit is a multilingual AI companion for trekkers, tourists and rescue teams: trail guidance, live weather, GPS SOS and offline safety tools for remote mountain regions.",
       },
       { name: "author", content: "AI to the Summit" },
       { property: "og:site_name", content: "AI to the Summit" },
-      { property: "og:title", content: "AI to the Summit — Intelligent Mountain Companion" },
+      { property: "og:title", content: "AI to the Summit: Intelligent Mountain Companion" },
       {
         property: "og:description",
         content:
@@ -96,7 +96,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "AI to the Summit — Intelligent Mountain Companion" },
+      { name: "twitter:title", content: "AI to the Summit: Intelligent Mountain Companion" },
       {
         name: "twitter:description",
         content:
@@ -127,7 +127,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
               name: "AI to the Summit",
               url: "https://ai-summit-mountain.lovable.app",
               description:
-                "Multilingual AI assistant for mountainous and remote regions — trail guidance, weather, SOS and offline safety.",
+                "Multilingual AI assistant for mountainous and remote regions: trail guidance, weather, SOS and offline safety.",
             },
           ],
         }),

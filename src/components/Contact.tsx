@@ -12,7 +12,7 @@ export function Contact() {
         <SectionHeader
           eyebrow="Get in touch"
           title="Let's reach the summit together"
-          subtitle="Questions, partnerships, or rescue collaborations — we're listening."
+          subtitle="Questions, research partnerships, or project feedback are welcome."
         />
 
         <motion.form
@@ -60,9 +60,9 @@ export function Contact() {
           </div>
           <button
             type="submit"
-            className="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-neon text-primary-foreground font-semibold hover:glow-neon transition-all"
+            className="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-md bg-neon text-primary-foreground font-semibold hover:glow-neon transition-all"
           >
-            {sent ? "Message sent ✓" : (<>Send message <Send className="h-4 w-4" /></>)}
+            {sent ? "Message marked as sent" : (<>Send message <Send className="h-4 w-4" /></>)}
           </button>
         </motion.form>
       </div>
