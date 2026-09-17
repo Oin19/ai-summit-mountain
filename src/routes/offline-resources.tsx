@@ -37,17 +37,17 @@ import { toast } from "sonner";
 export const Route = createFileRoute("/offline-resources")({
   head: () => ({
     meta: [
-      { title: "Offline Emergency Resources — AI to the Summit" },
+      { title: "Offline Emergency Resources: AI to the Summit" },
       {
         name: "description",
         content:
           "Critical first-aid guides, emergency contacts, survival checklist and offline SOS draft for trekkers without connectivity.",
       },
-      { property: "og:title", content: "Offline Emergency Resources — AI to the Summit" },
+      { property: "og:title", content: "Offline Emergency Resources: AI to the Summit" },
       {
         property: "og:description",
         content:
-          "Practical emergency toolkit for trekkers — first aid, contacts, checklist and offline SOS draft that works without internet.",
+          "Practical emergency toolkit for trekkers: first aid, contacts, checklist and offline SOS draft that works without internet.",
       },
       { property: "og:url", content: "https://ai-summit-mountain.lovable.app/offline-resources" },
     ],
@@ -64,11 +64,10 @@ const FIRST_AID = [
   {
     key: "fracture",
     title: "Fractures",
-    emoji: "🩹",
     Icon: Bandage,
     steps: [
       "Stay calm and keep the injured person still.",
-      "Avoid moving the injured limb — never try to realign a bone.",
+      "Avoid moving the injured limb: never try to realign a bone.",
       "Immobilize the area with a splint, padding or a rolled jacket.",
       "Apply ice wrapped in cloth to reduce swelling. Never directly on skin.",
       "Elevate the limb if possible and treat for shock (warm, hydrated, lying down).",
@@ -78,13 +77,12 @@ const FIRST_AID = [
   {
     key: "bleeding",
     title: "Severe Bleeding",
-    emoji: "🩸",
     Icon: Droplet,
     steps: [
       "Apply firm, direct pressure with a clean cloth or gauze.",
-      "Do NOT remove embedded objects — stabilize them in place.",
+      "Do NOT remove embedded objects: stabilize them in place.",
       "Elevate the wound above heart level if there's no fracture.",
-      "If bleeding soaks through, add more layers — don't remove the original.",
+      "If bleeding soaks through, add more layers: don't remove the original.",
       "Apply a tourniquet ABOVE the wound only for life-threatening limb bleeds.",
       "Keep the person warm and monitor breathing until rescue arrives.",
     ],
@@ -92,39 +90,36 @@ const FIRST_AID = [
   {
     key: "hypothermia",
     title: "Hypothermia",
-    emoji: "❄️",
     Icon: Snowflake,
     steps: [
       "Move the person to a sheltered, wind-protected area.",
       "Replace wet clothing with dry layers and wrap in a thermal blanket.",
-      "Insulate from the ground — use a backpack or sleeping pad.",
+      "Insulate from the ground: use a backpack or sleeping pad.",
       "Offer warm (not hot) sugary fluids only if fully conscious.",
-      "Re-warm the core first (chest, neck, groin) — never extremities first.",
+      "Re-warm the core first (chest, neck, groin): never extremities first.",
       "Avoid alcohol, caffeine and vigorous rubbing of skin.",
     ],
   },
   {
     key: "altitude",
     title: "Altitude Sickness",
-    emoji: "🏔️",
     Icon: Mountain,
     steps: [
       "Stop ascending immediately at the first symptoms (headache, nausea, dizziness).",
-      "Descend at least 500 m if symptoms worsen — this is the only true cure.",
+      "Descend at least 500 m if symptoms worsen: this is the only true cure.",
       "Rest, hydrate with small frequent sips, and avoid alcohol and sleeping pills.",
       "Watch for HAPE (breathlessness at rest) or HACE (confusion, loss of balance).",
       "Administer supplemental oxygen if available.",
-      "Evacuate urgently for severe symptoms — these are life-threatening.",
+      "Evacuate urgently for severe symptoms: these are life-threatening.",
     ],
   },
   {
     key: "dehydration",
     title: "Dehydration",
-    emoji: "💧",
     Icon: GlassWater,
     steps: [
       "Move to shade and stop physical exertion immediately.",
-      "Sip water or oral rehydration solution slowly — never gulp.",
+      "Sip water or oral rehydration solution slowly: never gulp.",
       "Add a pinch of salt and sugar to water if ORS is unavailable.",
       "Loosen tight clothing and cool the body with damp cloth on neck and wrists.",
       "Avoid caffeine, alcohol and sugary energy drinks.",
@@ -134,10 +129,9 @@ const FIRST_AID = [
   {
     key: "wildlife",
     title: "Wildlife Encounters",
-    emoji: "🐻",
     Icon: PawPrint,
     steps: [
-      "Stay calm. Do NOT run — most predators chase fleeing prey.",
+      "Stay calm. Do NOT run: most predators chase fleeing prey.",
       "Make yourself look large: raise arms, open jacket, group together.",
       "Back away slowly while facing the animal. Avoid direct eye contact with bears.",
       "Speak in a low, firm voice. Carry bear spray within easy reach.",
@@ -180,7 +174,7 @@ const CONTACTS = [
     Icon: Siren,
     name: "National Emergency Helpline",
     number: "112",
-    status: "All India — 24/7",
+    status: "All India: 24/7",
     tone: "red",
   },
 ];
@@ -201,10 +195,10 @@ const GUIDELINES = [
     title: "What To Do If Lost",
     Icon: Compass,
     points: [
-      "STOP — Stop, Think, Observe, Plan. Don't keep walking blindly.",
+      "STOP: Stop, Think, Observe, Plan. Don't keep walking blindly.",
       "Stay on the trail you last recognized. Mark your position visibly.",
       "Blow your whistle in groups of three at regular intervals.",
-      "Conserve phone battery — use airplane mode and only signal when needed.",
+      "Conserve phone battery: use airplane mode and only signal when needed.",
     ],
   },
   {
@@ -212,7 +206,7 @@ const GUIDELINES = [
     Icon: CloudSnow,
     points: [
       "Seek shelter behind natural windbreaks or dig a snow trench.",
-      "Stay dry — wet clothing accelerates hypothermia drastically.",
+      "Stay dry: wet clothing accelerates hypothermia drastically.",
       "Avoid sweating; ventilate before exertion, layer up after.",
       "Keep group members tethered or within constant visual range.",
     ],
@@ -222,7 +216,7 @@ const GUIDELINES = [
     Icon: Mountain,
     points: [
       "Avoid slopes between 30°–45° after fresh snowfall.",
-      "Carry beacon, probe, and shovel — and know how to use them.",
+      "Carry beacon, probe, and shovel: and know how to use them.",
       "Cross suspect slopes one person at a time, watcher posted.",
       "If caught: swim toward the surface, create an air pocket near your face.",
     ],
@@ -231,9 +225,9 @@ const GUIDELINES = [
     title: "Night Trekking Safety",
     Icon: Moon,
     points: [
-      "Always carry two light sources — headlamp plus a backup.",
+      "Always carry two light sources: headlamp plus a backup.",
       "Stay close together; the lead person navigates, the last person counts.",
-      "Reduce pace by half — depth perception drops sharply at night.",
+      "Reduce pace by half: depth perception drops sharply at night.",
       "Camp before fatigue sets in. Most accidents happen in the last hour.",
     ],
   },
@@ -242,7 +236,7 @@ const GUIDELINES = [
     Icon: PawPrint,
     points: [
       "Store food in sealed containers away from sleeping areas.",
-      "Make noise on blind corners — surprise is the leading cause of attacks.",
+      "Make noise on blind corners: surprise is the leading cause of attacks.",
       "Never feed or approach wild animals, even small ones.",
       "Report any aggressive wildlife sightings to forest department.",
     ],
@@ -251,10 +245,10 @@ const GUIDELINES = [
     title: "Weather Awareness",
     Icon: Wind,
     points: [
-      "Check forecasts the morning of departure — mountain weather shifts fast.",
+      "Check forecasts the morning of departure: mountain weather shifts fast.",
       "Turn back if visibility drops below 50 m on exposed ridges.",
       "Lightning rule: descend ridges if thunder follows flash within 30 sec.",
-      "Watch lenticular clouds — they signal incoming high-altitude storms.",
+      "Watch lenticular clouds: they signal incoming high-altitude storms.",
     ],
   },
 ];
@@ -333,7 +327,7 @@ function OfflineResources() {
         <div className="container mx-auto px-6">
           {/* Hero */}
           <div className="text-center max-w-3xl mx-auto mb-14">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full glass border border-white/10 text-xs uppercase tracking-wider text-neon mb-4">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md glass border border-white/10 text-xs uppercase tracking-wider text-neon mb-4">
               <WifiOff className="h-3.5 w-3.5" /> Works without internet
             </div>
             <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
@@ -344,7 +338,7 @@ function OfflineResources() {
             </p>
           </div>
 
-          {/* SECTION 1 — First Aid Guide */}
+          {/* SECTION 1: First Aid Guide */}
           <section className="mb-16">
             <SectionHeading
               eyebrow="Section 1"
@@ -352,20 +346,20 @@ function OfflineResources() {
               subtitle="Tap a card to reveal step-by-step emergency instructions."
             />
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-              {FIRST_AID.map(({ key, title, emoji, Icon, steps }) => {
+              {FIRST_AID.map(({ key, title, Icon, steps }) => {
                 const isOpen = openAid === key;
                 return (
                   <button
                     key={key}
                     onClick={() => setOpenAid(isOpen ? null : key)}
-                    className={`text-left glass-strong rounded-3xl p-6 border transition-all hover:-translate-y-1 ${
+                    className={`text-left glass-strong rounded-3xl p-6 border transition-all ${
                       isOpen ? "border-neon/40 shadow-[0_0_30px_rgba(34,211,238,0.15)]" : "border-white/10 hover:border-neon/30"
                     }`}
                   >
                     <div className="flex items-center justify-between mb-3">
                       <div className="flex items-center gap-3">
                         <div className="h-11 w-11 rounded-2xl bg-neon/15 flex items-center justify-center text-xl">
-                          {emoji}
+                          <Icon className="h-5 w-5 text-neon" />
                         </div>
                         <div>
                           <h3 className="font-display text-lg font-bold">{title}</h3>
@@ -396,7 +390,7 @@ function OfflineResources() {
             </div>
           </section>
 
-          {/* SECTION 2 — Emergency Contacts */}
+          {/* SECTION 2: Emergency Contacts */}
           <section className="mb-16">
             <SectionHeading
               eyebrow="Section 2"
@@ -408,7 +402,7 @@ function OfflineResources() {
                 <a
                   key={name}
                   href={`tel:${number.replace(/\s+/g, "")}`}
-                  className="glass-strong rounded-3xl p-6 border border-white/10 hover:border-neon/40 hover:-translate-y-1 transition-all group"
+                  className="glass-strong rounded-3xl p-6 border border-white/10 hover:border-neon/40 transition-all group"
                 >
                   <div className="flex items-start gap-4">
                     <div className={`h-12 w-12 rounded-2xl border flex items-center justify-center ${TONE_BG[tone]}`}>
@@ -420,7 +414,7 @@ function OfflineResources() {
                       </h3>
                       <p className="font-mono text-lg mt-1 tracking-tight">{number}</p>
                       <p className="text-[11px] text-emerald-300 mt-1 flex items-center gap-1.5">
-                        <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                        <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 " />
                         {status}
                       </p>
                     </div>
@@ -431,7 +425,7 @@ function OfflineResources() {
             </div>
           </section>
 
-          {/* SECTION 3 — Survival Checklist */}
+          {/* SECTION 3: Survival Checklist */}
           <section className="mb-16">
             <SectionHeading
               eyebrow="Section 3"
@@ -480,7 +474,7 @@ function OfflineResources() {
             </div>
           </section>
 
-          {/* SECTION 4 — Safety Guidelines */}
+          {/* SECTION 4: Safety Guidelines */}
           <section className="mb-16">
             <SectionHeading
               eyebrow="Section 4"
@@ -527,12 +521,12 @@ function OfflineResources() {
             </div>
           </section>
 
-          {/* SECTION 5 — Offline SOS Draft */}
+          {/* SECTION 5: Offline SOS Draft */}
           <section>
             <SectionHeading
               eyebrow="Section 5"
               title="Offline SOS Draft"
-              subtitle="Compose an emergency report now — share it the moment signal returns."
+              subtitle="Compose an emergency report now: share it the moment signal returns."
             />
             <form
               onSubmit={saveDraft}
@@ -580,7 +574,7 @@ function OfflineResources() {
 
               <button
                 type="submit"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-2xl bg-gradient-to-r from-neon to-cyan-400 text-primary-foreground font-semibold text-sm hover:glow-neon transition-all"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-2xl bg-neon text-primary-foreground font-semibold text-sm hover:glow-neon transition-all"
               >
                 <Save className="h-4 w-4" />
                 Save Emergency Report

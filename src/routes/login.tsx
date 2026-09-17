@@ -10,17 +10,17 @@ import { toast } from "sonner";
 export const Route = createFileRoute("/login")({
   head: () => ({
     meta: [
-      { title: "Login — AI to the Summit" },
+      { title: "Login: AI to the Summit" },
       {
         name: "description",
         content:
-          "Log in to AI to the Summit to access your intelligent mountain companion — trail guidance, live weather and emergency SOS.",
+          "Log in to AI to the Summit to access your intelligent mountain companion: trail guidance, live weather and emergency SOS.",
       },
-      { property: "og:title", content: "Login — AI to the Summit" },
+      { property: "og:title", content: "Login: AI to the Summit" },
       {
         property: "og:description",
         content:
-          "Log in to AI to the Summit — your multilingual AI mountain companion for trail guidance, weather and SOS.",
+          "Log in to AI to the Summit: your multilingual AI mountain companion for trail guidance, weather and SOS.",
       },
     ],
     links: [{ rel: "canonical", href: "https://ai-summit-mountain.lovable.app/login" }],
@@ -77,10 +77,10 @@ function LoginPage() {
         {/* Glassmorphism Card */}
         <div className="glass-strong rounded-3xl overflow-hidden shadow-2xl border border-neon/15">
           <div className="grid lg:grid-cols-2">
-            {/* Left Side — Branding */}
-            <div className="relative p-10 lg:p-14 flex flex-col justify-center items-center text-center bg-gradient-to-br from-neon/5 to-transparent">
+            {/* Left Side: Branding */}
+            <div className="relative p-10 lg:p-14 flex flex-col justify-center items-center text-center bg-neon/5">
               {/* Glow orb */}
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 bg-neon/10 rounded-full blur-3xl pointer-events-none" />
+              <div className="hidden" />
 
               <div className="relative">
                 <img
@@ -89,31 +89,15 @@ function LoginPage() {
                   className="w-24 h-24 rounded-2xl object-cover mb-6 mx-auto border border-neon/30 shadow-[0_0_40px_rgba(34,211,238,0.25)]"
                 />
                 <h1 className="font-display text-2xl lg:text-3xl font-bold text-foreground mb-2">
-                  Login — AI to the <span className="text-gradient">Summit</span>
+                  Login: AI to the <span className="text-gradient">Summit</span>
                 </h1>
                 <p className="text-sm text-muted-foreground max-w-[240px]">
                   Your Intelligent Mountain Companion
                 </p>
               </div>
-
-              {/* Decorative stats */}
-              <div className="mt-8 flex gap-6 text-xs text-muted-foreground">
-                <div>
-                  <div className="font-display text-lg font-bold text-neon">8+</div>
-                  <div>Languages</div>
-                </div>
-                <div>
-                  <div className="font-display text-lg font-bold text-neon">24/7</div>
-                  <div>Assistance</div>
-                </div>
-                <div>
-                  <div className="font-display text-lg font-bold text-neon">99%</div>
-                  <div>Uptime</div>
-                </div>
-              </div>
             </div>
 
-            {/* Right Side — Login Form */}
+            {/* Right Side: Login Form */}
             <div className="p-10 lg:p-14">
               <h2 className="font-display text-2xl font-bold text-foreground mb-1">
                 Welcome Back
@@ -196,7 +180,7 @@ function LoginPage() {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full py-3 rounded-xl bg-gradient-to-r from-neon to-neon/80 text-primary-foreground font-semibold text-sm hover:glow-neon transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                  className="w-full py-3 rounded-xl bg-neon text-primary-foreground font-semibold text-sm hover:glow-neon transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                 >
                   {isSubmitting ? (
                     <span className="flex items-center gap-2">

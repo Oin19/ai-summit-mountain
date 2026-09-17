@@ -17,13 +17,13 @@ export function Footer() {
         <div className="grid md:grid-cols-3 gap-10 mb-10">
           <div>
             <div className="flex items-center gap-2 mb-3">
-              <img src={logoAsset.url} alt="AI to the Summit" className="h-7 w-7 rounded-full object-cover" />
+              <img src={logoAsset.url} alt="AI to the Summit" className="h-7 w-7 rounded-md object-cover" />
               <span className="font-display font-bold">
                 AI to the <span className="text-gradient">Summit</span>
               </span>
             </div>
             <p className="text-sm text-muted-foreground max-w-xs">
-              Your Intelligent Mountain Companion — guiding every step, from base camp to peak.
+              Trail guidance, weather context, emergency tools, and offline resources for remote mountain travel.
             </p>
           </div>
           <div>
@@ -52,7 +52,7 @@ export function Footer() {
         </div>
         <div className="pt-6 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-muted-foreground">
           <div>© {new Date().getFullYear()} AI to the Summit. All rights reserved.</div>
-          <div>Crafted with snow, code & altitude. 🏔️</div>
+          <div>Built for safer decisions in remote terrain.</div>
         </div>
       </div>
     </footer>

@@ -13,17 +13,17 @@ export const Route = createFileRoute("/dashboard")({
   },
   head: () => ({
     meta: [
-      { title: "Dashboard — AI to the Summit" },
+      { title: "Dashboard: AI to the Summit" },
       {
         name: "description",
         content:
-          "Your AI to the Summit dashboard — access the trail finder, live weather, emergency SOS and mountain companion tools from one place.",
+          "Your AI to the Summit dashboard: access the trail finder, live weather, emergency SOS and mountain companion tools from one place.",
       },
-      { property: "og:title", content: "Dashboard — AI to the Summit" },
+      { property: "og:title", content: "Dashboard: AI to the Summit" },
       {
         property: "og:description",
         content:
-          "Personal dashboard for AI to the Summit — trail finder, live weather and emergency SOS at a glance.",
+          "Personal dashboard for AI to the Summit: trail finder, live weather and emergency SOS at a glance.",
       },
       { name: "robots", content: "noindex, nofollow" },
     ],
@@ -66,18 +66,18 @@ function DashboardPage() {
             <div className="p-4 rounded-xl bg-white/5 border border-white/10 hover:border-neon/20 transition-colors">
               <Shield className="h-5 w-5 text-neon mb-2" />
               <h3 className="text-sm font-semibold text-foreground mb-1">SOS Ready</h3>
-              <p className="text-xs text-muted-foreground">Emergency assistance active</p>
+              <p className="text-xs text-muted-foreground">Open the triage checklist</p>
             </div>
             <div className="p-4 rounded-xl bg-white/5 border border-white/10 hover:border-neon/20 transition-colors">
               <Mountain className="h-5 w-5 text-neon mb-2" />
               <h3 className="text-sm font-semibold text-foreground mb-1">Weather</h3>
-              <p className="text-xs text-muted-foreground">Live mountain conditions</p>
+              <p className="text-xs text-muted-foreground">View location-based conditions</p>
             </div>
           </div>
 
           <a
             href="/"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-neon to-neon/80 text-primary-foreground font-semibold text-sm hover:glow-neon transition-all"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-neon text-primary-foreground font-semibold text-sm hover:glow-neon transition-all"
           >
             <LogOut className="h-4 w-4" />
             Back to Homepage

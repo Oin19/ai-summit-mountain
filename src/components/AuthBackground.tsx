@@ -3,7 +3,7 @@ import logoAsset from "@/assets/ai-summit-logo.png.asset.json";
 export function AuthBackground({ children }: { children: React.ReactNode }) {
   return (
     <div className="relative min-h-screen overflow-hidden flex items-center justify-center">
-      {/* Animated grid background */}
+      {/* Static grid background */}
       <div className="absolute inset-0 grid-bg opacity-30" />
 
       {/* Radial glow from center */}
@@ -28,7 +28,7 @@ export function AuthBackground({ children }: { children: React.ReactNode }) {
         </defs>
       </svg>
 
-      {/* Floating mountain peaks subtle overlay */}
+      {/* Mountain fade overlay */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute bottom-0 left-0 right-0 h-80 bg-gradient-to-t from-background/80 to-transparent" />
       </div>
@@ -36,9 +36,9 @@ export function AuthBackground({ children }: { children: React.ReactNode }) {
       {/* Back to home link */}
       <a
         href="/"
-        className="fixed top-6 left-6 z-50 flex items-center gap-2 group glass px-4 py-2 rounded-full hover:glow-soft transition-all"
+        className="fixed top-6 left-6 z-50 flex items-center gap-2 group glass px-4 py-2 rounded-md hover:glow-soft transition-all"
       >
-        <img src={logoAsset.url} alt="AI to the Summit" className="h-5 w-5 rounded-full object-cover transition-transform group-hover:scale-110" />
+        <img src={logoAsset.url} alt="AI to the Summit" className="h-5 w-5 rounded-md object-cover transition-transform group-hover:scale-110" />
         <span className="font-display text-sm font-semibold text-foreground">
           AI to the <span className="text-gradient">Summit</span>
         </span>
