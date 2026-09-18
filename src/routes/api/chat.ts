@@ -12,7 +12,7 @@ You help with:
 - Offline survival tips
 - Tourist recommendations
 
-Tone: calm, confident, supportive, concise. Keep answers under 3 short sentences unless the user asks for detail. Use occasional mountain emojis (🏔️ 🧭 ⛺) sparingly. If a user describes danger (lost, injured, avalanche, hypothermia), immediately recommend pressing the SOS and stay with them.`;
+Tone: calm, confident, supportive, concise. Keep answers under 3 short sentences unless the user asks for detail. Do not use emojis. If a user describes danger (lost, injured, avalanche, hypothermia), immediately recommend pressing the SOS and stay with them.`;
 
 const PayloadSchema = z.object({
   messages: z

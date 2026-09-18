@@ -30,15 +30,14 @@ export function Emergency() {
             className="glass-strong rounded-3xl p-10 flex flex-col items-center text-center"
           >
             <div className="relative mb-6">
-              <div className="absolute inset-0 rounded-full bg-destructive/40 animate-ping" />
-              <div className="absolute inset-0 rounded-full bg-destructive/20 animate-pulse" />
-              <button className="relative w-40 h-40 rounded-full bg-gradient-to-br from-red-500 to-red-700 text-white font-display font-bold text-2xl shadow-[0_0_60px_rgba(239,68,68,0.6)] hover:scale-105 transition-transform">
+              <button className="relative w-40 h-40 rounded-md bg-gradient-to-br from-red-500 to-red-700 text-primary-foreground font-display font-bold text-2xl shadow-[0_0_40px_rgba(239,68,68,0.4)] transition-colors hover:from-red-600 hover:to-red-800">
                 <Siren className="h-8 w-8 mx-auto mb-1" />
                 SOS
               </button>
             </div>
             <p className="text-sm text-muted-foreground max-w-xs">
-              Press once to alert nearest rescue station with live coordinates, vitals and route trail.
+              On the triage page, SOS builds a report with your current coordinates, place name and
+              assessment answers so you can pass it to rescuers.
             </p>
           </motion.div>
 
@@ -52,7 +51,7 @@ export function Emergency() {
           >
             <div className="flex items-center justify-between mb-5">
               <div className="flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-destructive animate-pulse" />
+                <span className="w-2 h-2 rounded-full bg-destructive" />
                 <span className="text-xs font-semibold uppercase tracking-wider">Active Incident</span>
               </div>
               <span className="text-xs text-muted-foreground">#SOS-2841</span>

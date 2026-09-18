@@ -164,7 +164,6 @@
       linear-gradient(oklch(0.86 0.2 195 / 0.08) 1px, transparent 1px),
       linear-gradient(90deg, oklch(0.86 0.2 195 / 0.08) 1px, transparent 1px);
     background-size: 50px 50px;
-    animation: var(--animate-grid-pan);
   }
 
   .topo-bg {
