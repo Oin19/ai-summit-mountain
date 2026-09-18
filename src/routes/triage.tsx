@@ -1189,7 +1189,7 @@ function TriagePage() {
         <div className="container mx-auto px-6 max-w-6xl">
           {/* Header */}
           <div className="text-center mb-10 animate-[fade-up_0.6s_ease-out]">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass border border-white/10 mb-5">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-md glass border border-white/10 mb-5">
               <AlertTriangle className="h-3.5 w-3.5 text-neon" />
               <span className="text-xs font-medium text-muted-foreground">{t.hero.badge}</span>
             </div>
@@ -1518,7 +1518,7 @@ function TriagePage() {
                             )}
                           </span>
                           <p className={`text-sm ${s.done ? "text-foreground" : "text-muted-foreground"}`}>
-                            {s.done ? "✓" : "⏳"} {s.label}
+                            {s.label}
                           </p>
                         </li>
                       ))}
