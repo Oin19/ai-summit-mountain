@@ -108,7 +108,6 @@ function RegisterPage() {
                 </p>
               </div>
             </div>
-            </div>
 
             {/* Right Side: Register Form */}
             <div className="p-10 lg:p-14">

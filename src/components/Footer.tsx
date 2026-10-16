@@ -1,3 +1,4 @@
+import { Link } from "@tanstack/react-router";
 import logoAsset from "@/assets/ai-summit-logo.png.asset.json";
 
 const links = [
@@ -52,7 +53,10 @@ export function Footer() {
         </div>
         <div className="pt-6 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-muted-foreground">
           <div>© {new Date().getFullYear()} AI to the Summit. All rights reserved.</div>
-          <div>Built for safer decisions in remote terrain.</div>
+          <div className="flex items-center gap-4">
+            <Link to="/privacy-policy" className="hover:text-neon transition-colors">Privacy Policy</Link>
+            <Link to="/terms-and-conditions" className="hover:text-neon transition-colors">Terms &amp; Conditions</Link>
+          </div>
         </div>
       </div>
     </footer>
