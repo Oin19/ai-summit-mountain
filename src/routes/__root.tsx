@@ -11,7 +11,6 @@ import {
 import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
-import logoAsset from "../assets/ai-summit-logo.png.asset.json";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { Toaster } from "sonner";
 
@@ -105,8 +104,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     ],
     links: [
       { rel: "stylesheet", href: appCss },
-      { rel: "icon", type: "image/png", href: logoAsset.url },
-      { rel: "apple-touch-icon", href: logoAsset.url },
+      { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
     ],
     scripts: [
       {
@@ -117,15 +115,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
             {
               "@type": "Organization",
               name: "AI to the Summit",
-              url: "https://ai-summit-mountain.lovable.app",
-              logo: "https://ai-summit-mountain.lovable.app/favicon.png",
               description:
                 "AI-powered mountain safety companion providing trail guidance, weather alerts and emergency SOS for trekkers and rescue teams.",
             },
             {
               "@type": "WebSite",
               name: "AI to the Summit",
-              url: "https://ai-summit-mountain.lovable.app",
               description:
                 "Multilingual AI assistant for mountainous and remote regions: trail guidance, weather, SOS and offline safety.",
             },
