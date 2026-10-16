@@ -158,7 +158,7 @@ export function ChatDemo() {
                 <div className="text-sm font-semibold">Summit AI Assistant</div>
                 <div className="text-[10px] text-muted-foreground flex items-center gap-1">
                   <span className="w-1.5 h-1.5 rounded-md bg-neon animate-pulse" />
-                  connected to Lovable AI
+                  connected to the Summit AI assistant
                 </div>
               </div>
             </div>
