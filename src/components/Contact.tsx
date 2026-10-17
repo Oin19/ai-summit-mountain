@@ -25,12 +25,12 @@ export function Contact() {
             setSent(true);
             setTimeout(() => setSent(false), 3000);
           }}
-          className="max-w-xl mx-auto glass-strong rounded-3xl p-8 space-y-5"
+          className="max-w-xl mx-auto card-surface rounded-3xl p-8 space-y-5"
         >
           <div>
             <label className="text-xs font-medium text-muted-foreground mb-2 block">Name</label>
-            <div className="flex items-center gap-3 glass rounded-xl px-4 py-3">
-              <User className="h-4 w-4 text-neon" />
+            <div className="flex items-center gap-3 card-surface rounded-xl px-4 py-3">
+              <User className="h-4 w-4 text-primary" />
               <input
                 required
                 placeholder="Your name"
@@ -40,8 +40,8 @@ export function Contact() {
           </div>
           <div>
             <label className="text-xs font-medium text-muted-foreground mb-2 block">Email</label>
-            <div className="flex items-center gap-3 glass rounded-xl px-4 py-3">
-              <Mail className="h-4 w-4 text-neon" />
+            <div className="flex items-center gap-3 card-surface rounded-xl px-4 py-3">
+              <Mail className="h-4 w-4 text-primary" />
               <input
                 required
                 type="email"
@@ -55,12 +55,12 @@ export function Contact() {
             <textarea
               rows={4}
               placeholder="Tell us about your idea…"
-              className="w-full glass rounded-xl px-4 py-3 bg-transparent outline-none text-sm placeholder:text-muted-foreground resize-none"
+              className="w-full card-surface rounded-xl px-4 py-3 bg-transparent outline-none text-sm placeholder:text-muted-foreground resize-none"
             />
           </div>
           <button
             type="submit"
-            className="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-md bg-neon text-primary-foreground font-semibold hover:glow-neon transition-all"
+            className="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-md bg-primary text-primary-foreground font-semibold transition-all"
           >
             {sent ? "Message marked as sent" : (<>Send message <Send className="h-4 w-4" /></>)}
           </button>

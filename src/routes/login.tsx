@@ -75,10 +75,10 @@ function LoginPage() {
     <AuthBackground>
       <div className="animate-[fade-up_0.6s_ease-out]">
         {/* Glassmorphism Card */}
-        <div className="glass-strong rounded-3xl overflow-hidden shadow-2xl border border-neon/15">
+        <div className="card-surface rounded-3xl overflow-hidden shadow-2xl border border-border/15">
           <div className="grid lg:grid-cols-2">
             {/* Left Side: Branding */}
-            <div className="relative p-10 lg:p-14 flex flex-col justify-center items-center text-center bg-neon/5">
+            <div className="relative p-10 lg:p-14 flex flex-col justify-center items-center text-center bg-primary/5">
               {/* Glow orb */}
               <div className="hidden" />
 
@@ -86,10 +86,10 @@ function LoginPage() {
                 <img
                   src={logoAsset.url}
                   alt="AI to the Summit brandmark"
-                  className="w-24 h-24 rounded-2xl object-cover mb-6 mx-auto border border-neon/30 shadow-[0_0_40px_rgba(34,211,238,0.25)]"
+                  className="w-24 h-24 rounded-2xl object-cover mb-6 mx-auto border border-border/30 shadow-[0_0_40px_rgba(34,211,238,0.25)]"
                 />
                 <h1 className="font-display text-2xl lg:text-3xl font-bold text-foreground mb-2">
-                  Login: AI to the <span className="text-gradient">Summit</span>
+                  Login: AI to the <span className="text-primary">Summit</span>
                 </h1>
                 <p className="text-sm text-muted-foreground max-w-[240px]">
                   Your Intelligent Mountain Companion
@@ -119,7 +119,7 @@ function LoginPage() {
                       value={email}
                       onChange={(e) => { setEmail(e.target.value); if (errors.email) setErrors(prev => { const n = { ...prev }; delete n.email; return n; }); }}
                       placeholder="you@example.com"
-                      className="w-full pl-10 pr-4 py-3 rounded-xl bg-white/5 border border-white/10 text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:border-neon/40 focus:ring-1 focus:ring-neon/20 transition-all"
+                      className="w-full pl-10 pr-4 py-3 rounded-xl bg-card border border-border text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:border-border/40 focus:ring-1 focus:ring-ring/30 transition-all"
                     />
                   </div>
                   {errors.email && <p className="mt-1.5 text-xs text-destructive">{errors.email}</p>}
@@ -137,12 +137,12 @@ function LoginPage() {
                       value={password}
                       onChange={(e) => { setPassword(e.target.value); if (errors.password) setErrors(prev => { const n = { ...prev }; delete n.password; return n; }); }}
                       placeholder="Enter your password"
-                      className="w-full pl-10 pr-12 py-3 rounded-xl bg-white/5 border border-white/10 text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:border-neon/40 focus:ring-1 focus:ring-neon/20 transition-all"
+                      className="w-full pl-10 pr-12 py-3 rounded-xl bg-card border border-border text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:border-border/40 focus:ring-1 focus:ring-ring/30 transition-all"
                     />
                     <button
                       type="button"
                       onClick={() => setShowPassword(!showPassword)}
-                      className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-neon transition-colors"
+                      className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-primary transition-colors"
                       tabIndex={-1}
                     >
                       {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
@@ -161,7 +161,7 @@ function LoginPage() {
                         onChange={(e) => setRememberMe(e.target.checked)}
                         className="peer sr-only"
                       />
-                      <div className="w-4 h-4 rounded border border-white/20 peer-checked:bg-neon peer-checked:border-neon transition-all flex items-center justify-center">
+                      <div className="w-4 h-4 rounded border border-white/20 peer-checked:bg-primary peer-checked:border-border transition-all flex items-center justify-center">
                         {rememberMe && (
                           <svg className="w-2.5 h-2.5 text-primary-foreground" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
                             <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
@@ -171,7 +171,7 @@ function LoginPage() {
                     </div>
                     <span className="text-sm text-muted-foreground group-hover:text-foreground transition-colors">Remember me</span>
                   </label>
-                  <a href="#" className="text-sm text-neon hover:text-neon/80 transition-colors">
+                  <a href="#" className="text-sm text-primary hover:text-primary/80 transition-colors">
                     Forgot Password?
                   </a>
                 </div>
@@ -180,7 +180,7 @@ function LoginPage() {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full py-3 rounded-xl bg-neon text-primary-foreground font-semibold text-sm hover:glow-neon transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                  className="w-full py-3 rounded-xl bg-primary text-primary-foreground font-semibold text-sm transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                 >
                   {isSubmitting ? (
                     <span className="flex items-center gap-2">
@@ -209,7 +209,7 @@ function LoginPage() {
                 <button
                   type="button"
                   onClick={handleGoogle}
-                  className="w-full py-3 rounded-xl bg-white/5 border border-white/10 text-foreground font-medium text-sm hover:bg-white/10 hover:border-neon/20 transition-all flex items-center justify-center gap-3"
+                  className="w-full py-3 rounded-xl bg-card border border-border text-foreground font-medium text-sm hover:bg-white/10 hover:border-border/20 transition-all flex items-center justify-center gap-3"
                 >
                   <svg className="h-5 w-5" viewBox="0 0 24 24">
                     <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 01-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4" />
@@ -224,7 +224,7 @@ function LoginPage() {
               {/* Bottom text */}
               <p className="mt-6 text-center text-sm text-muted-foreground">
                 Don&apos;t have an account?{" "}
-                <Link to="/register" className="text-neon hover:text-neon/80 font-semibold transition-colors">
+                <Link to="/register" className="text-primary hover:text-primary/80 font-semibold transition-colors">
                   Register Now
                 </Link>
               </p>

@@ -30,7 +30,7 @@ export function Navbar() {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? "bg-background/95 backdrop-blur-xl border-b border-white/10 py-3" : "py-5"
+        scrolled ? "bg-background/95  border-b border-border py-3" : "py-5"
       }`}
     >
       <nav className="container mx-auto flex items-center justify-between px-6">
@@ -41,10 +41,10 @@ export function Navbar() {
               alt="AI to the Summit"
               className="h-9 w-9 rounded-md object-cover transition-transform group-hover:scale-110"
             />
-            <div className="absolute inset-0 blur-md bg-neon/30 rounded-md -z-10" />
+            <div className="absolute inset-0 blur-md bg-primary/30 rounded-md -z-10" />
           </div>
           <span className="font-display text-lg font-bold tracking-tight">
-            AI to the <span className="text-gradient">Summit</span>
+            AI to the <span className="text-primary">Summit</span>
           </span>
         </a>
 
@@ -53,10 +53,10 @@ export function Navbar() {
             <li key={l.href}>
               <a
                 href={l.href}
-                className="px-3 py-2 text-sm text-muted-foreground hover:text-neon transition-colors relative group"
+                className="px-3 py-2 text-sm text-muted-foreground hover:text-primary transition-colors relative group"
               >
                 {l.label}
-                <span className="absolute left-3 right-3 -bottom-0.5 h-px bg-neon scale-x-0 group-hover:scale-x-100 transition-transform origin-left" />
+                <span className="absolute left-3 right-3 -bottom-0.5 h-px bg-primary scale-x-0 group-hover:scale-x-100 transition-transform origin-left" />
               </a>
             </li>
           ))}
@@ -65,13 +65,13 @@ export function Navbar() {
         <div className="hidden lg:flex items-center gap-3">
           <Link
             to="/login"
-            className="px-4 py-2 rounded-md border border-white/15 text-foreground text-sm font-medium hover:border-neon/40 hover:text-neon transition-all"
+            className="px-4 py-2 rounded-md border border-white/15 text-foreground text-sm font-medium hover:border-border/40 hover:text-primary transition-all"
           >
             Login
           </Link>
           <Link
             to="/register"
-            className="px-4 py-2 rounded-md bg-neon text-primary-foreground text-sm font-semibold hover:glow-neon transition-shadow"
+            className="px-4 py-2 rounded-md bg-primary text-primary-foreground text-sm font-semibold transition-shadow"
           >
             Register
           </Link>
@@ -94,25 +94,25 @@ export function Navbar() {
                 <a
                   href={l.href}
                   onClick={() => setOpen(false)}
-                  className="block px-3 py-2.5 text-sm text-muted-foreground hover:text-neon hover:bg-white/5 rounded-lg"
+                  className="block px-3 py-2.5 text-sm text-muted-foreground hover:text-primary hover:bg-card rounded-lg"
                 >
                   {l.label}
                 </a>
               </li>
             ))}
           </ul>
-          <div className="mt-3 pt-3 border-t border-white/10 flex flex-col gap-2">
+          <div className="mt-3 pt-3 border-t border-border flex flex-col gap-2">
             <Link
               to="/login"
               onClick={() => setOpen(false)}
-              className="block px-3 py-2.5 text-sm text-foreground hover:text-neon hover:bg-white/5 rounded-lg text-center"
+              className="block px-3 py-2.5 text-sm text-foreground hover:text-primary hover:bg-card rounded-lg text-center"
             >
               Login
             </Link>
             <Link
               to="/register"
               onClick={() => setOpen(false)}
-              className="block px-3 py-2.5 text-sm font-semibold text-primary-foreground bg-neon rounded-lg text-center hover:bg-neon/90 transition-colors"
+              className="block px-3 py-2.5 text-sm font-semibold text-primary-foreground bg-primary rounded-lg text-center hover:bg-primary/90 transition-colors"
             >
               Register
             </Link>

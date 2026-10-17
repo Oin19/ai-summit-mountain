@@ -28,9 +28,9 @@ export function Technology() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: i * 0.05 }}
-              className="glass rounded-xl p-5 flex items-center gap-4 hover:border-neon/40 transition-colors"
+              className="card-surface rounded-xl p-5 flex items-center gap-4 hover:border-border/40 transition-colors"
             >
-              <div className="p-3 rounded-lg bg-neon/10 text-neon">
+              <div className="p-3 rounded-lg bg-primary/10 text-primary">
                 <t.icon className="h-5 w-5" />
               </div>
               <div>

@@ -147,23 +147,23 @@ export function ChatDemo() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
-          className="max-w-2xl mx-auto glass-strong rounded-3xl overflow-hidden glow-soft"
+          className="max-w-2xl mx-auto card-surface rounded-3xl overflow-hidden "
         >
-          <div className="flex items-center justify-between px-5 py-4 border-b border-white/10 gap-3">
+          <div className="flex items-center justify-between px-5 py-4 border-b border-border gap-3">
             <div className="flex items-center gap-3 min-w-0">
-              <div className="p-2 rounded-lg bg-neon/15 text-neon shrink-0">
+              <div className="p-2 rounded-lg bg-primary/10 text-primary shrink-0">
                 <Bot className="h-4 w-4" />
               </div>
               <div className="min-w-0">
                 <div className="text-sm font-semibold">Summit AI Assistant</div>
                 <div className="text-[10px] text-muted-foreground flex items-center gap-1">
-                  <span className="w-1.5 h-1.5 rounded-md bg-neon animate-pulse" />
+                  <span className="w-1.5 h-1.5 rounded-md bg-primary animate-pulse" />
                   connected to the Summit AI assistant
                 </div>
               </div>
             </div>
             <div className="flex items-center gap-2">
-              <div className="hidden sm:flex items-center gap-1 glass rounded-md p-1">
+              <div className="hidden sm:flex items-center gap-1 card-surface rounded-md p-1">
                 <Globe className="h-3 w-3 text-muted-foreground ml-2" />
                 {langs.map((l) => (
                   <button
@@ -171,7 +171,7 @@ export function ChatDemo() {
                     onClick={() => setLang(l.code)}
                     className={`text-[10px] px-2 py-1 rounded-md transition-colors ${
                       lang === l.code
-                        ? "bg-neon text-primary-foreground"
+                        ? "bg-primary text-primary-foreground"
                         : "text-muted-foreground hover:text-foreground"
                     }`}
                   >
@@ -181,7 +181,7 @@ export function ChatDemo() {
               </div>
               <button
                 onClick={reset}
-                className="p-2 rounded-md glass hover:text-neon transition-colors"
+                className="p-2 rounded-md card-surface hover:text-primary transition-colors"
                 title="Reset conversation"
               >
                 <RotateCcw className="h-3.5 w-3.5" />
@@ -203,19 +203,19 @@ export function ChatDemo() {
                 <div
                   className={`max-w-[85%] rounded-2xl px-4 py-2.5 text-sm whitespace-pre-wrap leading-relaxed ${
                     m.role === "user"
-                      ? "bg-neon/15 rounded-tr-sm"
-                      : "bg-white/5 rounded-tl-sm"
+                      ? "bg-primary/10 rounded-tr-sm"
+                      : "bg-card rounded-tl-sm"
                   }`}
                 >
                   {m.content || (
                     <span className="inline-flex gap-1 py-1">
-                      <span className="w-1.5 h-1.5 rounded-md bg-neon " />
+                      <span className="w-1.5 h-1.5 rounded-md bg-primary " />
                       <span
-                        className="w-1.5 h-1.5 rounded-md bg-neon "
+                        className="w-1.5 h-1.5 rounded-md bg-primary "
                         style={{ animationDelay: "150ms" }}
                       />
                       <span
-                        className="w-1.5 h-1.5 rounded-md bg-neon "
+                        className="w-1.5 h-1.5 rounded-md bg-primary "
                         style={{ animationDelay: "300ms" }}
                       />
                     </span>
@@ -230,7 +230,7 @@ export function ChatDemo() {
                   <button
                     key={s}
                     onClick={() => send(s)}
-                    className="text-[11px] glass rounded-md px-3 py-1.5 hover:text-neon hover:border-neon/40 transition-colors"
+                    className="text-[11px] card-surface rounded-md px-3 py-1.5 hover:text-primary hover:border-border/40 transition-colors"
                   >
                     {s}
                   </button>
@@ -250,18 +250,18 @@ export function ChatDemo() {
               e.preventDefault();
               send(input);
             }}
-            className="px-5 py-4 border-t border-white/10 flex items-center gap-3"
+            className="px-5 py-4 border-t border-border flex items-center gap-3"
           >
             <input
               value={input}
               onChange={(e) => setInput(e.target.value)}
               disabled={loading}
               placeholder="Ask Summit AI anything…"
-              className="flex-1 glass rounded-md px-4 py-2.5 text-sm bg-transparent outline-none placeholder:text-muted-foreground disabled:opacity-50"
+              className="flex-1 card-surface rounded-md px-4 py-2.5 text-sm bg-transparent outline-none placeholder:text-muted-foreground disabled:opacity-50"
             />
             <button
               type="button"
-              className="p-2.5 rounded-md glass hover:text-neon transition-colors"
+              className="p-2.5 rounded-md card-surface hover:text-primary transition-colors"
               title="Voice input is not available"
             >
               <Mic className="h-4 w-4" />
@@ -269,7 +269,7 @@ export function ChatDemo() {
             <button
               type="submit"
               disabled={loading || !input.trim()}
-              className="p-2.5 rounded-md bg-neon text-primary-foreground hover:glow-neon transition-shadow disabled:opacity-50 disabled:cursor-not-allowed"
+              className="p-2.5 rounded-md bg-primary text-primary-foreground transition-shadow disabled:opacity-50 disabled:cursor-not-allowed"
             >
               <Send className="h-4 w-4" />
             </button>

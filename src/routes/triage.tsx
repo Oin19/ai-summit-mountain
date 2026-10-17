@@ -714,10 +714,10 @@ function computeSeverity(a: Answers): SeverityKey {
 }
 
 const SEVERITY_STYLES: Record<SeverityKey, { bg: string; text: string; ring: string; dot: string }> = {
-  "Low Risk": { bg: "bg-emerald-500/15", text: "text-emerald-300", ring: "ring-emerald-400/40", dot: "bg-emerald-400" },
-  Moderate: { bg: "bg-yellow-500/15", text: "text-yellow-300", ring: "ring-yellow-400/40", dot: "bg-yellow-400" },
-  "High Priority": { bg: "bg-orange-500/15", text: "text-orange-300", ring: "ring-orange-400/40", dot: "bg-orange-400" },
-  Critical: { bg: "bg-red-500/15", text: "text-red-300", ring: "ring-red-400/40", dot: "bg-red-400" },
+  "Low Risk": { bg: "bg-emerald-100", text: "text-emerald-800", ring: "ring-emerald-300", dot: "bg-emerald-600" },
+  Moderate: { bg: "bg-amber-100", text: "text-amber-800", ring: "ring-amber-300", dot: "bg-amber-500" },
+  "High Priority": { bg: "bg-orange-100", text: "text-orange-800", ring: "ring-orange-300", dot: "bg-orange-500" },
+  Critical: { bg: "bg-red-100", text: "text-red-800", ring: "ring-red-300", dot: "bg-red-600" },
 };
 
 type LiveLocation = {
@@ -1083,7 +1083,7 @@ function TriagePage() {
   /* --------------------------------- UI ---------------------------------- */
 
   const btn =
-    "px-5 py-3 rounded-xl glass border border-white/10 hover:border-neon/50 hover:text-neon hover:glow-neon transition-all text-sm font-medium";
+    "px-5 py-3 rounded-xl card-surface border border-border hover:border-border/50 hover:text-primary transition-all text-sm font-medium";
 
   const renderOptions = () => {
     if (step === "conscious" || step === "breathing" || step === "bleeding") {
@@ -1098,13 +1098,13 @@ function TriagePage() {
             </button>
             {voiceEnabled && (
               <button
-                className={`${btn} ${listening ? "border-neon/60 text-neon" : ""}`}
+                className={`${btn} ${listening ? "border-border/60 text-primary" : ""}`}
                 onClick={() => startRecognitionForYesNo(step as StepKey)}
                 disabled={listening}
               >
                 {listening ? (
                   <span className="inline-flex items-center gap-2">
-                    <span className="h-2 w-2 rounded-full bg-neon " />
+                    <span className="h-2 w-2 rounded-full bg-primary " />
                     {t.ui.listening}
                   </span>
                 ) : (
@@ -1146,16 +1146,16 @@ function TriagePage() {
         <div className="space-y-4">
           <div className="flex items-center justify-between text-sm">
             <span className="text-muted-foreground">{t.ui.minimal}</span>
-            <span className="text-2xl font-display font-bold text-neon">{pain}</span>
+            <span className="text-2xl font-display font-bold text-primary">{pain}</span>
             <span className="text-muted-foreground">{t.ui.severePain}</span>
           </div>
           <input
             type="range" min={1} max={10} value={pain}
             onChange={(e) => setPain(Number(e.target.value))}
-            className="w-full accent-[hsl(var(--neon))]"
+            className="w-full accent-primary"
           />
           <button
-            className="w-full px-5 py-3 rounded-xl bg-neon text-primary-foreground font-semibold hover:glow-neon transition-shadow flex items-center justify-center gap-2"
+            className="w-full px-5 py-3 rounded-xl bg-primary text-primary-foreground font-semibold transition-shadow flex items-center justify-center gap-2"
             onClick={() => answer({ pain })}
           >
             {t.ui.submit} <ArrowRight className="h-4 w-4" />
@@ -1180,32 +1180,30 @@ function TriagePage() {
 
   return (
     <div className="relative min-h-screen overflow-hidden bg-background">
-      <div className="absolute inset-0 grid-bg opacity-20 pointer-events-none" />
-      <div className="absolute inset-0 topo-bg pointer-events-none" />
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] rounded-full bg-neon/10 blur-3xl pointer-events-none" />
+      <div className="absolute inset-0  pointer-events-none" />
       <Navbar />
 
       <main className="relative z-10 pt-32 pb-20">
         <div className="container mx-auto px-6 max-w-6xl">
           {/* Header */}
           <div className="text-center mb-10 animate-[fade-up_0.6s_ease-out]">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-md glass border border-white/10 mb-5">
-              <AlertTriangle className="h-3.5 w-3.5 text-neon" />
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-md card-surface border border-border mb-5">
+              <AlertTriangle className="h-3.5 w-3.5 text-primary" />
               <span className="text-xs font-medium text-muted-foreground">{t.hero.badge}</span>
             </div>
             <h1 className="font-display text-4xl md:text-6xl font-bold tracking-tight">
               {t.hero.title1}
-              <span className="text-gradient">{t.hero.title2}</span>
+              <span className="text-primary">{t.hero.title2}</span>
               {t.hero.title3}
             </h1>
             <p className="mt-4 text-muted-foreground max-w-2xl mx-auto">{t.hero.subtitle}</p>
           </div>
 
           {/* "What is this?" explainer */}
-          <div className="glass-strong rounded-3xl p-6 md:p-8 border border-white/10 mb-8 animate-[fade-up_0.6s_ease-out]">
+          <div className="card-surface rounded-3xl p-6 md:p-8 border border-border mb-8 animate-[fade-up_0.6s_ease-out]">
             <div className="flex items-start gap-4 mb-5">
-              <div className="h-11 w-11 rounded-xl bg-neon/15 flex items-center justify-center shrink-0">
-                <Info className="h-5 w-5 text-neon" />
+              <div className="h-11 w-11 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
+                <Info className="h-5 w-5 text-primary" />
               </div>
               <div>
                 <h2 className="font-display text-2xl font-bold">{t.how.title}</h2>
@@ -1217,8 +1215,8 @@ function TriagePage() {
                 const icons = [MessageSquare, Stethoscope, Bandage, ShieldAlert];
                 const Icon = icons[i];
                 return (
-                  <div key={s.title} className="glass rounded-2xl p-4 border border-white/5">
-                    <Icon className="h-4 w-4 text-neon mb-2" />
+                  <div key={s.title} className="card-surface rounded-2xl p-4 border border-white/5">
+                    <Icon className="h-4 w-4 text-primary mb-2" />
                     <p className="text-sm font-semibold">{s.title}</p>
                     <p className="text-xs text-muted-foreground mt-1">{s.body}</p>
                   </div>
@@ -1228,9 +1226,9 @@ function TriagePage() {
           </div>
 
           {/* Controls: language + voice */}
-          <div className="glass rounded-2xl p-3 md:p-4 border border-white/10 mb-6 flex flex-wrap items-center gap-3 justify-between">
+          <div className="card-surface rounded-2xl p-3 md:p-4 border border-border mb-6 flex flex-wrap items-center gap-3 justify-between">
             <div className="flex items-center gap-2 flex-wrap">
-              <Globe className="h-4 w-4 text-neon" />
+              <Globe className="h-4 w-4 text-primary" />
               <span className="text-xs uppercase tracking-wider text-muted-foreground mr-1">
                 {t.ui.language}
               </span>
@@ -1243,8 +1241,8 @@ function TriagePage() {
                   }}
                   className={`text-xs px-3 py-1.5 rounded-md transition-all ${
                     lang === l.code
-                      ? "bg-neon text-primary-foreground"
-                      : "glass text-muted-foreground hover:text-neon"
+                      ? "bg-primary text-primary-foreground"
+                      : "card-surface text-muted-foreground hover:text-primary"
                   }`}
                 >
                   {l.native}
@@ -1259,20 +1257,20 @@ function TriagePage() {
                 onClick={toggleVoice}
                 className={`text-xs px-3 py-1.5 rounded-md flex items-center gap-2 transition-all ${
                   voiceEnabled
-                    ? "bg-neon text-primary-foreground glow-soft"
-                    : "glass text-muted-foreground hover:text-neon"
+                    ? "bg-primary text-primary-foreground "
+                    : "card-surface text-muted-foreground hover:text-primary"
                 }`}
               >
                 {voiceEnabled ? <Volume2 className="h-3.5 w-3.5" /> : <VolumeX className="h-3.5 w-3.5" />}
                 {voiceEnabled ? t.ui.voiceOn : t.ui.voiceOff}
               </button>
               {voiceEnabled && listening && (
-                <span className="text-xs text-neon inline-flex items-center gap-1.5">
+                <span className="text-xs text-primary inline-flex items-center gap-1.5">
                   <Mic className="h-3.5 w-3.5 " /> {t.ui.listening}
                 </span>
               )}
               {voiceEnabled && !speechSupported && (
-                <span className="text-xs text-yellow-300 inline-flex items-center gap-1.5">
+                <span className="text-xs text-amber-700 inline-flex items-center gap-1.5">
                   <MicOff className="h-3.5 w-3.5" /> {t.ui.voiceUnsupported}
                 </span>
               )}
@@ -1282,7 +1280,7 @@ function TriagePage() {
           <div className="grid lg:grid-cols-3 gap-6">
             {/* Chat / Triage */}
             <div className="lg:col-span-2 space-y-6">
-              <div className="glass-strong rounded-3xl p-6 md:p-8 border border-white/10">
+              <div className="card-surface rounded-3xl p-6 md:p-8 border border-border">
                 <div className="flex items-center justify-between mb-2 text-xs text-muted-foreground">
                   <span>
                     {t.ui.step} {Math.min(stepIndex + 1, STEPS.length - 1)} {t.ui.of}{" "}
@@ -1292,7 +1290,7 @@ function TriagePage() {
                 </div>
                 <div className="h-1.5 rounded-full bg-white/10 overflow-hidden mb-6">
                   <div
-                    className="h-full bg-neon transition-all duration-500 glow-neon"
+                    className="h-full bg-primary transition-all duration-500 "
                     style={{ width: `${progress}%` }}
                   />
                 </div>
@@ -1304,15 +1302,15 @@ function TriagePage() {
                     return (
                       <div key={s} className="space-y-2 animate-[fade-up_0.4s_ease-out]">
                         <div className="flex gap-3">
-                          <div className="h-8 w-8 rounded-full bg-neon/20 flex items-center justify-center flex-shrink-0">
-                            <Activity className="h-4 w-4 text-neon" />
+                          <div className="h-8 w-8 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
+                            <Activity className="h-4 w-4 text-primary" />
                           </div>
-                          <div className="glass rounded-2xl rounded-tl-sm px-4 py-2.5 max-w-[80%] text-sm">
+                          <div className="card-surface rounded-2xl rounded-tl-sm px-4 py-2.5 max-w-[80%] text-sm">
                             {t.questions[k]}
                           </div>
                         </div>
                         <div className="flex justify-end">
-                          <div className="bg-neon/20 border border-neon/30 rounded-2xl rounded-tr-sm px-4 py-2.5 text-sm">
+                          <div className="bg-primary/20 border border-border/30 rounded-2xl rounded-tr-sm px-4 py-2.5 text-sm">
                             {renderAnswerLabel(k)}
                           </div>
                         </div>
@@ -1323,15 +1321,15 @@ function TriagePage() {
                   {!isDone && (
                     <div className="space-y-4 animate-[fade-up_0.4s_ease-out]">
                       <div className="flex gap-3">
-                        <div className="h-8 w-8 rounded-full bg-neon/20 flex items-center justify-center flex-shrink-0">
-                          <Activity className="h-4 w-4 text-neon" />
+                        <div className="h-8 w-8 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
+                          <Activity className="h-4 w-4 text-primary" />
                         </div>
-                        <div className="glass rounded-2xl rounded-tl-sm px-4 py-2.5 max-w-[80%] text-sm flex items-center gap-2">
+                        <div className="card-surface rounded-2xl rounded-tl-sm px-4 py-2.5 max-w-[80%] text-sm flex items-center gap-2">
                           {t.questions[step as StepKey]}
                           {voiceEnabled && (
                             <button
                               onClick={() => speak(t.questions[step as StepKey], bcp47)}
-                              className="text-neon hover:opacity-80"
+                              className="text-primary hover:opacity-80"
                               title="Replay"
                             >
                               <Volume2 className="h-3.5 w-3.5" />
@@ -1345,10 +1343,10 @@ function TriagePage() {
 
                   {isDone && (
                     <div className="flex gap-3 animate-[fade-up_0.4s_ease-out]">
-                      <div className="h-8 w-8 rounded-full bg-neon/20 flex items-center justify-center flex-shrink-0">
-                        <CheckCircle2 className="h-4 w-4 text-neon" />
+                      <div className="h-8 w-8 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
+                        <CheckCircle2 className="h-4 w-4 text-primary" />
                       </div>
-                      <div className="glass rounded-2xl rounded-tl-sm px-4 py-2.5 max-w-[80%] text-sm">
+                      <div className="card-surface rounded-2xl rounded-tl-sm px-4 py-2.5 max-w-[80%] text-sm">
                         {t.ui.assessmentComplete}.
                       </div>
                     </div>
@@ -1358,7 +1356,7 @@ function TriagePage() {
                 {isDone && (
                   <button
                     onClick={reset}
-                    className="mt-6 text-xs text-muted-foreground hover:text-neon transition-colors"
+                    className="mt-6 text-xs text-muted-foreground hover:text-primary transition-colors"
                   >
                     {t.ui.restart}
                   </button>
@@ -1367,7 +1365,7 @@ function TriagePage() {
 
               {isDone && (
                 <div
-                  className={`glass-strong rounded-3xl p-6 md:p-8 border border-white/10 ring-1 ${styles.ring} animate-[fade-up_0.5s_ease-out]`}
+                  className={`card-surface rounded-3xl p-6 md:p-8 border border-border ring-1 ${styles.ring} animate-[fade-up_0.5s_ease-out]`}
                 >
                   <div className="flex items-center justify-between flex-wrap gap-3 mb-6">
                     <div>
@@ -1408,10 +1406,10 @@ function TriagePage() {
 
               {/* SOS Action + Generated Report (in-flow, same page) */}
               {isDone && !sosSent && (
-                <div className="glass-strong rounded-3xl p-6 md:p-8 border border-red-500/30 relative overflow-hidden animate-[fade-up_0.5s_ease-out]">
-                  <div className="absolute inset-0 bg-gradient-to-br from-red-500/15 via-transparent to-transparent pointer-events-none" />
+                <div className="card-surface rounded-3xl p-6 md:p-8 border border-red-500/30 relative overflow-hidden animate-[fade-up_0.5s_ease-out]">
+                  <div className="absolute inset-0 bg-red-50 pointer-events-none" />
                   <div className="relative text-center">
-                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-red-500/15 border border-red-500/30 text-red-300 text-[10px] uppercase tracking-wider font-semibold mb-3">
+                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-red-100 border border-red-300 text-red-700 text-[10px] uppercase tracking-wider font-semibold mb-3">
                       <Radio className="h-3 w-3 " /> {t.ui.sosBeacon}
                     </div>
                     <h3 className="font-display text-xl md:text-2xl font-bold mb-2">{t.ui.sosTitle}</h3>
@@ -1420,7 +1418,7 @@ function TriagePage() {
                     </p>
                     <button
                       onClick={sendSos}
-                      className="w-full md:w-auto px-10 py-5 rounded-2xl bg-red-600 text-white font-bold text-base hover:shadow-[0_0_50px_rgba(239,68,68,0.7)] transition-all inline-flex items-center justify-center gap-3 "
+                      className="w-full md:w-auto px-10 py-5 rounded-2xl bg-destructive text-destructive-foreground font-bold text-base hover:bg-destructive/90 transition-all inline-flex items-center justify-center gap-3 "
                     >
                       <Send className="h-5 w-5" />
                       {t.ui.sendSos}
@@ -1431,29 +1429,29 @@ function TriagePage() {
 
               {isDone && sosSent && (
                 <>
-                  <div className="glass-strong rounded-3xl p-6 md:p-8 border border-emerald-500/30 animate-[fade-up_0.5s_ease-out]">
+                  <div className="card-surface rounded-3xl p-6 md:p-8 border border-emerald-500/30 animate-[fade-up_0.5s_ease-out]">
                     <div className="flex items-start gap-3">
                       <div className="h-10 w-10 rounded-xl bg-emerald-500/20 flex items-center justify-center flex-shrink-0">
-                        <CheckCircle2 className="h-5 w-5 text-emerald-300" />
+                        <CheckCircle2 className="h-5 w-5 text-emerald-700" />
                       </div>
                       <div>
-                        <h3 className="font-display text-lg font-bold text-emerald-200">Emergency Alert Sent Successfully</h3>
+                        <h3 className="font-display text-lg font-bold text-emerald-800">Emergency Alert Sent Successfully</h3>
                         <p className="text-sm text-muted-foreground mt-1">
                           Your emergency report has been generated on this device. Contact emergency services to share it.
                         </p>
                         <p className="text-xs mt-2">
                           <span className="text-muted-foreground">{t.ui.emergencyId}: </span>
-                          <span className="font-semibold text-emerald-300">{sosSent.id}</span>
+                          <span className="font-semibold text-emerald-700">{sosSent.id}</span>
                         </p>
                       </div>
                     </div>
                   </div>
 
-                  <div className="glass-strong rounded-3xl p-6 md:p-8 border border-white/10 animate-[fade-up_0.6s_ease-out]">
+                  <div className="card-surface rounded-3xl p-6 md:p-8 border border-border animate-[fade-up_0.6s_ease-out]">
                     <div className="flex items-center justify-between flex-wrap gap-3 mb-5">
                       <div className="flex items-center gap-3">
                         <div className="h-10 w-10 rounded-xl bg-red-500/15 flex items-center justify-center">
-                          <ShieldAlert className="h-5 w-5 text-red-300" />
+                          <ShieldAlert className="h-5 w-5 text-red-700" />
                         </div>
                         <div>
                           <p className="text-[10px] uppercase tracking-wider text-muted-foreground">SOS Rescue Report</p>
@@ -1467,7 +1465,7 @@ function TriagePage() {
                     </div>
                     <div className="grid sm:grid-cols-2 gap-x-6">
                       <div className="space-y-1">
-                        <Row k={t.ui.emergencyId} v={sosSent.id} valueClass="text-emerald-300" />
+                        <Row k={t.ui.emergencyId} v={sosSent.id} valueClass="text-emerald-700" />
                         <Row k="Date & Time" v={sosSent.time} />
                         <Row k={t.ui.location} v={location.route} />
                         <Row k={t.ui.latitude} v={location.lat} />
@@ -1482,7 +1480,7 @@ function TriagePage() {
                         <Row k={t.ui.canWalk} v={answers.mobility ? t.mobility[answers.mobility] : ":"} />
                         <Row k={t.ui.painScore} v={`${answers.pain ?? 0}/10`} />
                         <Row k={t.ui.severity} v={t.severities[severity]} valueClass={styles.text} />
-                        <Row k="Report Status" v={t.ui.rescueNotified} valueClass="text-emerald-300" />
+                        <Row k="Report Status" v={t.ui.rescueNotified} valueClass="text-emerald-700" />
                       </div>
                     </div>
                     <div className={`mt-5 p-4 rounded-2xl ${styles.bg} border border-white/5`}>
@@ -1491,12 +1489,12 @@ function TriagePage() {
                     </div>
                   </div>
 
-                  <div className="glass-strong rounded-3xl p-6 md:p-8 border border-white/10 animate-[fade-up_0.7s_ease-out]">
+                  <div className="card-surface rounded-3xl p-6 md:p-8 border border-border animate-[fade-up_0.7s_ease-out]">
                     <div className="flex items-center gap-2 mb-5">
-                      <Clock className="h-4 w-4 text-neon" />
+                      <Clock className="h-4 w-4 text-primary" />
                       <h3 className="font-display text-base font-bold uppercase tracking-wider">Emergency Report Checklist</h3>
                     </div>
-                    <ol className="relative border-l border-white/10 ml-2 space-y-4">
+                    <ol className="relative border-l border-border ml-2 space-y-4">
                       {[
                         { label: "Assessment Complete", done: true },
                         { label: "Report Generated", done: true },
@@ -1512,9 +1510,9 @@ function TriagePage() {
                             }`}
                           >
                             {s.done ? (
-                              <CheckCircle2 className="h-3 w-3 text-emerald-300" />
+                              <CheckCircle2 className="h-3 w-3 text-emerald-700" />
                             ) : (
-                              <Loader2 className="h-2.5 w-2.5 text-yellow-300 animate-spin" />
+                              <Loader2 className="h-2.5 w-2.5 text-amber-700 animate-spin" />
                             )}
                           </span>
                           <p className={`text-sm ${s.done ? "text-foreground" : "text-muted-foreground"}`}>
@@ -1528,10 +1526,10 @@ function TriagePage() {
               )}
 
               {isDone && (
-                <div className="glass-strong rounded-3xl p-6 md:p-8 border border-white/10 animate-[fade-up_0.6s_ease-out]">
+                <div className="card-surface rounded-3xl p-6 md:p-8 border border-border animate-[fade-up_0.6s_ease-out]">
                   <div className="flex items-center gap-3 mb-5">
-                    <div className="h-10 w-10 rounded-xl bg-neon/15 flex items-center justify-center">
-                      <Bandage className="h-5 w-5 text-neon" />
+                    <div className="h-10 w-10 rounded-xl bg-primary/10 flex items-center justify-center">
+                      <Bandage className="h-5 w-5 text-primary" />
                     </div>
                     <div>
                       <h3 className="font-display text-xl font-bold">{t.ui.firstAidTitle}</h3>
@@ -1542,7 +1540,7 @@ function TriagePage() {
                   <AidBlock
                     title={t.ui.forInjury(answers.injury ? t.injuries[answers.injury] : ":")}
                     items={firstAidList}
-                    icon={<Heart className="h-4 w-4 text-neon" />}
+                    icon={<Heart className="h-4 w-4 text-primary" />}
                   />
                   {answers.bleeding === "Yes" && (
                     <AidBlock
@@ -1555,7 +1553,7 @@ function TriagePage() {
                     <AidBlock
                       title={t.ui.forHypothermia}
                       items={t.hypothermiaAid}
-                      icon={<Snowflake className="h-4 w-4 text-cyan-300" />}
+                      icon={<Snowflake className="h-4 w-4 text-primary" />}
                     />
                   )}
                 </div>
@@ -1566,15 +1564,15 @@ function TriagePage() {
             <div className="space-y-6">
 
 
-              <div className="glass-strong rounded-3xl p-6 border border-white/10">
+              <div className="card-surface rounded-3xl p-6 border border-border">
                 <div className="flex items-center justify-between mb-4">
                   <div className="flex items-center gap-2">
-                    <MapPin className="h-4 w-4 text-neon" />
+                    <MapPin className="h-4 w-4 text-primary" />
                     <span className="text-xs uppercase tracking-wider text-muted-foreground font-semibold">
                       {t.ui.liveGps}
                     </span>
                     {geoStatus === "ok" && (
-                      <span className="flex items-center gap-1 text-[10px] text-emerald-300 ml-1">
+                      <span className="flex items-center gap-1 text-[10px] text-emerald-700 ml-1">
                         <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 " />
                         LIVE
                       </span>
@@ -1582,27 +1580,26 @@ function TriagePage() {
                   </div>
                   <button
                     onClick={fetchLocation}
-                    className="text-[10px] uppercase tracking-wider text-neon hover:text-neon/80"
+                    className="text-[10px] uppercase tracking-wider text-primary hover:text-primary/80"
                   >
                     {geoStatus === "loading" ? "…" : "Refresh"}
                   </button>
                 </div>
                 {geoStatus === "denied" && (
-                  <div className="mb-3 text-[11px] text-yellow-300 bg-yellow-500/10 border border-yellow-500/20 rounded-lg p-2">
+                  <div className="mb-3 text-[11px] text-amber-800 bg-amber-100 border border-amber-300 rounded-lg p-2">
                     Location permission denied. Enable GPS access in your browser to share real coordinates with rescue.
                   </div>
                 )}
                 {geoStatus === "unavailable" && (
-                  <div className="mb-3 text-[11px] text-yellow-300 bg-yellow-500/10 border border-yellow-500/20 rounded-lg p-2">
+                  <div className="mb-3 text-[11px] text-amber-800 bg-amber-100 border border-amber-300 rounded-lg p-2">
                     GPS unavailable on this device.
                   </div>
                 )}
-                <div className="aspect-video rounded-2xl mb-4 relative overflow-hidden border border-white/10 bg-gradient-to-br from-primary/20 to-background">
-                  <div className="absolute inset-0 opacity-30 bg-[radial-gradient(circle_at_50%_50%,hsl(var(--neon))_0%,transparent_60%)]" />
-                  <Mountain className="absolute bottom-3 right-3 h-10 w-10 text-neon/60" />
+                <div className="aspect-video rounded-2xl mb-4 relative overflow-hidden border border-border bg-secondary">
+                  <Mountain className="absolute bottom-3 right-3 h-10 w-10 text-primary/60" />
                   <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-                    <div className="h-3 w-3 rounded-full bg-neon glow-neon" />
-                    <div className="absolute inset-0 h-3 w-3 rounded-full bg-neon " />
+                    <div className="h-3 w-3 rounded-full bg-primary " />
+                    <div className="absolute inset-0 h-3 w-3 rounded-full bg-primary " />
                   </div>
                 </div>
                 <div className="space-y-2 text-xs">
@@ -1620,22 +1617,22 @@ function TriagePage() {
 
 
 
-              <div className="glass-strong rounded-3xl p-6 border border-white/10">
+              <div className="card-surface rounded-3xl p-6 border border-border">
                 <div className="flex items-center justify-between mb-4">
                   <div className="flex items-center gap-2">
-                    <Cloud className="h-4 w-4 text-neon" />
+                    <Cloud className="h-4 w-4 text-primary" />
                     <span className="text-xs uppercase tracking-wider text-muted-foreground font-semibold">
                       Live Weather & Hazards
                     </span>
                     {weatherStatus === "ok" && (
-                      <span className="flex items-center gap-1 text-[10px] text-emerald-300 ml-1">
+                      <span className="flex items-center gap-1 text-[10px] text-emerald-700 ml-1">
                         <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 " />
                         LIVE
                       </span>
                     )}
                   </div>
                   {weatherStatus === "loading" && (
-                    <Loader2 className="h-3.5 w-3.5 text-neon animate-spin" />
+                    <Loader2 className="h-3.5 w-3.5 text-primary animate-spin" />
                   )}
                 </div>
 
@@ -1645,34 +1642,34 @@ function TriagePage() {
                   </p>
                 )}
                 {weatherStatus === "error" && (
-                  <p className="text-xs text-yellow-300">Weather service unreachable. Retry from GPS card.</p>
+                  <p className="text-xs text-amber-700">Weather service unreachable. Retry from GPS card.</p>
                 )}
 
                 {weather && (
                   <>
                     <div className="grid grid-cols-2 gap-2 mb-4">
-                      <div className="rounded-2xl border border-white/10 bg-white/5 p-3">
+                      <div className="rounded-2xl border border-border bg-card p-3">
                         <div className="flex items-center gap-1.5 text-[10px] uppercase tracking-wider text-muted-foreground">
                           <Thermometer className="h-3 w-3" /> Temp
                         </div>
                         <p className="text-lg font-semibold mt-0.5">{Math.round(weather.tempC)}°C</p>
                         <p className="text-[10px] text-muted-foreground">feels {Math.round(weather.feelsC)}°C</p>
                       </div>
-                      <div className="rounded-2xl border border-white/10 bg-white/5 p-3">
+                      <div className="rounded-2xl border border-border bg-card p-3">
                         <div className="flex items-center gap-1.5 text-[10px] uppercase tracking-wider text-muted-foreground">
                           <Wind className="h-3 w-3" /> Wind
                         </div>
                         <p className="text-lg font-semibold mt-0.5">{Math.round(weather.windKmh)} <span className="text-xs font-normal">km/h</span></p>
                         <p className="text-[10px] text-muted-foreground">{weather.windDir}°</p>
                       </div>
-                      <div className="rounded-2xl border border-white/10 bg-white/5 p-3">
+                      <div className="rounded-2xl border border-border bg-card p-3">
                         <div className="flex items-center gap-1.5 text-[10px] uppercase tracking-wider text-muted-foreground">
                           <Cloud className="h-3 w-3" /> Sky
                         </div>
                         <p className="text-sm font-semibold mt-0.5 leading-tight">{weather.description}</p>
                         <p className="text-[10px] text-muted-foreground">{weather.isDay ? "Daytime" : "Night"}</p>
                       </div>
-                      <div className="rounded-2xl border border-white/10 bg-white/5 p-3">
+                      <div className="rounded-2xl border border-border bg-card p-3">
                         <div className="flex items-center gap-1.5 text-[10px] uppercase tracking-wider text-muted-foreground">
                           <Eye className="h-3 w-3" /> Precip
                         </div>
@@ -1683,15 +1680,15 @@ function TriagePage() {
 
                     <div className="space-y-2">
                       <div className="text-[10px] uppercase tracking-wider text-muted-foreground font-semibold flex items-center gap-1.5">
-                        <AlertTriangle className="h-3 w-3 text-neon" /> Hazard alerts
+                        <AlertTriangle className="h-3 w-3 text-primary" /> Hazard alerts
                       </div>
                       {hazards.map((h, i) => {
                         const tone =
                           h.level === "danger"
-                            ? "border-red-500/30 bg-red-500/10 text-red-200"
+                            ? "border-red-300 bg-red-50 text-red-800"
                             : h.level === "warning"
-                              ? "border-yellow-500/30 bg-yellow-500/10 text-yellow-200"
-                              : "border-emerald-500/30 bg-emerald-500/10 text-emerald-200";
+                              ? "border-amber-300 bg-amber-50 text-amber-800"
+                              : "border-emerald-500/30 bg-emerald-500/10 text-emerald-800";
                         return (
                           <div key={i} className={`rounded-xl border ${tone} p-2.5`}>
                             <p className="text-xs font-semibold">{h.title}</p>
@@ -1709,8 +1706,8 @@ function TriagePage() {
 
 
               {!isDone && (
-                <div className="glass rounded-2xl p-4 border border-white/10 flex items-center gap-3 text-xs text-muted-foreground">
-                  <Loader2 className="h-4 w-4 text-neon animate-spin" />
+                <div className="card-surface rounded-2xl p-4 border border-border flex items-center gap-3 text-xs text-muted-foreground">
+                  <Loader2 className="h-4 w-4 text-primary animate-spin" />
                   {t.ui.completeTriage}
                 </div>
               )}
@@ -1726,7 +1723,7 @@ function TriagePage() {
 
 function Stat({ label, value }: { label: string; value: string }) {
   return (
-    <div className="glass rounded-2xl p-4 border border-white/5">
+    <div className="card-surface rounded-2xl p-4 border border-white/5">
       <p className="text-xs uppercase tracking-wider text-muted-foreground">{label}</p>
       <p className="text-base font-semibold mt-1">{value}</p>
     </div>
@@ -1755,7 +1752,7 @@ function AidBlock({
       </div>
       <ul className="space-y-1.5 pl-6">
         {items.map((i) => (
-          <li key={i} className="text-sm text-muted-foreground relative before:content-['•'] before:absolute before:-left-4 before:text-neon">
+          <li key={i} className="text-sm text-muted-foreground relative before:content-['•'] before:absolute before:-left-4 before:text-primary">
             {i}
           </li>
         ))}

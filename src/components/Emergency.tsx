@@ -6,12 +6,8 @@ export function Emergency() {
   return (
     <section
       id="emergency"
-      className="relative py-28 overflow-hidden"
-      style={{ background: "linear-gradient(180deg, oklch(0.13 0.04 255) 0%, oklch(0.16 0.04 250) 100%)" }}
+      className="relative py-28 overflow-hidden bg-secondary"
     >
-      <div className="absolute inset-0 grid-bg opacity-30" />
-      <div className="absolute top-20 -left-32 w-96 h-96 rounded-full bg-destructive/20 blur-3xl" />
-      <div className="absolute bottom-20 -right-32 w-96 h-96 rounded-full bg-neon/20 blur-3xl" />
 
       <div className="container mx-auto px-6 relative">
         <SectionHeader
@@ -27,10 +23,10 @@ export function Emergency() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
-            className="glass-strong rounded-3xl p-10 flex flex-col items-center text-center"
+            className="card-surface rounded-3xl p-10 flex flex-col items-center text-center"
           >
             <div className="relative mb-6">
-              <button className="relative w-40 h-40 rounded-md bg-gradient-to-br from-red-500 to-red-700 text-primary-foreground font-display font-bold text-2xl shadow-[0_0_40px_rgba(239,68,68,0.4)] transition-colors hover:from-red-600 hover:to-red-800">
+              <button className="relative w-40 h-40 rounded-md bg-destructive text-destructive-foreground font-display font-bold text-2xl shadow-md transition-colors hover:bg-destructive/90">
                 <Siren className="h-8 w-8 mx-auto mb-1" />
                 SOS
               </button>
@@ -47,7 +43,7 @@ export function Emergency() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
-            className="glass-strong rounded-3xl p-6"
+            className="card-surface rounded-3xl p-6"
           >
             <div className="flex items-center justify-between mb-5">
               <div className="flex items-center gap-2">
@@ -58,10 +54,9 @@ export function Emergency() {
             </div>
 
             {/* Map placeholder */}
-            <div className="relative h-44 rounded-2xl overflow-hidden mb-5 bg-gradient-to-br from-mountain to-slate-deep border border-white/10">
-              <div className="absolute inset-0 grid-bg opacity-50" />
-              <svg className="absolute inset-0 w-full h-full" viewBox="0 0 400 200" preserveAspectRatio="none">
-                <path d="M0,160 Q100,80 200,120 T400,60" stroke="oklch(0.86 0.2 195)" strokeWidth="2" fill="none" strokeDasharray="4 4" />
+            <div className="relative h-44 rounded-2xl overflow-hidden mb-5 bg-secondary border border-border">
+                            <svg className="absolute inset-0 w-full h-full" viewBox="0 0 400 200" preserveAspectRatio="none">
+                <path d="M0,160 Q100,80 200,120 T400,60" stroke="oklch(0.4 0.08 250)" strokeWidth="2" fill="none" strokeDasharray="4 4" />
               </svg>
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
                 <div className="relative">
@@ -69,7 +64,7 @@ export function Emergency() {
                   <div className="relative w-6 h-6 rounded-full bg-destructive border-2 border-white shadow-lg" />
                 </div>
               </div>
-              <div className="absolute bottom-3 left-3 text-[10px] font-mono text-neon">27.9881° N · 86.9250° E</div>
+              <div className="absolute bottom-3 left-3 text-[10px] font-mono text-primary">27.9881° N · 86.9250° E</div>
             </div>
 
             <div className="grid grid-cols-2 gap-3">
@@ -79,8 +74,8 @@ export function Emergency() {
                 { icon: Activity, label: "Vitals", val: "Stable" },
                 { icon: ShieldCheck, label: "Rescue", val: "Dispatched" },
               ].map((s) => (
-                <div key={s.label} className="glass rounded-xl p-3 flex items-center gap-3">
-                  <s.icon className="h-4 w-4 text-neon" />
+                <div key={s.label} className="card-surface rounded-xl p-3 flex items-center gap-3">
+                  <s.icon className="h-4 w-4 text-primary" />
                   <div className="text-xs">
                     <div className="text-muted-foreground">{s.label}</div>
                     <div className="font-semibold">{s.val}</div>

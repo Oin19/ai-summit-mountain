@@ -32,11 +32,10 @@ export function Features() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-80px" }}
               transition={{ duration: 0.5, delay: i * 0.05 }}
-              className="group glass rounded-2xl p-6 hover:border-neon/40 transition-all duration-300 relative overflow-hidden"
+              className="group card-surface rounded-2xl p-6 hover:border-border/40 transition-all duration-300 relative overflow-hidden"
             >
-              <div className="absolute -top-12 -right-12 w-32 h-32 rounded-md bg-neon/10 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity" />
               <div className="relative">
-                <div className="inline-flex p-3 rounded-xl bg-neon/10 text-neon mb-4 group-hover:glow-soft transition-shadow">
+                <div className="inline-flex p-3 rounded-xl bg-primary/10 text-primary mb-4 group-hover: transition-shadow">
                   <f.icon className="h-6 w-6" />
                 </div>
                 <h3 className="font-display font-semibold text-lg mb-2">{f.title}</h3>
@@ -61,7 +60,7 @@ export function SectionHeader({
       transition={{ duration: 0.6 }}
       className="text-center max-w-2xl mx-auto mb-14"
     >
-      <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md glass text-xs font-medium text-neon mb-4">
+      <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md card-surface text-xs font-medium text-primary mb-4">
         {eyebrow}
       </div>
       <h2 className="text-3xl sm:text-5xl font-bold mb-4">{title}</h2>

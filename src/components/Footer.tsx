@@ -12,15 +12,14 @@ const links = [
 
 export function Footer() {
   return (
-    <footer className="relative pt-16 pb-8 border-t border-white/10 overflow-hidden">
-      <div className="absolute inset-0 grid-bg opacity-20" />
+    <footer className="relative pt-16 pb-8 border-t border-border overflow-hidden">
       <div className="container mx-auto px-6 relative">
         <div className="grid md:grid-cols-3 gap-10 mb-10">
           <div>
             <div className="flex items-center gap-2 mb-3">
               <img src={logoAsset.url} alt="AI to the Summit" className="h-7 w-7 rounded-md object-cover" />
               <span className="font-display font-bold">
-                AI to the <span className="text-gradient">Summit</span>
+                AI to the <span className="text-primary">Summit</span>
               </span>
             </div>
             <p className="text-sm text-muted-foreground max-w-xs">
@@ -34,7 +33,7 @@ export function Footer() {
             <ul className="space-y-2">
               {links.map((l) => (
                 <li key={l.href}>
-                  <a href={l.href} className="text-sm hover:text-neon transition-colors">
+                  <a href={l.href} className="text-sm hover:text-primary transition-colors">
                     {l.label}
                   </a>
                 </li>
@@ -54,8 +53,8 @@ export function Footer() {
         <div className="pt-6 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-muted-foreground">
           <div>© {new Date().getFullYear()} AI to the Summit. All rights reserved.</div>
           <div className="flex items-center gap-4">
-            <Link to="/privacy-policy" className="hover:text-neon transition-colors">Privacy Policy</Link>
-            <Link to="/terms-and-conditions" className="hover:text-neon transition-colors">Terms &amp; Conditions</Link>
+            <Link to="/privacy-policy" className="hover:text-primary transition-colors">Privacy Policy</Link>
+            <Link to="/terms-and-conditions" className="hover:text-primary transition-colors">Terms &amp; Conditions</Link>
           </div>
         </div>
       </div>

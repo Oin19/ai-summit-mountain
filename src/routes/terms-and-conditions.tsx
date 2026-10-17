@@ -53,7 +53,7 @@ function TermsPage() {
             Please read these terms before relying on any part of AI to the Summit.
           </p>
 
-          <div className="glass-strong rounded-xl p-5 mb-10 border border-destructive/30">
+          <div className="card-surface rounded-xl p-5 mb-10 border border-destructive/30">
             <h2 className="font-display text-base font-bold mb-2">Safety notice</h2>
             <p className="text-sm text-muted-foreground leading-relaxed">
               This site is an informational tool, not an emergency service and not medical advice.
