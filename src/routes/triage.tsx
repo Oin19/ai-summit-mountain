@@ -1588,16 +1588,16 @@ function TriagePage() {
                   </button>
                 </div>
                 {geoStatus === "denied" && (
-                  <div className="mb-3 text-[11px] text-yellow-300 bg-yellow-500/10 border border-yellow-500/20 rounded-lg p-2">
+                  <div className="mb-3 text-[11px] text-amber-800 bg-amber-100 border border-amber-300 rounded-lg p-2">
                     Location permission denied. Enable GPS access in your browser to share real coordinates with rescue.
                   </div>
                 )}
                 {geoStatus === "unavailable" && (
-                  <div className="mb-3 text-[11px] text-yellow-300 bg-yellow-500/10 border border-yellow-500/20 rounded-lg p-2">
+                  <div className="mb-3 text-[11px] text-amber-800 bg-amber-100 border border-amber-300 rounded-lg p-2">
                     GPS unavailable on this device.
                   </div>
                 )}
-                <div className="aspect-video rounded-2xl mb-4 relative overflow-hidden border border-border bg-gradient-to-br from-primary/20 to-background">
+                <div className="aspect-video rounded-2xl mb-4 relative overflow-hidden border border-border bg-secondary">
                   <Mountain className="absolute bottom-3 right-3 h-10 w-10 text-primary/60" />
                   <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
                     <div className="h-3 w-3 rounded-full bg-primary " />
