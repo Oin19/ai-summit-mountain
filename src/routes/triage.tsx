@@ -714,10 +714,10 @@ function computeSeverity(a: Answers): SeverityKey {
 }
 
 const SEVERITY_STYLES: Record<SeverityKey, { bg: string; text: string; ring: string; dot: string }> = {
-  "Low Risk": { bg: "bg-emerald-500/15", text: "text-emerald-300", ring: "ring-emerald-400/40", dot: "bg-emerald-400" },
-  Moderate: { bg: "bg-yellow-500/15", text: "text-yellow-300", ring: "ring-yellow-400/40", dot: "bg-yellow-400" },
+  "Low Risk": { bg: "bg-emerald-100", text: "text-emerald-800", ring: "ring-emerald-300", dot: "bg-emerald-600" },
+  Moderate: { bg: "bg-amber-100", text: "text-amber-800", ring: "ring-amber-300", dot: "bg-amber-500" },
   "High Priority": { bg: "bg-orange-500/15", text: "text-orange-300", ring: "ring-orange-400/40", dot: "bg-orange-400" },
-  Critical: { bg: "bg-red-500/15", text: "text-red-300", ring: "ring-red-400/40", dot: "bg-red-400" },
+  Critical: { bg: "bg-red-100", text: "text-red-800", ring: "ring-red-300", dot: "bg-red-600" },
 };
 
 type LiveLocation = {
@@ -1272,7 +1272,7 @@ function TriagePage() {
                 </span>
               )}
               {voiceEnabled && !speechSupported && (
-                <span className="text-xs text-yellow-300 inline-flex items-center gap-1.5">
+                <span className="text-xs text-amber-700 inline-flex items-center gap-1.5">
                   <MicOff className="h-3.5 w-3.5" /> {t.ui.voiceUnsupported}
                 </span>
               )}
@@ -1409,9 +1409,9 @@ function TriagePage() {
               {/* SOS Action + Generated Report (in-flow, same page) */}
               {isDone && !sosSent && (
                 <div className="card-surface rounded-3xl p-6 md:p-8 border border-red-500/30 relative overflow-hidden animate-[fade-up_0.5s_ease-out]">
-                  <div className="absolute inset-0 bg-gradient-to-br from-red-500/15 via-transparent to-transparent pointer-events-none" />
+                  <div className="absolute inset-0 bg-red-50 pointer-events-none" />
                   <div className="relative text-center">
-                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-red-500/15 border border-red-500/30 text-red-300 text-[10px] uppercase tracking-wider font-semibold mb-3">
+                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-red-100 border border-red-300 text-red-700 text-[10px] uppercase tracking-wider font-semibold mb-3">
                       <Radio className="h-3 w-3 " /> {t.ui.sosBeacon}
                     </div>
                     <h3 className="font-display text-xl md:text-2xl font-bold mb-2">{t.ui.sosTitle}</h3>
@@ -1434,7 +1434,7 @@ function TriagePage() {
                   <div className="card-surface rounded-3xl p-6 md:p-8 border border-emerald-500/30 animate-[fade-up_0.5s_ease-out]">
                     <div className="flex items-start gap-3">
                       <div className="h-10 w-10 rounded-xl bg-emerald-500/20 flex items-center justify-center flex-shrink-0">
-                        <CheckCircle2 className="h-5 w-5 text-emerald-300" />
+                        <CheckCircle2 className="h-5 w-5 text-emerald-700" />
                       </div>
                       <div>
                         <h3 className="font-display text-lg font-bold text-emerald-200">Emergency Alert Sent Successfully</h3>
@@ -1443,7 +1443,7 @@ function TriagePage() {
                         </p>
                         <p className="text-xs mt-2">
                           <span className="text-muted-foreground">{t.ui.emergencyId}: </span>
-                          <span className="font-semibold text-emerald-300">{sosSent.id}</span>
+                          <span className="font-semibold text-emerald-700">{sosSent.id}</span>
                         </p>
                       </div>
                     </div>
@@ -1453,7 +1453,7 @@ function TriagePage() {
                     <div className="flex items-center justify-between flex-wrap gap-3 mb-5">
                       <div className="flex items-center gap-3">
                         <div className="h-10 w-10 rounded-xl bg-red-500/15 flex items-center justify-center">
-                          <ShieldAlert className="h-5 w-5 text-red-300" />
+                          <ShieldAlert className="h-5 w-5 text-red-700" />
                         </div>
                         <div>
                           <p className="text-[10px] uppercase tracking-wider text-muted-foreground">SOS Rescue Report</p>
@@ -1467,7 +1467,7 @@ function TriagePage() {
                     </div>
                     <div className="grid sm:grid-cols-2 gap-x-6">
                       <div className="space-y-1">
-                        <Row k={t.ui.emergencyId} v={sosSent.id} valueClass="text-emerald-300" />
+                        <Row k={t.ui.emergencyId} v={sosSent.id} valueClass="text-emerald-700" />
                         <Row k="Date & Time" v={sosSent.time} />
                         <Row k={t.ui.location} v={location.route} />
                         <Row k={t.ui.latitude} v={location.lat} />
@@ -1482,7 +1482,7 @@ function TriagePage() {
                         <Row k={t.ui.canWalk} v={answers.mobility ? t.mobility[answers.mobility] : ":"} />
                         <Row k={t.ui.painScore} v={`${answers.pain ?? 0}/10`} />
                         <Row k={t.ui.severity} v={t.severities[severity]} valueClass={styles.text} />
-                        <Row k="Report Status" v={t.ui.rescueNotified} valueClass="text-emerald-300" />
+                        <Row k="Report Status" v={t.ui.rescueNotified} valueClass="text-emerald-700" />
                       </div>
                     </div>
                     <div className={`mt-5 p-4 rounded-2xl ${styles.bg} border border-white/5`}>
@@ -1512,9 +1512,9 @@ function TriagePage() {
                             }`}
                           >
                             {s.done ? (
-                              <CheckCircle2 className="h-3 w-3 text-emerald-300" />
+                              <CheckCircle2 className="h-3 w-3 text-emerald-700" />
                             ) : (
-                              <Loader2 className="h-2.5 w-2.5 text-yellow-300 animate-spin" />
+                              <Loader2 className="h-2.5 w-2.5 text-amber-700 animate-spin" />
                             )}
                           </span>
                           <p className={`text-sm ${s.done ? "text-foreground" : "text-muted-foreground"}`}>
@@ -1574,7 +1574,7 @@ function TriagePage() {
                       {t.ui.liveGps}
                     </span>
                     {geoStatus === "ok" && (
-                      <span className="flex items-center gap-1 text-[10px] text-emerald-300 ml-1">
+                      <span className="flex items-center gap-1 text-[10px] text-emerald-700 ml-1">
                         <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 " />
                         LIVE
                       </span>
@@ -1627,7 +1627,7 @@ function TriagePage() {
                       Live Weather & Hazards
                     </span>
                     {weatherStatus === "ok" && (
-                      <span className="flex items-center gap-1 text-[10px] text-emerald-300 ml-1">
+                      <span className="flex items-center gap-1 text-[10px] text-emerald-700 ml-1">
                         <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 " />
                         LIVE
                       </span>
@@ -1644,7 +1644,7 @@ function TriagePage() {
                   </p>
                 )}
                 {weatherStatus === "error" && (
-                  <p className="text-xs text-yellow-300">Weather service unreachable. Retry from GPS card.</p>
+                  <p className="text-xs text-amber-700">Weather service unreachable. Retry from GPS card.</p>
                 )}
 
                 {weather && (
@@ -1689,7 +1689,7 @@ function TriagePage() {
                           h.level === "danger"
                             ? "border-red-500/30 bg-red-500/10 text-red-200"
                             : h.level === "warning"
-                              ? "border-yellow-500/30 bg-yellow-500/10 text-yellow-200"
+                              ? "border-amber-300 bg-amber-50 text-amber-800"
                               : "border-emerald-500/30 bg-emerald-500/10 text-emerald-200";
                         return (
                           <div key={i} className={`rounded-xl border ${tone} p-2.5`}>

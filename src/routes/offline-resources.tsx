@@ -254,9 +254,9 @@ const GUIDELINES = [
 ];
 
 const TONE_BG: Record<string, string> = {
-  emerald: "bg-emerald-500/15 text-emerald-300 border-emerald-500/30",
+  emerald: "bg-emerald-100 text-emerald-800 border-emerald-300",
   cyan: "bg-primary/10 text-primary border-border/30",
-  red: "bg-red-500/15 text-red-300 border-red-500/30",
+  red: "bg-red-100 text-red-800 border-red-300",
 };
 
 const STORAGE_DRAFT = "sos.offline.draft";
@@ -413,7 +413,7 @@ function OfflineResources() {
                         {name}
                       </h3>
                       <p className="font-mono text-lg mt-1 tracking-tight">{number}</p>
-                      <p className="text-[11px] text-emerald-300 mt-1 flex items-center gap-1.5">
+                      <p className="text-[11px] text-emerald-700 mt-1 flex items-center gap-1.5">
                         <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 " />
                         {status}
                       </p>
@@ -582,7 +582,7 @@ function OfflineResources() {
 
               {savedAt && (
                 <div className="mt-5 rounded-2xl border border-emerald-500/30 bg-emerald-500/10 p-4 flex items-start gap-3 animate-[fade-up_0.3s_ease-out]">
-                  <CheckCircle2 className="h-5 w-5 text-emerald-300 flex-shrink-0 mt-0.5" />
+                  <CheckCircle2 className="h-5 w-5 text-emerald-700 flex-shrink-0 mt-0.5" />
                   <div className="text-sm">
                     <p className="text-emerald-200 font-semibold">Emergency report saved locally.</p>
                     <p className="text-muted-foreground mt-0.5">

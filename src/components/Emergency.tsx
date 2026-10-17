@@ -7,7 +7,7 @@ export function Emergency() {
     <section
       id="emergency"
       className="relative py-28 overflow-hidden"
-      style={{ background: "linear-gradient(180deg, oklch(0.13 0.04 255) 0%, oklch(0.16 0.04 250) 100%)" }}
+      className="bg-secondary"
     >
       <div className="absolute inset-0  opacity-30" />
       <div className="absolute top-20 -left-32 w-96 h-96 rounded-full bg-destructive/20 blur-3xl" />

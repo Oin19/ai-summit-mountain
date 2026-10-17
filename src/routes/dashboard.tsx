@@ -39,7 +39,7 @@ function DashboardPage() {
         {/* Welcome Card */}
         <div className="card-surface rounded-3xl p-10 lg:p-14 text-center border border-border/15 shadow-2xl">
           <div className="relative inline-block mb-6">
-            <div className="w-24 h-24 rounded-2xl bg-gradient-to-br from-primary/10 to-primary/5 border border-border/20 flex items-center justify-center mx-auto">
+            <div className="w-24 h-24 rounded-2xl bg-primary/10 border border-border/20 flex items-center justify-center mx-auto">
               <Mountain className="h-12 w-12 text-primary" />
             </div>
             <div className="absolute -top-1 -right-1 w-6 h-6 bg-primary rounded-full flex items-center justify-center">
