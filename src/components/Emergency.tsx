@@ -30,7 +30,7 @@ export function Emergency() {
             className="card-surface rounded-3xl p-10 flex flex-col items-center text-center"
           >
             <div className="relative mb-6">
-              <button className="relative w-40 h-40 rounded-md bg-gradient-to-br from-red-500 to-red-700 text-primary-foreground font-display font-bold text-2xl shadow-[0_0_40px_rgba(239,68,68,0.4)] transition-colors hover:from-red-600 hover:to-red-800">
+              <button className="relative w-40 h-40 rounded-md bg-destructive text-destructive-foreground font-display font-bold text-2xl shadow-md transition-colors hover:bg-destructive/90">
                 <Siren className="h-8 w-8 mx-auto mb-1" />
                 SOS
               </button>
@@ -58,10 +58,9 @@ export function Emergency() {
             </div>
 
             {/* Map placeholder */}
-            <div className="relative h-44 rounded-2xl overflow-hidden mb-5 bg-gradient-to-br from-mountain to-slate-deep border border-border">
-              <div className="absolute inset-0  opacity-50" />
-              <svg className="absolute inset-0 w-full h-full" viewBox="0 0 400 200" preserveAspectRatio="none">
-                <path d="M0,160 Q100,80 200,120 T400,60" stroke="oklch(0.86 0.2 195)" strokeWidth="2" fill="none" strokeDasharray="4 4" />
+            <div className="relative h-44 rounded-2xl overflow-hidden mb-5 bg-secondary border border-border">
+                            <svg className="absolute inset-0 w-full h-full" viewBox="0 0 400 200" preserveAspectRatio="none">
+                <path d="M0,160 Q100,80 200,120 T400,60" stroke="oklch(0.4 0.08 250)" strokeWidth="2" fill="none" strokeDasharray="4 4" />
               </svg>
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
                 <div className="relative">
