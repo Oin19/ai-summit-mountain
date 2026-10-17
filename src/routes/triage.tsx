@@ -1180,9 +1180,7 @@ function TriagePage() {
 
   return (
     <div className="relative min-h-screen overflow-hidden bg-background">
-      <div className="absolute inset-0  opacity-20 pointer-events-none" />
       <div className="absolute inset-0  pointer-events-none" />
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] rounded-full bg-primary/10 blur-3xl pointer-events-none" />
       <Navbar />
 
       <main className="relative z-10 pt-32 pb-20">

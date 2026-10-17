@@ -13,7 +13,6 @@ const items = [
 export function FutureScope() {
   return (
     <section id="future" className="relative py-28 overflow-hidden">
-      <div className="absolute inset-0  opacity-30" />
       <div className="container mx-auto px-6 relative">
         <SectionHeader
           eyebrow="Future Scope"
@@ -30,7 +29,6 @@ export function FutureScope() {
               transition={{ duration: 0.5, delay: i * 0.07 }}
               className="relative card-surface rounded-2xl p-6 overflow-hidden group hover:border-border/50 transition-colors"
             >
-              <div className="absolute -bottom-10 -right-10 w-40 h-40 rounded-md bg-primary/10 blur-2xl opacity-50 group-hover:opacity-100 transition-opacity" />
               <div className="relative">
                 <div className="inline-flex p-3 rounded-xl bg-primary/10 text-primary mb-4">
                   <it.icon className="h-6 w-6" />

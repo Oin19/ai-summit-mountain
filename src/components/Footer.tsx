@@ -13,7 +13,6 @@ const links = [
 export function Footer() {
   return (
     <footer className="relative pt-16 pb-8 border-t border-border overflow-hidden">
-      <div className="absolute inset-0  opacity-20" />
       <div className="container mx-auto px-6 relative">
         <div className="grid md:grid-cols-3 gap-10 mb-10">
           <div>

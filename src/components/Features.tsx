@@ -34,7 +34,6 @@ export function Features() {
               transition={{ duration: 0.5, delay: i * 0.05 }}
               className="group card-surface rounded-2xl p-6 hover:border-border/40 transition-all duration-300 relative overflow-hidden"
             >
-              <div className="absolute -top-12 -right-12 w-32 h-32 rounded-md bg-primary/10 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity" />
               <div className="relative">
                 <div className="inline-flex p-3 rounded-xl bg-primary/10 text-primary mb-4 group-hover: transition-shadow">
                   <f.icon className="h-6 w-6" />
