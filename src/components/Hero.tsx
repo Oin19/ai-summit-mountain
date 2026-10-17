@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Play, Cloud, MapPin, Siren, Languages } from "lucide-react";
+import heroMountain from "@/assets/hero-mountain.webp.asset.json";
 
 const capabilities = [
   { icon: MapPin, label: "Trail guidance", value: "Directions from your live GPS position" },
@@ -44,9 +45,15 @@ export function Hero() {
   return (
     <section id="home" className="relative min-h-screen flex items-center overflow-hidden pt-24 pb-16">
       <div className="absolute inset-0 topo-bg" />
-      <div className="absolute inset-0 grid-bg opacity-30" />
       <RidgeBackdrop />
-      <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/40 to-background" />
+      <img
+        src={heroMountain.url}
+        alt=""
+        aria-hidden="true"
+        loading="eager"
+        className="absolute inset-0 h-full w-full object-cover object-center"
+      />
+      <div className="absolute inset-0 bg-background/70" />
 
       <div className="container mx-auto px-6 relative z-10 grid lg:grid-cols-12 gap-10 items-center">
         <div className="lg:col-span-7">
