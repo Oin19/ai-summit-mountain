@@ -584,7 +584,7 @@ function OfflineResources() {
                 <div className="mt-5 rounded-2xl border border-emerald-500/30 bg-emerald-500/10 p-4 flex items-start gap-3 animate-[fade-up_0.3s_ease-out]">
                   <CheckCircle2 className="h-5 w-5 text-emerald-700 flex-shrink-0 mt-0.5" />
                   <div className="text-sm">
-                    <p className="text-emerald-200 font-semibold">Emergency report saved locally.</p>
+                    <p className="text-emerald-800 font-semibold">Emergency report saved locally.</p>
                     <p className="text-muted-foreground mt-0.5">
                       It can be shared when connectivity becomes available.
                     </p>

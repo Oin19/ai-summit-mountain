@@ -716,7 +716,7 @@ function computeSeverity(a: Answers): SeverityKey {
 const SEVERITY_STYLES: Record<SeverityKey, { bg: string; text: string; ring: string; dot: string }> = {
   "Low Risk": { bg: "bg-emerald-100", text: "text-emerald-800", ring: "ring-emerald-300", dot: "bg-emerald-600" },
   Moderate: { bg: "bg-amber-100", text: "text-amber-800", ring: "ring-amber-300", dot: "bg-amber-500" },
-  "High Priority": { bg: "bg-orange-500/15", text: "text-orange-300", ring: "ring-orange-400/40", dot: "bg-orange-400" },
+  "High Priority": { bg: "bg-orange-100", text: "text-orange-800", ring: "ring-orange-300", dot: "bg-orange-500" },
   Critical: { bg: "bg-red-100", text: "text-red-800", ring: "ring-red-300", dot: "bg-red-600" },
 };
 
@@ -1437,7 +1437,7 @@ function TriagePage() {
                         <CheckCircle2 className="h-5 w-5 text-emerald-700" />
                       </div>
                       <div>
-                        <h3 className="font-display text-lg font-bold text-emerald-200">Emergency Alert Sent Successfully</h3>
+                        <h3 className="font-display text-lg font-bold text-emerald-800">Emergency Alert Sent Successfully</h3>
                         <p className="text-sm text-muted-foreground mt-1">
                           Your emergency report has been generated on this device. Contact emergency services to share it.
                         </p>
@@ -1555,7 +1555,7 @@ function TriagePage() {
                     <AidBlock
                       title={t.ui.forHypothermia}
                       items={t.hypothermiaAid}
-                      icon={<Snowflake className="h-4 w-4 text-cyan-300" />}
+                      icon={<Snowflake className="h-4 w-4 text-primary" />}
                     />
                   )}
                 </div>
@@ -1687,10 +1687,10 @@ function TriagePage() {
                       {hazards.map((h, i) => {
                         const tone =
                           h.level === "danger"
-                            ? "border-red-500/30 bg-red-500/10 text-red-200"
+                            ? "border-red-300 bg-red-50 text-red-800"
                             : h.level === "warning"
                               ? "border-amber-300 bg-amber-50 text-amber-800"
-                              : "border-emerald-500/30 bg-emerald-500/10 text-emerald-200";
+                              : "border-emerald-500/30 bg-emerald-500/10 text-emerald-800";
                         return (
                           <div key={i} className={`rounded-xl border ${tone} p-2.5`}>
                             <p className="text-xs font-semibold">{h.title}</p>
