@@ -6,12 +6,8 @@ export function Emergency() {
   return (
     <section
       id="emergency"
-      className="relative py-28 overflow-hidden"
-      className="bg-secondary"
+      className="relative py-28 overflow-hidden bg-secondary"
     >
-      <div className="absolute inset-0  opacity-30" />
-      <div className="absolute top-20 -left-32 w-96 h-96 rounded-full bg-destructive/20 blur-3xl" />
-      <div className="absolute bottom-20 -right-32 w-96 h-96 rounded-full bg-primary/20 blur-3xl" />
 
       <div className="container mx-auto px-6 relative">
         <SectionHeader
