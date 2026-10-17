@@ -13,7 +13,7 @@ const steps = [
 
 export function HowItWorks() {
   return (
-    <section id="how" className="relative py-28 topo-bg">
+    <section id="how" className="relative py-28 ">
       <div className="container mx-auto px-6">
         <SectionHeader
           eyebrow="How it works"
@@ -29,18 +29,18 @@ export function HowItWorks() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.08 }}
-              className="relative glass-strong rounded-2xl p-6 group"
+              className="relative card-surface rounded-2xl p-6 group"
             >
-              <div className="absolute top-4 right-4 text-5xl font-display font-bold text-neon/15">
+              <div className="absolute top-4 right-4 text-5xl font-display font-bold text-primary/15">
                 0{i + 1}
               </div>
-              <div className="inline-flex p-3 rounded-xl bg-neon/10 text-neon mb-4">
+              <div className="inline-flex p-3 rounded-xl bg-primary/10 text-primary mb-4">
                 <s.icon className="h-6 w-6" />
               </div>
               <h3 className="font-semibold text-lg mb-2">{s.title}</h3>
               <p className="text-sm text-muted-foreground">{s.desc}</p>
               {i < steps.length - 1 && (
-                <div className="hidden lg:block absolute top-1/2 -right-3 w-6 h-px bg-neon/40" />
+                <div className="hidden lg:block absolute top-1/2 -right-3 w-6 h-px bg-primary/40" />
               )}
             </motion.div>
           ))}

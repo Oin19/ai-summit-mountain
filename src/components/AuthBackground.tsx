@@ -4,10 +4,10 @@ export function AuthBackground({ children }: { children: React.ReactNode }) {
   return (
     <div className="relative min-h-screen overflow-hidden flex items-center justify-center">
       {/* Static grid background */}
-      <div className="absolute inset-0 grid-bg opacity-30" />
+      <div className="absolute inset-0  opacity-30" />
 
       {/* Radial glow from center */}
-      <div className="absolute inset-0 topo-bg" />
+      <div className="absolute inset-0 " />
 
       {/* Subtle mountain silhouette at bottom */}
       <svg
@@ -36,11 +36,11 @@ export function AuthBackground({ children }: { children: React.ReactNode }) {
       {/* Back to home link */}
       <a
         href="/"
-        className="fixed top-6 left-6 z-50 flex items-center gap-2 group glass px-4 py-2 rounded-md hover:glow-soft transition-all"
+        className="fixed top-6 left-6 z-50 flex items-center gap-2 group card-surface px-4 py-2 rounded-md hover: transition-all"
       >
         <img src={logoAsset.url} alt="AI to the Summit" className="h-5 w-5 rounded-md object-cover transition-transform group-hover:scale-110" />
         <span className="font-display text-sm font-semibold text-foreground">
-          AI to the <span className="text-gradient">Summit</span>
+          AI to the <span className="text-primary">Summit</span>
         </span>
       </a>
 

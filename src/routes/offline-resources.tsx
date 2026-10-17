@@ -255,7 +255,7 @@ const GUIDELINES = [
 
 const TONE_BG: Record<string, string> = {
   emerald: "bg-emerald-500/15 text-emerald-300 border-emerald-500/30",
-  cyan: "bg-neon/15 text-neon border-neon/30",
+  cyan: "bg-primary/10 text-primary border-border/30",
   red: "bg-red-500/15 text-red-300 border-red-500/30",
 };
 
@@ -327,11 +327,11 @@ function OfflineResources() {
         <div className="container mx-auto px-6">
           {/* Hero */}
           <div className="text-center max-w-3xl mx-auto mb-14">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md glass border border-white/10 text-xs uppercase tracking-wider text-neon mb-4">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md card-surface border border-white/10 text-xs uppercase tracking-wider text-primary mb-4">
               <WifiOff className="h-3.5 w-3.5" /> Works without internet
             </div>
             <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
-              Offline <span className="text-gradient">Emergency Resources</span>
+              Offline <span className="text-primary">Emergency Resources</span>
             </h1>
             <p className="mt-4 text-base md:text-lg text-muted-foreground">
               Critical information available even when connectivity is limited.
@@ -352,14 +352,14 @@ function OfflineResources() {
                   <button
                     key={key}
                     onClick={() => setOpenAid(isOpen ? null : key)}
-                    className={`text-left glass-strong rounded-3xl p-6 border transition-all ${
-                      isOpen ? "border-neon/40 shadow-[0_0_30px_rgba(34,211,238,0.15)]" : "border-white/10 hover:border-neon/30"
+                    className={`text-left card-surface rounded-3xl p-6 border transition-all ${
+                      isOpen ? "border-border/40 shadow-[0_0_30px_rgba(34,211,238,0.15)]" : "border-white/10 hover:border-border/30"
                     }`}
                   >
                     <div className="flex items-center justify-between mb-3">
                       <div className="flex items-center gap-3">
-                        <div className="h-11 w-11 rounded-2xl bg-neon/15 flex items-center justify-center text-xl">
-                          <Icon className="h-5 w-5 text-neon" />
+                        <div className="h-11 w-11 rounded-2xl bg-primary/10 flex items-center justify-center text-xl">
+                          <Icon className="h-5 w-5 text-primary" />
                         </div>
                         <div>
                           <h3 className="font-display text-lg font-bold">{title}</h3>
@@ -369,14 +369,14 @@ function OfflineResources() {
                         </div>
                       </div>
                       <ChevronDown
-                        className={`h-4 w-4 text-neon transition-transform ${isOpen ? "rotate-180" : ""}`}
+                        className={`h-4 w-4 text-primary transition-transform ${isOpen ? "rotate-180" : ""}`}
                       />
                     </div>
                     {isOpen && (
                       <ol className="mt-4 space-y-2 animate-[fade-up_0.3s_ease-out]">
                         {steps.map((s, i) => (
                           <li key={i} className="flex gap-3 text-sm">
-                            <span className="flex-shrink-0 h-5 w-5 rounded-full bg-neon/20 text-neon text-[11px] font-semibold flex items-center justify-center mt-0.5">
+                            <span className="flex-shrink-0 h-5 w-5 rounded-full bg-primary/20 text-primary text-[11px] font-semibold flex items-center justify-center mt-0.5">
                               {i + 1}
                             </span>
                             <span className="text-muted-foreground leading-relaxed">{s}</span>
@@ -402,14 +402,14 @@ function OfflineResources() {
                 <a
                   key={name}
                   href={`tel:${number.replace(/\s+/g, "")}`}
-                  className="glass-strong rounded-3xl p-6 border border-white/10 hover:border-neon/40 transition-all group"
+                  className="card-surface rounded-3xl p-6 border border-white/10 hover:border-border/40 transition-all group"
                 >
                   <div className="flex items-start gap-4">
                     <div className={`h-12 w-12 rounded-2xl border flex items-center justify-center ${TONE_BG[tone]}`}>
                       <Icon className="h-5 w-5" />
                     </div>
                     <div className="flex-1 min-w-0">
-                      <h3 className="font-display font-bold text-base group-hover:text-neon transition-colors">
+                      <h3 className="font-display font-bold text-base group-hover:text-primary transition-colors">
                         {name}
                       </h3>
                       <p className="font-mono text-lg mt-1 tracking-tight">{number}</p>
@@ -418,7 +418,7 @@ function OfflineResources() {
                         {status}
                       </p>
                     </div>
-                    <Phone className="h-4 w-4 text-neon opacity-0 group-hover:opacity-100 transition-opacity" />
+                    <Phone className="h-4 w-4 text-primary opacity-0 group-hover:opacity-100 transition-opacity" />
                   </div>
                 </a>
               ))}
@@ -432,16 +432,16 @@ function OfflineResources() {
               title="Survival Checklist"
               subtitle="Mark each item as you pack. Progress is saved on your device."
             />
-            <div className="glass-strong rounded-3xl p-6 md:p-8 border border-white/10">
+            <div className="card-surface rounded-3xl p-6 md:p-8 border border-white/10">
               <div className="flex items-center justify-between mb-4">
                 <p className="text-sm text-muted-foreground">
-                  Packed <span className="text-neon font-semibold">{packedCount}</span> of {CHECKLIST_ITEMS.length}
+                  Packed <span className="text-primary font-semibold">{packedCount}</span> of {CHECKLIST_ITEMS.length}
                 </p>
                 <p className="text-xs text-muted-foreground">{Math.round(checklistProgress)}%</p>
               </div>
               <div className="h-1.5 rounded-full bg-white/10 overflow-hidden mb-6">
                 <div
-                  className="h-full bg-neon transition-all duration-500 glow-neon"
+                  className="h-full bg-primary transition-all duration-500 "
                   style={{ width: `${checklistProgress}%` }}
                 />
               </div>
@@ -454,16 +454,16 @@ function OfflineResources() {
                       onClick={() => toggleCheck(key)}
                       className={`flex items-center gap-3 p-4 rounded-2xl border transition-all text-left ${
                         isOn
-                          ? "bg-neon/10 border-neon/40 text-foreground"
-                          : "bg-white/5 border-white/10 hover:border-neon/30 text-muted-foreground"
+                          ? "bg-primary/10 border-border/40 text-foreground"
+                          : "bg-white/5 border-white/10 hover:border-border/30 text-muted-foreground"
                       }`}
                     >
                       {isOn ? (
-                        <CheckCircle2 className="h-5 w-5 text-neon flex-shrink-0" />
+                        <CheckCircle2 className="h-5 w-5 text-primary flex-shrink-0" />
                       ) : (
                         <Circle className="h-5 w-5 text-muted-foreground flex-shrink-0" />
                       )}
-                      <Icon className={`h-4 w-4 ${isOn ? "text-neon" : "text-muted-foreground"}`} />
+                      <Icon className={`h-4 w-4 ${isOn ? "text-primary" : "text-muted-foreground"}`} />
                       <span className={`text-sm font-medium ${isOn ? "line-through opacity-70" : ""}`}>
                         {label}
                       </span>
@@ -487,8 +487,8 @@ function OfflineResources() {
                 return (
                   <div
                     key={title}
-                    className={`glass-strong rounded-3xl border transition-all ${
-                      isOpen ? "border-neon/40" : "border-white/10"
+                    className={`card-surface rounded-3xl border transition-all ${
+                      isOpen ? "border-border/40" : "border-white/10"
                     }`}
                   >
                     <button
@@ -496,20 +496,20 @@ function OfflineResources() {
                       className="w-full flex items-center justify-between p-5 text-left"
                     >
                       <div className="flex items-center gap-3">
-                        <div className="h-10 w-10 rounded-xl bg-neon/15 flex items-center justify-center">
-                          <Icon className="h-5 w-5 text-neon" />
+                        <div className="h-10 w-10 rounded-xl bg-primary/10 flex items-center justify-center">
+                          <Icon className="h-5 w-5 text-primary" />
                         </div>
                         <h3 className="font-display font-bold">{title}</h3>
                       </div>
                       <ChevronDown
-                        className={`h-4 w-4 text-neon transition-transform ${isOpen ? "rotate-180" : ""}`}
+                        className={`h-4 w-4 text-primary transition-transform ${isOpen ? "rotate-180" : ""}`}
                       />
                     </button>
                     {isOpen && (
                       <ul className="px-5 pb-5 space-y-2 animate-[fade-up_0.3s_ease-out]">
                         {points.map((p, i) => (
                           <li key={i} className="flex gap-3 text-sm text-muted-foreground">
-                            <Eye className="h-4 w-4 text-neon flex-shrink-0 mt-0.5" />
+                            <Eye className="h-4 w-4 text-primary flex-shrink-0 mt-0.5" />
                             <span>{p}</span>
                           </li>
                         ))}
@@ -530,7 +530,7 @@ function OfflineResources() {
             />
             <form
               onSubmit={saveDraft}
-              className="glass-strong rounded-3xl p-6 md:p-8 border border-white/10 max-w-3xl mx-auto"
+              className="card-surface rounded-3xl p-6 md:p-8 border border-white/10 max-w-3xl mx-auto"
             >
               <div className="grid sm:grid-cols-2 gap-4 mb-4">
                 <Field label="Name">
@@ -539,7 +539,7 @@ function OfflineResources() {
                     value={draft.name}
                     onChange={(e) => setDraft({ ...draft, name: e.target.value })}
                     placeholder="Full name"
-                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-neon/50"
+                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-border/50"
                   />
                 </Field>
                 <Field label="Current Location">
@@ -548,14 +548,14 @@ function OfflineResources() {
                     value={draft.location}
                     onChange={(e) => setDraft({ ...draft, location: e.target.value })}
                     placeholder="e.g. Annapurna Base Camp Trail, Day 4"
-                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-neon/50"
+                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-border/50"
                   />
                 </Field>
                 <Field label="Emergency Type">
                   <select
                     value={draft.type}
                     onChange={(e) => setDraft({ ...draft, type: e.target.value })}
-                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-neon/50"
+                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-border/50"
                   >
                     {["Injury", "Lost", "Altitude Sickness", "Weather", "Wildlife", "Other"].map((o) => (
                       <option key={o} value={o} className="bg-background">{o}</option>
@@ -567,14 +567,14 @@ function OfflineResources() {
                     value={draft.description}
                     onChange={(e) => setDraft({ ...draft, description: e.target.value })}
                     placeholder="Brief description"
-                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-neon/50"
+                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-border/50"
                   />
                 </Field>
               </div>
 
               <button
                 type="submit"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-2xl bg-neon text-primary-foreground font-semibold text-sm hover:glow-neon transition-all"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-2xl bg-primary text-primary-foreground font-semibold text-sm transition-all"
               >
                 <Save className="h-4 w-4" />
                 Save Emergency Report
@@ -608,7 +608,7 @@ function SectionHeading({
 }: { eyebrow: string; title: string; subtitle: string }) {
   return (
     <div className="mb-8">
-      <p className="text-xs uppercase tracking-wider text-neon font-semibold">{eyebrow}</p>
+      <p className="text-xs uppercase tracking-wider text-primary font-semibold">{eyebrow}</p>
       <h2 className="font-display text-2xl md:text-3xl font-bold mt-1">{title}</h2>
       <p className="text-sm text-muted-foreground mt-1.5 max-w-2xl">{subtitle}</p>
     </div>

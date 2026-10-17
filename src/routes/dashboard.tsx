@@ -37,12 +37,12 @@ function DashboardPage() {
     <AuthBackground>
       <div className="max-w-2xl mx-auto animate-[fade-up_0.6s_ease-out]">
         {/* Welcome Card */}
-        <div className="glass-strong rounded-3xl p-10 lg:p-14 text-center border border-neon/15 shadow-2xl">
+        <div className="card-surface rounded-3xl p-10 lg:p-14 text-center border border-border/15 shadow-2xl">
           <div className="relative inline-block mb-6">
-            <div className="w-24 h-24 rounded-2xl bg-gradient-to-br from-neon/20 to-neon/5 border border-neon/20 flex items-center justify-center mx-auto">
-              <Mountain className="h-12 w-12 text-neon" />
+            <div className="w-24 h-24 rounded-2xl bg-gradient-to-br from-neon/20 to-neon/5 border border-border/20 flex items-center justify-center mx-auto">
+              <Mountain className="h-12 w-12 text-primary" />
             </div>
-            <div className="absolute -top-1 -right-1 w-6 h-6 bg-neon rounded-full flex items-center justify-center">
+            <div className="absolute -top-1 -right-1 w-6 h-6 bg-primary rounded-full flex items-center justify-center">
               <svg className="w-3.5 h-3.5 text-primary-foreground" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
               </svg>
@@ -50,7 +50,7 @@ function DashboardPage() {
           </div>
 
           <h1 className="font-display text-3xl lg:text-4xl font-bold text-foreground mb-3">
-            Welcome to AI to the <span className="text-gradient">Summit</span>
+            Welcome to AI to the <span className="text-primary">Summit</span>
           </h1>
           <p className="text-muted-foreground text-lg mb-8">
             You are successfully logged in.
@@ -58,18 +58,18 @@ function DashboardPage() {
 
           {/* Feature preview cards */}
           <div className="grid sm:grid-cols-3 gap-4 text-left mb-8">
-            <div className="p-4 rounded-xl bg-white/5 border border-white/10 hover:border-neon/20 transition-colors">
-              <MapPin className="h-5 w-5 text-neon mb-2" />
+            <div className="p-4 rounded-xl bg-white/5 border border-white/10 hover:border-border/20 transition-colors">
+              <MapPin className="h-5 w-5 text-primary mb-2" />
               <h3 className="text-sm font-semibold text-foreground mb-1">Trail Finder</h3>
               <p className="text-xs text-muted-foreground">Discover routes near you</p>
             </div>
-            <div className="p-4 rounded-xl bg-white/5 border border-white/10 hover:border-neon/20 transition-colors">
-              <Shield className="h-5 w-5 text-neon mb-2" />
+            <div className="p-4 rounded-xl bg-white/5 border border-white/10 hover:border-border/20 transition-colors">
+              <Shield className="h-5 w-5 text-primary mb-2" />
               <h3 className="text-sm font-semibold text-foreground mb-1">SOS Ready</h3>
               <p className="text-xs text-muted-foreground">Open the triage checklist</p>
             </div>
-            <div className="p-4 rounded-xl bg-white/5 border border-white/10 hover:border-neon/20 transition-colors">
-              <Mountain className="h-5 w-5 text-neon mb-2" />
+            <div className="p-4 rounded-xl bg-white/5 border border-white/10 hover:border-border/20 transition-colors">
+              <Mountain className="h-5 w-5 text-primary mb-2" />
               <h3 className="text-sm font-semibold text-foreground mb-1">Weather</h3>
               <p className="text-xs text-muted-foreground">View location-based conditions</p>
             </div>
@@ -77,7 +77,7 @@ function DashboardPage() {
 
           <a
             href="/"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-neon text-primary-foreground font-semibold text-sm hover:glow-neon transition-all"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-primary text-primary-foreground font-semibold text-sm transition-all"
           >
             <LogOut className="h-4 w-4" />
             Back to Homepage

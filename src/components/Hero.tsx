@@ -12,7 +12,7 @@ const capabilities = [
 function RidgeBackdrop() {
   return (
     <svg
-      className="absolute inset-x-0 bottom-0 w-full h-[55%] text-neon"
+      className="absolute inset-x-0 bottom-0 w-full h-[55%] text-primary"
       viewBox="0 0 1440 420"
       preserveAspectRatio="none"
       aria-hidden="true"
@@ -44,7 +44,7 @@ function RidgeBackdrop() {
 export function Hero() {
   return (
     <section id="home" className="relative min-h-screen flex items-center overflow-hidden pt-24 pb-16">
-      <div className="absolute inset-0 topo-bg" />
+      <div className="absolute inset-0 " />
       <RidgeBackdrop />
       <img
         src={heroMountain.url}
@@ -65,7 +65,7 @@ export function Hero() {
           >
             Trail directions, weather and
             <br />
-            <span className="text-gradient">emergency help</span> in the mountains
+            <span className="text-primary">emergency help</span> in the mountains
           </motion.h1>
 
           <motion.p
@@ -87,14 +87,14 @@ export function Hero() {
           >
             <a
               href="#features"
-              className="group inline-flex items-center gap-2 px-6 py-3.5 rounded-md bg-neon text-primary-foreground font-semibold hover:glow-neon transition-all"
+              className="group inline-flex items-center gap-2 px-6 py-3.5 rounded-md bg-primary text-primary-foreground font-semibold transition-all"
             >
               Explore Features
               <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
             </a>
             <a
               href="#demo"
-              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-md glass-strong font-semibold hover:bg-white/10 transition-colors"
+              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-md card-surface font-semibold hover:bg-white/10 transition-colors"
             >
               <Play className="h-4 w-4" />
               Try the assistant
@@ -110,8 +110,8 @@ export function Hero() {
             className="grid sm:grid-cols-2 gap-3"
           >
             {capabilities.map((c) => (
-              <li key={c.label} className="glass-strong rounded-xl p-4">
-                <div className="p-2 rounded-md bg-neon/15 text-neon w-fit mb-3">
+              <li key={c.label} className="card-surface rounded-xl p-4">
+                <div className="p-2 rounded-md bg-primary/10 text-primary w-fit mb-3">
                   <c.icon className="h-5 w-5" />
                 </div>
                 <div className="text-sm font-semibold mb-1">{c.label}</div>

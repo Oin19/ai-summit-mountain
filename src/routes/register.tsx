@@ -88,20 +88,20 @@ function RegisterPage() {
     <AuthBackground>
       <div className="animate-[fade-up_0.6s_ease-out]">
         {/* Glassmorphism Card */}
-        <div className="glass-strong rounded-3xl overflow-hidden shadow-2xl border border-neon/15">
+        <div className="card-surface rounded-3xl overflow-hidden shadow-2xl border border-border/15">
           <div className="grid lg:grid-cols-2">
             {/* Left Side: Branding */}
-            <div className="relative p-10 lg:p-14 flex flex-col justify-center items-center text-center bg-neon/5">
+            <div className="relative p-10 lg:p-14 flex flex-col justify-center items-center text-center bg-primary/5">
               <div className="hidden" />
 
               <div className="relative">
                 <img
                   src={logoAsset.url}
                   alt="AI to the Summit brandmark"
-                  className="w-24 h-24 rounded-2xl object-cover mb-6 mx-auto border border-neon/30 shadow-[0_0_40px_rgba(34,211,238,0.25)]"
+                  className="w-24 h-24 rounded-2xl object-cover mb-6 mx-auto border border-border/30 shadow-[0_0_40px_rgba(34,211,238,0.25)]"
                 />
                 <h1 className="font-display text-2xl lg:text-3xl font-bold text-foreground mb-2">
-                  Create Account: AI to the <span className="text-gradient">Summit</span>
+                  Create Account: AI to the <span className="text-primary">Summit</span>
                 </h1>
                 <p className="text-sm text-muted-foreground max-w-[240px]">
                   Your Intelligent Mountain Companion
@@ -139,7 +139,7 @@ function RegisterPage() {
                           });
                       }}
                       placeholder="Your name"
-                      className="w-full pl-10 pr-4 py-3 rounded-xl bg-white/5 border border-white/10 text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:border-neon/40 focus:ring-1 focus:ring-neon/20 transition-all"
+                      className="w-full pl-10 pr-4 py-3 rounded-xl bg-white/5 border border-white/10 text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:border-border/40 focus:ring-1 focus:ring-neon/20 transition-all"
                     />
                   </div>
                   {errors.fullName && (
@@ -167,7 +167,7 @@ function RegisterPage() {
                           });
                       }}
                       placeholder="you@example.com"
-                      className="w-full pl-10 pr-4 py-3 rounded-xl bg-white/5 border border-white/10 text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:border-neon/40 focus:ring-1 focus:ring-neon/20 transition-all"
+                      className="w-full pl-10 pr-4 py-3 rounded-xl bg-white/5 border border-white/10 text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:border-border/40 focus:ring-1 focus:ring-neon/20 transition-all"
                     />
                   </div>
                   {errors.email && (
@@ -193,12 +193,12 @@ function RegisterPage() {
                           });
                       }}
                       placeholder="At least 6 characters"
-                      className="w-full pl-10 pr-12 py-3 rounded-xl bg-white/5 border border-white/10 text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:border-neon/40 focus:ring-1 focus:ring-neon/20 transition-all"
+                      className="w-full pl-10 pr-12 py-3 rounded-xl bg-white/5 border border-white/10 text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:border-border/40 focus:ring-1 focus:ring-neon/20 transition-all"
                     />
                     <button
                       type="button"
                       onClick={() => setShowPassword(!showPassword)}
-                      className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-neon transition-colors"
+                      className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-primary transition-colors"
                       tabIndex={-1}
                     >
                       {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
@@ -229,12 +229,12 @@ function RegisterPage() {
                           });
                       }}
                       placeholder="Re-enter your password"
-                      className="w-full pl-10 pr-12 py-3 rounded-xl bg-white/5 border border-white/10 text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:border-neon/40 focus:ring-1 focus:ring-neon/20 transition-all"
+                      className="w-full pl-10 pr-12 py-3 rounded-xl bg-white/5 border border-white/10 text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:border-border/40 focus:ring-1 focus:ring-neon/20 transition-all"
                     />
                     <button
                       type="button"
                       onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                      className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-neon transition-colors"
+                      className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-primary transition-colors"
                       tabIndex={-1}
                     >
                       {showConfirmPassword ? (
@@ -253,7 +253,7 @@ function RegisterPage() {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full py-3 rounded-xl bg-neon text-primary-foreground font-semibold text-sm hover:glow-neon transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                  className="w-full py-3 rounded-xl bg-primary text-primary-foreground font-semibold text-sm transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                 >
                   {isSubmitting ? (
                     <span className="flex items-center gap-2">
@@ -294,7 +294,7 @@ function RegisterPage() {
                 <button
                   type="button"
                   onClick={handleGoogle}
-                  className="w-full py-3 rounded-xl bg-white/5 border border-white/10 text-foreground font-medium text-sm hover:bg-white/10 hover:border-neon/20 transition-all flex items-center justify-center gap-3"
+                  className="w-full py-3 rounded-xl bg-white/5 border border-white/10 text-foreground font-medium text-sm hover:bg-white/10 hover:border-border/20 transition-all flex items-center justify-center gap-3"
                 >
                   <svg className="h-5 w-5" viewBox="0 0 24 24">
                     <path
@@ -322,7 +322,7 @@ function RegisterPage() {
                 Already have an account?{" "}
                 <Link
                   to="/login"
-                  className="text-neon hover:text-neon/80 font-semibold transition-colors"
+                  className="text-primary hover:text-primary/80 font-semibold transition-colors"
                 >
                   Login
                 </Link>
