@@ -58,7 +58,7 @@ export function Emergency() {
             </div>
 
             {/* Map placeholder */}
-            <div className="relative h-44 rounded-2xl overflow-hidden mb-5 bg-gradient-to-br from-mountain to-slate-deep border border-white/10">
+            <div className="relative h-44 rounded-2xl overflow-hidden mb-5 bg-gradient-to-br from-mountain to-slate-deep border border-border">
               <div className="absolute inset-0  opacity-50" />
               <svg className="absolute inset-0 w-full h-full" viewBox="0 0 400 200" preserveAspectRatio="none">
                 <path d="M0,160 Q100,80 200,120 T400,60" stroke="oklch(0.86 0.2 195)" strokeWidth="2" fill="none" strokeDasharray="4 4" />

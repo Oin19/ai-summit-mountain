@@ -139,7 +139,7 @@ function RegisterPage() {
                           });
                       }}
                       placeholder="Your name"
-                      className="w-full pl-10 pr-4 py-3 rounded-xl bg-white/5 border border-white/10 text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:border-border/40 focus:ring-1 focus:ring-neon/20 transition-all"
+                      className="w-full pl-10 pr-4 py-3 rounded-xl bg-card border border-border text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:border-border/40 focus:ring-1 focus:ring-ring/30 transition-all"
                     />
                   </div>
                   {errors.fullName && (
@@ -167,7 +167,7 @@ function RegisterPage() {
                           });
                       }}
                       placeholder="you@example.com"
-                      className="w-full pl-10 pr-4 py-3 rounded-xl bg-white/5 border border-white/10 text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:border-border/40 focus:ring-1 focus:ring-neon/20 transition-all"
+                      className="w-full pl-10 pr-4 py-3 rounded-xl bg-card border border-border text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:border-border/40 focus:ring-1 focus:ring-ring/30 transition-all"
                     />
                   </div>
                   {errors.email && (
@@ -193,7 +193,7 @@ function RegisterPage() {
                           });
                       }}
                       placeholder="At least 6 characters"
-                      className="w-full pl-10 pr-12 py-3 rounded-xl bg-white/5 border border-white/10 text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:border-border/40 focus:ring-1 focus:ring-neon/20 transition-all"
+                      className="w-full pl-10 pr-12 py-3 rounded-xl bg-card border border-border text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:border-border/40 focus:ring-1 focus:ring-ring/30 transition-all"
                     />
                     <button
                       type="button"
@@ -229,7 +229,7 @@ function RegisterPage() {
                           });
                       }}
                       placeholder="Re-enter your password"
-                      className="w-full pl-10 pr-12 py-3 rounded-xl bg-white/5 border border-white/10 text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:border-border/40 focus:ring-1 focus:ring-neon/20 transition-all"
+                      className="w-full pl-10 pr-12 py-3 rounded-xl bg-card border border-border text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:border-border/40 focus:ring-1 focus:ring-ring/30 transition-all"
                     />
                     <button
                       type="button"
@@ -294,7 +294,7 @@ function RegisterPage() {
                 <button
                   type="button"
                   onClick={handleGoogle}
-                  className="w-full py-3 rounded-xl bg-white/5 border border-white/10 text-foreground font-medium text-sm hover:bg-white/10 hover:border-border/20 transition-all flex items-center justify-center gap-3"
+                  className="w-full py-3 rounded-xl bg-card border border-border text-foreground font-medium text-sm hover:bg-white/10 hover:border-border/20 transition-all flex items-center justify-center gap-3"
                 >
                   <svg className="h-5 w-5" viewBox="0 0 24 24">
                     <path

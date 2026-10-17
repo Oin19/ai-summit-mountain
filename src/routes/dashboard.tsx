@@ -39,7 +39,7 @@ function DashboardPage() {
         {/* Welcome Card */}
         <div className="card-surface rounded-3xl p-10 lg:p-14 text-center border border-border/15 shadow-2xl">
           <div className="relative inline-block mb-6">
-            <div className="w-24 h-24 rounded-2xl bg-gradient-to-br from-neon/20 to-neon/5 border border-border/20 flex items-center justify-center mx-auto">
+            <div className="w-24 h-24 rounded-2xl bg-gradient-to-br from-primary/10 to-primary/5 border border-border/20 flex items-center justify-center mx-auto">
               <Mountain className="h-12 w-12 text-primary" />
             </div>
             <div className="absolute -top-1 -right-1 w-6 h-6 bg-primary rounded-full flex items-center justify-center">
@@ -58,17 +58,17 @@ function DashboardPage() {
 
           {/* Feature preview cards */}
           <div className="grid sm:grid-cols-3 gap-4 text-left mb-8">
-            <div className="p-4 rounded-xl bg-white/5 border border-white/10 hover:border-border/20 transition-colors">
+            <div className="p-4 rounded-xl bg-card border border-border hover:border-border/20 transition-colors">
               <MapPin className="h-5 w-5 text-primary mb-2" />
               <h3 className="text-sm font-semibold text-foreground mb-1">Trail Finder</h3>
               <p className="text-xs text-muted-foreground">Discover routes near you</p>
             </div>
-            <div className="p-4 rounded-xl bg-white/5 border border-white/10 hover:border-border/20 transition-colors">
+            <div className="p-4 rounded-xl bg-card border border-border hover:border-border/20 transition-colors">
               <Shield className="h-5 w-5 text-primary mb-2" />
               <h3 className="text-sm font-semibold text-foreground mb-1">SOS Ready</h3>
               <p className="text-xs text-muted-foreground">Open the triage checklist</p>
             </div>
-            <div className="p-4 rounded-xl bg-white/5 border border-white/10 hover:border-border/20 transition-colors">
+            <div className="p-4 rounded-xl bg-card border border-border hover:border-border/20 transition-colors">
               <Mountain className="h-5 w-5 text-primary mb-2" />
               <h3 className="text-sm font-semibold text-foreground mb-1">Weather</h3>
               <p className="text-xs text-muted-foreground">View location-based conditions</p>

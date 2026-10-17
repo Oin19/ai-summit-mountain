@@ -149,7 +149,7 @@ export function ChatDemo() {
           transition={{ duration: 0.7 }}
           className="max-w-2xl mx-auto card-surface rounded-3xl overflow-hidden "
         >
-          <div className="flex items-center justify-between px-5 py-4 border-b border-white/10 gap-3">
+          <div className="flex items-center justify-between px-5 py-4 border-b border-border gap-3">
             <div className="flex items-center gap-3 min-w-0">
               <div className="p-2 rounded-lg bg-primary/10 text-primary shrink-0">
                 <Bot className="h-4 w-4" />
@@ -204,7 +204,7 @@ export function ChatDemo() {
                   className={`max-w-[85%] rounded-2xl px-4 py-2.5 text-sm whitespace-pre-wrap leading-relaxed ${
                     m.role === "user"
                       ? "bg-primary/10 rounded-tr-sm"
-                      : "bg-white/5 rounded-tl-sm"
+                      : "bg-card rounded-tl-sm"
                   }`}
                 >
                   {m.content || (
@@ -250,7 +250,7 @@ export function ChatDemo() {
               e.preventDefault();
               send(input);
             }}
-            className="px-5 py-4 border-t border-white/10 flex items-center gap-3"
+            className="px-5 py-4 border-t border-border flex items-center gap-3"
           >
             <input
               value={input}

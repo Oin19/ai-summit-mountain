@@ -30,7 +30,7 @@ export function Navbar() {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? "bg-background/95 backdrop-blur-xl border-b border-white/10 py-3" : "py-5"
+        scrolled ? "bg-background/95  border-b border-border py-3" : "py-5"
       }`}
     >
       <nav className="container mx-auto flex items-center justify-between px-6">
@@ -94,18 +94,18 @@ export function Navbar() {
                 <a
                   href={l.href}
                   onClick={() => setOpen(false)}
-                  className="block px-3 py-2.5 text-sm text-muted-foreground hover:text-primary hover:bg-white/5 rounded-lg"
+                  className="block px-3 py-2.5 text-sm text-muted-foreground hover:text-primary hover:bg-card rounded-lg"
                 >
                   {l.label}
                 </a>
               </li>
             ))}
           </ul>
-          <div className="mt-3 pt-3 border-t border-white/10 flex flex-col gap-2">
+          <div className="mt-3 pt-3 border-t border-border flex flex-col gap-2">
             <Link
               to="/login"
               onClick={() => setOpen(false)}
-              className="block px-3 py-2.5 text-sm text-foreground hover:text-primary hover:bg-white/5 rounded-lg text-center"
+              className="block px-3 py-2.5 text-sm text-foreground hover:text-primary hover:bg-card rounded-lg text-center"
             >
               Login
             </Link>

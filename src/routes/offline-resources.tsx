@@ -327,7 +327,7 @@ function OfflineResources() {
         <div className="container mx-auto px-6">
           {/* Hero */}
           <div className="text-center max-w-3xl mx-auto mb-14">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md card-surface border border-white/10 text-xs uppercase tracking-wider text-primary mb-4">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md card-surface border border-border text-xs uppercase tracking-wider text-primary mb-4">
               <WifiOff className="h-3.5 w-3.5" /> Works without internet
             </div>
             <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
@@ -353,7 +353,7 @@ function OfflineResources() {
                     key={key}
                     onClick={() => setOpenAid(isOpen ? null : key)}
                     className={`text-left card-surface rounded-3xl p-6 border transition-all ${
-                      isOpen ? "border-border/40 shadow-[0_0_30px_rgba(34,211,238,0.15)]" : "border-white/10 hover:border-border/30"
+                      isOpen ? "border-border/40 shadow-[0_0_30px_rgba(34,211,238,0.15)]" : "border-border hover:border-border/30"
                     }`}
                   >
                     <div className="flex items-center justify-between mb-3">
@@ -402,7 +402,7 @@ function OfflineResources() {
                 <a
                   key={name}
                   href={`tel:${number.replace(/\s+/g, "")}`}
-                  className="card-surface rounded-3xl p-6 border border-white/10 hover:border-border/40 transition-all group"
+                  className="card-surface rounded-3xl p-6 border border-border hover:border-border/40 transition-all group"
                 >
                   <div className="flex items-start gap-4">
                     <div className={`h-12 w-12 rounded-2xl border flex items-center justify-center ${TONE_BG[tone]}`}>
@@ -432,7 +432,7 @@ function OfflineResources() {
               title="Survival Checklist"
               subtitle="Mark each item as you pack. Progress is saved on your device."
             />
-            <div className="card-surface rounded-3xl p-6 md:p-8 border border-white/10">
+            <div className="card-surface rounded-3xl p-6 md:p-8 border border-border">
               <div className="flex items-center justify-between mb-4">
                 <p className="text-sm text-muted-foreground">
                   Packed <span className="text-primary font-semibold">{packedCount}</span> of {CHECKLIST_ITEMS.length}
@@ -455,7 +455,7 @@ function OfflineResources() {
                       className={`flex items-center gap-3 p-4 rounded-2xl border transition-all text-left ${
                         isOn
                           ? "bg-primary/10 border-border/40 text-foreground"
-                          : "bg-white/5 border-white/10 hover:border-border/30 text-muted-foreground"
+                          : "bg-card border-border hover:border-border/30 text-muted-foreground"
                       }`}
                     >
                       {isOn ? (
@@ -488,7 +488,7 @@ function OfflineResources() {
                   <div
                     key={title}
                     className={`card-surface rounded-3xl border transition-all ${
-                      isOpen ? "border-border/40" : "border-white/10"
+                      isOpen ? "border-border/40" : "border-border"
                     }`}
                   >
                     <button
@@ -530,7 +530,7 @@ function OfflineResources() {
             />
             <form
               onSubmit={saveDraft}
-              className="card-surface rounded-3xl p-6 md:p-8 border border-white/10 max-w-3xl mx-auto"
+              className="card-surface rounded-3xl p-6 md:p-8 border border-border max-w-3xl mx-auto"
             >
               <div className="grid sm:grid-cols-2 gap-4 mb-4">
                 <Field label="Name">
@@ -539,7 +539,7 @@ function OfflineResources() {
                     value={draft.name}
                     onChange={(e) => setDraft({ ...draft, name: e.target.value })}
                     placeholder="Full name"
-                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-border/50"
+                    className="w-full bg-card border border-border rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-border/50"
                   />
                 </Field>
                 <Field label="Current Location">
@@ -548,14 +548,14 @@ function OfflineResources() {
                     value={draft.location}
                     onChange={(e) => setDraft({ ...draft, location: e.target.value })}
                     placeholder="e.g. Annapurna Base Camp Trail, Day 4"
-                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-border/50"
+                    className="w-full bg-card border border-border rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-border/50"
                   />
                 </Field>
                 <Field label="Emergency Type">
                   <select
                     value={draft.type}
                     onChange={(e) => setDraft({ ...draft, type: e.target.value })}
-                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-border/50"
+                    className="w-full bg-card border border-border rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-border/50"
                   >
                     {["Injury", "Lost", "Altitude Sickness", "Weather", "Wildlife", "Other"].map((o) => (
                       <option key={o} value={o} className="bg-background">{o}</option>
@@ -567,7 +567,7 @@ function OfflineResources() {
                     value={draft.description}
                     onChange={(e) => setDraft({ ...draft, description: e.target.value })}
                     placeholder="Brief description"
-                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-border/50"
+                    className="w-full bg-card border border-border rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-border/50"
                   />
                 </Field>
               </div>
