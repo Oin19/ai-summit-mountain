@@ -1152,7 +1152,7 @@ function TriagePage() {
           <input
             type="range" min={1} max={10} value={pain}
             onChange={(e) => setPain(Number(e.target.value))}
-            className="w-full accent-[hsl(var(--neon))]"
+            className="w-full accent-primary"
           />
           <button
             className="w-full px-5 py-3 rounded-xl bg-primary text-primary-foreground font-semibold transition-shadow flex items-center justify-center gap-2"
@@ -1420,7 +1420,7 @@ function TriagePage() {
                     </p>
                     <button
                       onClick={sendSos}
-                      className="w-full md:w-auto px-10 py-5 rounded-2xl bg-red-600 text-white font-bold text-base hover:shadow-[0_0_50px_rgba(239,68,68,0.7)] transition-all inline-flex items-center justify-center gap-3 "
+                      className="w-full md:w-auto px-10 py-5 rounded-2xl bg-destructive text-destructive-foreground font-bold text-base hover:bg-destructive/90 transition-all inline-flex items-center justify-center gap-3 "
                     >
                       <Send className="h-5 w-5" />
                       {t.ui.sendSos}
@@ -1598,7 +1598,6 @@ function TriagePage() {
                   </div>
                 )}
                 <div className="aspect-video rounded-2xl mb-4 relative overflow-hidden border border-border bg-gradient-to-br from-primary/20 to-background">
-                  <div className="absolute inset-0 opacity-30 bg-[radial-gradient(circle_at_50%_50%,hsl(var(--neon))_0%,transparent_60%)]" />
                   <Mountain className="absolute bottom-3 right-3 h-10 w-10 text-primary/60" />
                   <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
                     <div className="h-3 w-3 rounded-full bg-primary " />
