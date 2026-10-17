@@ -34,76 +34,34 @@
   --color-input: var(--input);
   --color-ring: var(--ring);
 
-  --color-neon: var(--neon);
-  --color-snow: var(--snow);
-  --color-slate-deep: var(--slate-deep);
-  --color-mountain: var(--mountain);
-
-  --animate-float: float 6s ease-in-out infinite;
-  --animate-pulse-glow: pulse-glow 2s ease-in-out infinite;
-  --animate-snowfall: snowfall 10s linear infinite;
-  --animate-grid-pan: grid-pan 20s linear infinite;
   --animate-fade-up: fade-up 0.8s ease-out forwards;
 }
 
 :root {
   --radius: 0.75rem;
 
-  /* Futuristic mountain dark theme (default) */
-  --background: oklch(0.16 0.04 250);
-  --foreground: oklch(0.98 0.01 240);
-  --card: oklch(0.21 0.045 250 / 0.6);
-  --card-foreground: oklch(0.98 0.01 240);
-  --popover: oklch(0.18 0.04 250);
-  --popover-foreground: oklch(0.98 0.01 240);
-  --primary: oklch(0.82 0.18 200);
-  --primary-foreground: oklch(0.16 0.04 250);
-  --secondary: oklch(0.28 0.05 250);
-  --secondary-foreground: oklch(0.98 0.01 240);
-  --muted: oklch(0.24 0.04 250);
-  --muted-foreground: oklch(0.72 0.03 240);
-  --accent: oklch(0.82 0.18 200);
-  --accent-foreground: oklch(0.16 0.04 250);
-  --destructive: oklch(0.65 0.24 25);
-  --destructive-foreground: oklch(0.98 0.01 240);
-  --border: oklch(0.98 0.01 240 / 0.1);
-  --input: oklch(0.98 0.01 240 / 0.12);
-  --ring: oklch(0.82 0.18 200);
+  /* Light alpine theme */
+  --background: oklch(0.961 0.008 85); /* #F6F4EF warm snow */
+  --foreground: oklch(0.25 0.03 240); /* #1B2733 deep slate */
+  --card: oklch(1 0 0); /* #FFFFFF */
+  --card-foreground: oklch(0.25 0.03 240);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.25 0.03 240);
+  --primary: oklch(0.4 0.08 250); /* #1F4E79 alpine blue */
+  --primary-foreground: oklch(1 0 0);
+  --secondary: oklch(0.925 0.008 85); /* #E9E6DE */
+  --secondary-foreground: oklch(0.25 0.03 240);
+  --muted: oklch(0.925 0.008 85);
+  --muted-foreground: oklch(0.47 0.02 240); /* #5B6670 */
+  --accent: oklch(0.45 0.07 155); /* #2F6B4F pine green */
+  --accent-foreground: oklch(1 0 0);
+  --destructive: oklch(0.48 0.17 27); /* #B3261E */
+  --destructive-foreground: oklch(1 0 0);
+  --border: oklch(0.865 0.008 85); /* #D8D4C9 */
+  --input: oklch(0.865 0.008 85);
+  --ring: oklch(0.4 0.08 250);
 
-  --neon: oklch(0.86 0.2 195);
-  --snow: oklch(0.98 0.01 240);
-  --slate-deep: oklch(0.13 0.04 255);
-  --mountain: oklch(0.32 0.08 250);
-
-  --gradient-hero: linear-gradient(135deg, oklch(0.16 0.04 250) 0%, oklch(0.22 0.08 240) 50%, oklch(0.13 0.04 255) 100%);
-  --gradient-neon: linear-gradient(135deg, oklch(0.86 0.2 195), oklch(0.7 0.18 230));
-  --gradient-glass: linear-gradient(135deg, oklch(0.98 0.01 240 / 0.08), oklch(0.98 0.01 240 / 0.02));
-
-  --shadow-glow: 0 0 40px oklch(0.86 0.2 195 / 0.45);
-  --shadow-glow-soft: 0 0 24px oklch(0.86 0.2 195 / 0.25);
-  --shadow-card: 0 20px 60px -20px oklch(0.05 0.02 255 / 0.6);
-}
-
-@keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-12px); }
-}
-
-@keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 20px oklch(0.86 0.2 195 / 0.4), 0 0 40px oklch(0.86 0.2 195 / 0.2); }
-  50% { box-shadow: 0 0 40px oklch(0.86 0.2 195 / 0.8), 0 0 80px oklch(0.86 0.2 195 / 0.4); }
-}
-
-@keyframes snowfall {
-  0% { transform: translateY(-10vh) translateX(0); opacity: 0; }
-  10% { opacity: 1; }
-  90% { opacity: 1; }
-  100% { transform: translateY(110vh) translateX(20px); opacity: 0; }
-}
-
-@keyframes grid-pan {
-  0% { background-position: 0 0; }
-  100% { background-position: 50px 50px; }
+  --shadow-card: 0 1px 3px rgba(27, 39, 51, 0.08);
 }
 
 @keyframes fade-up {
@@ -135,39 +93,9 @@
 }
 
 @layer utilities {
-  .glass {
-    background: var(--gradient-glass);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 1px solid oklch(0.98 0.01 240 / 0.1);
-  }
-
-  .glass-strong {
-    background: oklch(0.21 0.045 250 / 0.7);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid oklch(0.86 0.2 195 / 0.18);
-  }
-
-  .text-gradient {
-    background: var(--gradient-neon);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-  }
-
-  .glow-neon { box-shadow: var(--shadow-glow); }
-  .glow-soft { box-shadow: var(--shadow-glow-soft); }
-
-  .grid-bg {
-    background-image:
-      linear-gradient(oklch(0.86 0.2 195 / 0.08) 1px, transparent 1px),
-      linear-gradient(90deg, oklch(0.86 0.2 195 / 0.08) 1px, transparent 1px);
-    background-size: 50px 50px;
-  }
-
-  .topo-bg {
-    background-image: radial-gradient(ellipse at top, oklch(0.32 0.08 250 / 0.4), transparent 60%),
-      radial-gradient(ellipse at bottom, oklch(0.13 0.04 255 / 0.6), transparent 70%);
+  .card-surface {
+    background: var(--color-card);
+    border: 1px solid var(--color-border);
+    box-shadow: var(--shadow-card);
   }
 }
